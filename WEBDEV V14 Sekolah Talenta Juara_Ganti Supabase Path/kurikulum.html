@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SMA Nusantara Unggul — Kurikulum Nasional Plus</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400..600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ============================================================
+   KURIKULUM PAGE — page-specific styles
+   ============================================================ */
+.page-hero {
+    padding: 9rem 0 5rem;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--grad-mesh);
+    pointer-events: none;
+}
+.page-hero-accent {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: linear-gradient(to bottom, transparent, var(--amber) 30%, var(--amber) 70%, transparent);
+}
+.page-hero-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    position: relative; z-index: 1;
+}
+.page-hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--amber-light); color: var(--amber);
+    border: 1px solid rgba(200,137,42,0.25);
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+    font-family: var(--display-ui);
+}
+.page-hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--amber); flex-shrink: 0;
+}
+.page-hero h1 {
+    font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    line-height: 1.1; letter-spacing: -0.02em; color: var(--ink);
+    margin-bottom: 1rem; max-width: 700px;
+}
+.page-hero h1 em { font-style: italic; color: var(--navy); }
+.page-hero-desc {
+    font-size: 1.05rem; line-height: 1.75; color: var(--body-text);
+    max-width: 55ch; margin-bottom: 2rem;
+}
+.page-hero-stats {
+    display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 2.5rem;
+}
+.hero-stat-item { display: flex; flex-direction: column; }
+.hero-stat-num { font-family: var(--serif-alt); font-weight: 600; font-size: 2rem; color: var(--ink); line-height: 1; }
+.hero-stat-label { font-size: 11.5px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 4px; font-family: var(--display-ui); }
+
+/* ---- Nasional Plus Banner ---- */
+.nasplus-banner {
+    background: var(--grad-navy);
+    padding: 2.5rem 0;
+}
+.nasplus-banner-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+}
+.nasplus-banner-icon {
+    font-size: 3rem; flex-shrink: 0;
+}
+.nasplus-banner-text h3 {
+    font-family: var(--display-ui); font-size: 1.15rem; font-weight: 600;
+    color: #fff; margin-bottom: .4rem;
+}
+.nasplus-banner-text p {
+    font-size: .9rem; color: rgba(255,255,255,0.72); line-height: 1.6; max-width: 680px;
+}
+.nasplus-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--amber); color: #fff;
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; font-family: var(--display-ui);
+    margin-bottom: .75rem; flex-shrink: 0;
+}
+
+/* ---- Overview Cards ---- */
+.kurikulum-overview {
+    padding: 6rem 0 4rem;
+    background: var(--off-white);
+}
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+.overview-card {
+    background: var(--card-bg);
+    border-radius: var(--r-xl);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform .22s, box-shadow .22s;
+}
+.overview-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+.overview-card.featured {
+    background: var(--grad-navy);
+    color: #fff;
+    border: none;
+    box-shadow: var(--shadow-lg);
+}
+.overview-card-icon {
+    width: 48px; height: 48px; border-radius: var(--r-md);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1.25rem;
+    background: var(--amber-light);
+}
+.overview-card.featured .overview-card-icon {
+    background: rgba(255,255,255,0.12);
+}
+.overview-card h3 {
+    font-family: var(--display-ui); font-size: 1rem; font-weight: 600;
+    color: var(--ink); margin-bottom: .5rem;
+}
+.overview-card.featured h3 { color: #fff; }
+.overview-card p {
+    font-size: .875rem; line-height: 1.65; color: var(--body-text);
+}
+.overview-card.featured p { color: rgba(255,255,255,0.75); }
+
+/* ---- Komponen Kurikulum (dua kolom) ---- */
+.komponen-section { padding: 6rem 0; background: var(--white); }
+.komponen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    align-items: start;
+}
+.komponen-block {
+    background: var(--card-bg);
+    border-radius: var(--r-xl);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+.komponen-block-header {
+    background: var(--grad-navy);
+    padding: 1.25rem 1.75rem;
+    display: flex; align-items: center; gap: .75rem;
+}
+.komponen-block-header span { font-size: 1.4rem; }
+.komponen-block-header h3 {
+    font-family: var(--display-ui); font-size: 1rem; font-weight: 600;
+    color: #fff; margin: 0;
+}
+.komponen-block-header .kbh-sub {
+    font-size: .78rem; color: rgba(255,255,255,0.6); margin-top: 2px;
+}
+.komponen-list { list-style: none; padding: 0; margin: 0; }
+.komponen-list li {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: .85rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    font-size: .875rem;
+}
+.komponen-list li:last-child { border-bottom: none; }
+.komponen-list li span:first-child { color: var(--ink); font-weight: 500; }
+.komponen-jam {
+    font-family: var(--display-ui); font-size: .75rem; font-weight: 600;
+    background: var(--amber-light); color: var(--amber);
+    border-radius: 10px; padding: 2px 9px;
+    white-space: nowrap;
+}
+.komponen-jam.jam-plus {
+    background: rgba(30,58,95,0.08); color: var(--navy);
+}
+
+/* ---- Mata Pelajaran Plus Section ---- */
+.plus-section { padding: 6rem 0; background: var(--off-white); }
+.plus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+.plus-card {
+    background: var(--card-bg);
+    border-radius: var(--r-lg);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform .22s, box-shadow .22s;
+    display: flex; gap: 1rem; align-items: flex-start;
+}
+.plus-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+.plus-icon {
+    width: 44px; height: 44px; border-radius: var(--r-md);
+    background: var(--navy-light); display: flex; align-items: center;
+    justify-content: center; font-size: 1.25rem; flex-shrink: 0;
+}
+.plus-info h4 {
+    font-family: var(--display-ui); font-size: .9rem; font-weight: 600;
+    color: var(--ink); margin-bottom: .25rem;
+}
+.plus-info p { font-size: .8rem; color: var(--body-text); line-height: 1.55; }
+.plus-tag {
+    display: inline-block; font-size: .7rem; font-weight: 600;
+    padding: 2px 9px; border-radius: 10px; margin-top: .4rem;
+    font-family: var(--display-ui); letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--amber-light); color: var(--amber);
+}
+
+/* ---- Struktur Jenjang Timeline ---- */
+.struktur-section { padding: 6rem 0; background: var(--white); }
+.timeline {
+    display: flex; flex-direction: column; gap: 0;
+    margin-top: 2.5rem; position: relative;
+}
+.timeline::before {
+    content: '';
+    position: absolute; left: 32px; top: 0; bottom: 0;
+    width: 2px; background: var(--border-med);
+}
+.timeline-item {
+    display: flex; gap: 1.5rem; align-items: flex-start;
+    padding-bottom: 2.5rem; position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--card-bg); border: 2px solid var(--border-med);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0; position: relative; z-index: 1;
+    box-shadow: var(--shadow-sm);
+}
+.timeline-item.current .timeline-dot {
+    background: var(--grad-navy); border-color: var(--navy); box-shadow: 0 0 0 4px rgba(30,58,95,0.12);
+}
+.timeline-content {
+    background: var(--card-bg); border-radius: var(--r-lg);
+    padding: 1.5rem; border: 1px solid var(--border);
+    flex: 1; box-shadow: var(--shadow-sm);
+}
+.timeline-item.current .timeline-content {
+    border-color: rgba(30,58,95,0.2);
+    box-shadow: var(--shadow-md);
+}
+.timeline-kelas {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--amber); margin-bottom: .4rem;
+    font-family: var(--display-ui);
+}
+.timeline-content h3 {
+    font-family: var(--display-ui); font-size: 1rem; font-weight: 600;
+    color: var(--ink); margin-bottom: .5rem;
+}
+.timeline-content p {
+    font-size: .875rem; line-height: 1.65; color: var(--body-text);
+}
+.timeline-chips {
+    display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem;
+}
+.chip {
+    background: var(--off-white); color: var(--body-text);
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 3px 10px; font-size: .75rem; font-family: var(--display-ui);
+}
+.chip.chip-plus {
+    background: var(--amber-light); color: var(--amber);
+    border-color: rgba(200,137,42,0.2);
+}
+
+/* ---- Pendekatan Pembelajaran ---- */
+.pendekatan-section { padding: 6rem 0; background: var(--off-white); }
+.pendekatan-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+.pendekatan-card {
+    background: var(--card-bg);
+    border-radius: var(--r-xl);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    display: flex; gap: 1.25rem; align-items: flex-start;
+    transition: transform .22s, box-shadow .22s;
+}
+.pendekatan-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+.pendekatan-num {
+    font-family: var(--serif); font-size: 3rem; line-height: 1;
+    color: var(--amber); opacity: 0.35; flex-shrink: 0; margin-top: -4px;
+    font-weight: 600;
+}
+.pendekatan-body h3 {
+    font-family: var(--display-ui); font-size: 1rem; font-weight: 600;
+    color: var(--ink); margin-bottom: .5rem;
+}
+.pendekatan-body p {
+    font-size: .875rem; line-height: 1.65; color: var(--body-text);
+}
+
+/* ---- Sistem Penilaian ---- */
+.penilaian-section {
+    padding: 6rem 0;
+    background: var(--grad-navy);
+    color: #fff;
+}
+.penilaian-section .section-label { color: var(--amber); }
+.penilaian-section .section-heading { color: #fff; }
+.penilaian-section .section-sub { color: rgba(255,255,255,0.7); }
+.penilaian-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+.penilaian-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--r-xl);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: background .2s, transform .22s;
+}
+.penilaian-card:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-3px);
+}
+.penilaian-icon { font-size: 2rem; margin-bottom: 1rem; }
+.penilaian-pct {
+    font-family: var(--serif-alt); font-size: 2.2rem; font-weight: 600;
+    color: var(--amber); line-height: 1; margin-bottom: .4rem;
+}
+.penilaian-card h4 {
+    font-family: var(--display-ui); font-size: .9rem; font-weight: 600;
+    color: #fff; margin-bottom: .4rem;
+}
+.penilaian-card p { font-size: .8rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
+
+/* ---- CTA ---- */
+.kurikulum-cta {
+    padding: 5rem 0;
+    background: var(--off-white);
+    text-align: center;
+}
+.kurikulum-cta h2 {
+    font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--ink); margin-bottom: 1rem;
+}
+.kurikulum-cta p {
+    font-size: 1rem; color: var(--body-text); max-width: 50ch;
+    margin: 0 auto 2rem; line-height: 1.7;
+}
+.cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+    .overview-grid { grid-template-columns: 1fr 1fr; }
+    .komponen-grid { grid-template-columns: 1fr; }
+    .pendekatan-grid { grid-template-columns: 1fr; }
+    .penilaian-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .overview-grid { grid-template-columns: 1fr; }
+    .penilaian-grid { grid-template-columns: 1fr 1fr; }
+    .page-hero-stats { gap: 1.5rem; }
+    .timeline::before { left: 28px; }
+    .timeline-dot { width: 56px; height: 56px; }
+    .nasplus-banner-inner { flex-direction: column; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+<div class="nav-logo-mark" style="background: transparent; padding: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border: none;">
+    <svg width="100%" height="100%" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F9F295" />
+                <stop offset="35%" stop-color="#E0AA3E" />
+                <stop offset="70%" stop-color="#B8860B" />
+                <stop offset="100%" stop-color="#8A5A19" />
+            </linearGradient>
+            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1E3A8A" />
+                <stop offset="50%" stop-color="#0F172A" />
+                <stop offset="100%" stop-color="#020617" />
+            </linearGradient>
+        </defs>
+        <path d="M 125 15 C 195 15 220 45 220 110 C 220 185 125 235 125 235 C 125 235 30 185 30 110 C 30 45 55 15 125 15 Z" fill="url(#blueGradient)" stroke="url(#goldGradient)" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M 125 32 C 180 32 198 57 198 110 C 198 170 125 212 125 212 C 125 212 52 170 52 110 C 52 57 70 32 125 32 Z" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.8"/>
+        <polygon points="125,42 131,58 149,58 135,69 140,86 125,75 110,86 115,69 101,58 119,58" fill="url(#goldGradient)" />
+        <text x="125" y="152" font-family="'DM Serif Display', 'Times New Roman', serif" font-size="70" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" letter-spacing="3">NU</text>
+        <path d="M 125 175 Q 125 155 180 140 Q 180 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <path d="M 125 175 Q 125 155 70 140 Q 70 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <polygon points="125,200 130,208 125,216 120,208" fill="url(#goldGradient)" />
+    </svg>
+</div>
+            <div>
+                <div class="nav-logo-text">SMA Nusantara Unggul</div>
+                <div class="nav-logo-sub">Bandung, Jawa Barat</div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="guru.html">Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas</a></li>
+            <li><a href="lingkungan-sekolah.html">Lingkungan</a></li>
+            <li><a href="data-akademik.html">Akademik</a></li>
+            <li><a href="kurikulum.html">Kurikulum</a></li>
+            <li><a href="study-exchange.html">Exchange</a></li>
+            <li><a href="ppdb.html">PPDB</a></li>
+            </ul>
+        <button class="hamburger" id="hambBtn" aria-label="Buka menu" onclick="toggleMobileNav()">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Beranda</a>
+    <a href="index.html#tentang" onclick="toggleMobileNav()">Tentang</a>
+    <a href="guru.html" onclick="toggleMobileNav()">Guru</a>
+    <a href="fasilitas-ekskul.html" onclick="toggleMobileNav()">Fasilitas & Ekskul</a>
+    <a href="data-akademik.html" onclick="toggleMobileNav()">Data Akademik</a>
+    <a href="kurikulum.html" onclick="toggleMobileNav()" style="color:var(--navy); font-weight:600;">Kurikulum</a>
+    <a href="study-exchange.html" onclick="toggleMobileNav()">Study Exchange</a>
+    <a href="ppdb.html" onclick="toggleMobileNav()" style="color:var(--navy); font-weight:600;">Daftar PPDB</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero-accent"></div>
+    <div class="page-hero-inner reveal">
+        <div class="page-hero-eyebrow">Akademik · Kurikulum Nasional Plus</div>
+        <h1>Kurikulum <em>Nasional Plus</em><br>Standar Internasional</h1>
+        <p class="page-hero-desc">SMA Nusantara Unggul mengimplementasikan Kurikulum Nasional Plus — memadukan kurikulum nasional baku dari Kemendikbudristek dengan pengayaan bertaraf internasional dalam bidang sains, teknologi, bahasa, dan kepemimpinan global.</p>
+        <div class="page-hero-stats">
+            <div class="hero-stat-item">
+                <span class="hero-stat-num">28</span>
+                <span class="hero-stat-label">Mata Pelajaran</span>
+            </div>
+            <div class="hero-stat-item">
+                <span class="hero-stat-num">8+</span>
+                <span class="hero-stat-label">Program Pengayaan</span>
+            </div>
+            <div class="hero-stat-item">
+                <span class="hero-stat-num">98%</span>
+                <span class="hero-stat-label">Kelulusan PTN</span>
+            </div>
+            <div class="hero-stat-item">
+                <span class="hero-stat-num">Bilingual</span>
+                <span class="hero-stat-label">Kelas & Materi</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NASIONAL PLUS BANNER -->
+<div class="nasplus-banner">
+    <div class="nasplus-banner-inner">
+        <div class="nasplus-banner-icon">🏅</div>
+        <div class="nasplus-banner-text">
+            <div class="nasplus-badge">Apa itu Kurikulum Nasional Plus?</div>
+            <h3>Kurikulum Nasional + Pengayaan Bertaraf Internasional</h3>
+            <p>Kurikulum Nasional Plus adalah kurikulum yang sepenuhnya mengacu pada standar nasional Kemendikbudristek, diperkaya dengan materi pengayaan (enrichment) bertaraf internasional. Siswa memperoleh fondasi akademik nasional yang kuat sekaligus kompetensi global — mulai dari literasi sains STEM tingkat lanjut, bahasa asing kedua, hingga kecakapan kepemimpinan abad ke-21.</p>
+        </div>
+    </div>
+</div>
+
+<!-- OVERVIEW KURIKULUM -->
+<section class="kurikulum-overview">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Keunggulan Kurikulum</div>
+            <h2 class="section-heading">Mengapa Kurikulum Nasional Plus?</h2>
+            <p class="section-sub">Memadukan standar nasional yang terstruktur dengan fleksibilitas dan kedalaman materi bertaraf internasional.</p>
+        </div>
+        <div class="overview-grid">
+            <div class="overview-card featured reveal">
+                <div class="overview-card-icon">🎯</div>
+                <h3>Fondasi Nasional yang Kokoh</h3>
+                <p>Seluruh mata pelajaran wajib mengacu pada Capaian Pembelajaran (CP) nasional Kemendikbudristek, memastikan siswa kompetitif di SNBP, SNBT, dan seleksi PTN nasional.</p>
+            </div>
+            <div class="overview-card reveal">
+                <div class="overview-card-icon">🌐</div>
+                <h3>Pengayaan Internasional</h3>
+                <p>Materi pengayaan berbasis kurikulum Cambridge, STEM internasional, dan standar IB ditambahkan pada mata pelajaran sains, matematika, dan bahasa untuk daya saing global.</p>
+            </div>
+            <div class="overview-card reveal">
+                <div class="overview-card-icon">🗣️</div>
+                <h3>Bilingual Learning</h3>
+                <p>Kelas sains dan matematika disampaikan secara bilingual (Bahasa Indonesia & Inggris). Siswa terbiasa berpikir dan mengekspresikan konsep akademis dalam dua bahasa sejak kelas X.</p>
+            </div>
+            <div class="overview-card reveal">
+                <div class="overview-card-icon">🔬</div>
+                <h3>STEM Tingkat Lanjut</h3>
+                <p>Program STEM terintegrasi dengan lab sains dan laboratorium komputer modern. Proyek lintas disiplin menghubungkan sains, teknologi, rekayasa, dan matematika dalam satu alur.</p>
+            </div>
+            <div class="overview-card reveal">
+                <div class="overview-card-icon">🤝</div>
+                <h3>Karakter & Kepemimpinan</h3>
+                <p>Program character building, leadership camp, dan pengembangan soft skills terstruktur di setiap jenjang kelas untuk mencetak pemimpin masa depan yang berintegritas.</p>
+            </div>
+            <div class="overview-card reveal">
+                <div class="overview-card-icon">📊</div>
+                <h3>Asesmen Holistik & Terstandar</h3>
+                <p>Penilaian menggabungkan asesmen nasional (formatif & sumatif) dengan ujian pengayaan internasional, sehingga siswa siap menghadapi berbagai bentuk evaluasi akademis.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KOMPONEN KURIKULUM -->
+<section class="komponen-section">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Struktur Mata Pelajaran</div>
+            <h2 class="section-heading">Komponen Kurikulum Nasional Plus</h2>
+            <p class="section-sub">Dua pilar utama: mata pelajaran nasional wajib sesuai regulasi Kemendikbudristek, diperkuat dengan mata pelajaran pengayaan "Plus" bertaraf internasional.</p>
+        </div>
+        <div class="komponen-grid reveal">
+            <!-- Pilar 1: Nasional -->
+            <div class="komponen-block">
+                <div class="komponen-block-header">
+                    <span>🇮🇩</span>
+                    <div>
+                        <h3>Mata Pelajaran Nasional</h3>
+                        <div class="kbh-sub">Sesuai regulasi Kemendikbudristek</div>
+                    </div>
+                </div>
+                <ul class="komponen-list">
+                    <li><span>Pendidikan Agama & Budi Pekerti</span><span class="komponen-jam">3 jp/minggu</span></li>
+                    <li><span>Pendidikan Pancasila</span><span class="komponen-jam">2 jp/minggu</span></li>
+                    <li><span>Bahasa Indonesia</span><span class="komponen-jam">4 jp/minggu</span></li>
+                    <li><span>Matematika</span><span class="komponen-jam">4 jp/minggu</span></li>
+                    <li><span>Bahasa Inggris</span><span class="komponen-jam">3 jp/minggu</span></li>
+                    <li><span>Sejarah Indonesia</span><span class="komponen-jam">2 jp/minggu</span></li>
+                    <li><span>PJOK</span><span class="komponen-jam">2 jp/minggu</span></li>
+                    <li><span>Seni Budaya</span><span class="komponen-jam">2 jp/minggu</span></li>
+                    <li><span>Informatika</span><span class="komponen-jam">2 jp/minggu</span></li>
+                    <li><span>Fisika / Kimia / Biologi <em style="font-size:.75rem;color:var(--muted)">(pilihan)</em></span><span class="komponen-jam">4 jp/minggu</span></li>
+                    <li><span>Ekonomi / Geografi / Sosiologi <em style="font-size:.75rem;color:var(--muted)">(pilihan)</em></span><span class="komponen-jam">4 jp/minggu</span></li>
+                </ul>
+            </div>
+            <!-- Pilar 2: Plus -->
+            <div class="komponen-block">
+                <div class="komponen-block-header" style="background: linear-gradient(135deg,#b8860b,#e0aa3e);">
+                    <span>⭐</span>
+                    <div>
+                        <h3>Mata Pelajaran Plus (Pengayaan)</h3>
+                        <div class="kbh-sub">Bertaraf internasional & lintas disiplin</div>
+                    </div>
+                </div>
+                <ul class="komponen-list">
+                    <li><span>Advanced Mathematics (Cambridge)</span><span class="komponen-jam jam-plus">3 jp/minggu</span></li>
+                    <li><span>Science in English (STEM Bilingual)</span><span class="komponen-jam jam-plus">3 jp/minggu</span></li>
+                    <li><span>Bahasa Mandarin / Jepang / Jerman</span><span class="komponen-jam jam-plus">2 jp/minggu</span></li>
+                    <li><span>Critical Thinking & Research Methods</span><span class="komponen-jam jam-plus">2 jp/minggu</span></li>
+                    <li><span>Public Speaking & Leadership</span><span class="komponen-jam jam-plus">1 jp/minggu</span></li>
+                    <li><span>Coding & Computational Thinking</span><span class="komponen-jam jam-plus">2 jp/minggu</span></li>
+                    <li><span>Kewirausahaan Sosial</span><span class="komponen-jam jam-plus">2 jp/minggu</span></li>
+                    <li><span>Global Citizenship & Model UN</span><span class="komponen-jam jam-plus">1 jp/minggu</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROGRAM PENGAYAAN PLUS -->
+<section class="plus-section">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Program Unggulan</div>
+            <h2 class="section-heading">Program Pengayaan "Plus"</h2>
+            <p class="section-sub">Delapan program eksklusif yang menjadi pembeda SMA Nusantara Unggul — dirancang untuk mempersiapkan siswa bersaing di perguruan tinggi terbaik dunia.</p>
+        </div>
+        <div class="plus-grid">
+            <div class="plus-card reveal">
+                <div class="plus-icon">🔭</div>
+                <div class="plus-info">
+                    <h4>Cambridge Advanced Science</h4>
+                    <p>Materi sains tingkat lanjut berbasis silabus Cambridge IGCSE & AS Level, khususnya untuk fisika, kimia, dan biologi.</p>
+                    <span class="plus-tag">Kelas XI–XII</span>
+                </div>
+            </div>
+            <div class="plus-card reveal">
+                <div class="plus-icon">🧮</div>
+                <div class="plus-info">
+                    <h4>Advanced Mathematics</h4>
+                    <p>Pendalaman matematika mencakup kalkulus, statistika inferensial, dan aljabar linear — jauh melampaui kurikulum nasional.</p>
+                    <span class="plus-tag">Kelas X–XII</span>
+                </div>
+            </div>
+            <div class="plus-card reveal">
+                <div class="plus-icon">💻</div>
+                <div class="plus-info">
+                    <h4>Coding & AI Literacy</h4>
+                    <p>Python, machine learning dasar, dan computational thinking. Lulusan mampu membangun proyek teknologi nyata secara mandiri.</p>
+                    <span class="plus-tag">Kelas X–XII</span>
+                </div>
+            </div>
+            <div class="plus-card reveal">
+                <div class="plus-icon">🌏</div>
+                <div class="plus-info">
+                    <h4>Bahasa Asing Kedua</h4>
+                    <p>Pilihan Mandarin, Jepang, atau Jerman — diajarkan oleh penutur asli dengan target pencapaian minimum level A2 saat lulus.</p>
+                    <span class="plus-tag">Kelas X–XII</span>
+                </div>
+            </div>
+            <div class="plus-card reveal">
+                <div class="plus-icon">🎤</div>
+                <div class="plus-info">
+                    <h4>Public Speaking & Debat</h4>
+                    <p>Pelatihan komunikasi publik, teknik argumen, dan debat berbahasa Inggris. Siswa siap tampil di panggung nasional maupun internasional.</p>
+                    <span class="plus-tag">Kelas X–XII</span>
+                </div>
+            </div>
+            <div class="plus-card reveal">
+                <div class="plus-icon">🏛️</div>
+                <div class="plus-info">
+                    <h4>Model United Nations (MUN)</h4>
+                    <p>Simulasi sidang PBB dalam bahasa Inggris, melatih diplomasi, riset kebijakan global, dan kecakapan negosiasi internasional.</p>
+                    <span class="plus-tag">Kelas XI–XII</span>
+                </div>
+            </div>
+            <div class="plus-card reveal">
+                <div class="plus-icon">🚀</div>
+                <div class="plus-info">
+                    <h4>Kewirausahaan Sosial</h4>
+                    <p>Siswa merancang dan menjalankan usaha sosial nyata dengan bimbingan mentor startup. Proyek terbaik mendapat pendanaan awal dari yayasan sekolah.</p>
+                    <span class="plus-tag">Kelas XI–XII</span>
+                </div>
+            </div>
+            <div class="plus-card reveal">
+                <div class="plus-icon">📝</div>
+                <div class="plus-info">
+                    <h4>Research & Academic Writing</h4>
+                    <p>Metodologi penelitian ilmiah, penulisan karya tulis ilmiah, dan presentasi poster akademik — bekal esensial untuk kuliah di PTN maupun universitas luar negeri.</p>
+                    <span class="plus-tag">Kelas XII</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STRUKTUR JENJANG KELAS -->
+<section class="struktur-section">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Alur Belajar</div>
+            <h2 class="section-heading">Perjalanan Tiga Tahun</h2>
+            <p class="section-sub">Setiap jenjang kelas dirancang progresif: dari pengenalan fondasi nasional hingga penguasaan materi pengayaan internasional secara bertahap.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot">📘</div>
+                <div class="timeline-content">
+                    <div class="timeline-kelas">Kelas X · Tahap Fondasi</div>
+                    <h3>Membangun Fondasi Nasional & Orientasi Plus</h3>
+                    <p>Seluruh mata pelajaran nasional wajib ditempuh secara penuh. Siswa mulai diperkenalkan dengan program pengayaan: bilingual science, advanced math, coding dasar, dan bahasa asing kedua. Penjurusan minat dilakukan di akhir semester dua berdasarkan portofolio dan asesmen bakat.</p>
+                    <div class="timeline-chips">
+                        <span class="chip">Semua Mapel Nasional</span>
+                        <span class="chip chip-plus">Bilingual Science Dasar</span>
+                        <span class="chip chip-plus">Coding Level 1</span>
+                        <span class="chip chip-plus">Bahasa Asing Kedua</span>
+                        <span class="chip">Orientasi Peminatan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item current reveal">
+                <div class="timeline-dot">📗</div>
+                <div class="timeline-content">
+                    <div class="timeline-kelas">Kelas XI · Tahap Pendalaman</div>
+                    <h3>Pendalaman Peminatan & Aktivasi Program Plus</h3>
+                    <p>Siswa mendalami kelompok peminatan (MIPA atau IPS) sesuai pilihan. Program Plus berjalan penuh: Cambridge Advanced Science, Advanced Mathematics, Research Methods, Public Speaking, dan MUN. Proyek lintas disiplin dikerjakan dalam tim untuk mengintegrasikan kompetensi nasional dan internasional.</p>
+                    <div class="timeline-chips">
+                        <span class="chip">Mapel Nasional Peminatan</span>
+                        <span class="chip chip-plus">Cambridge Advanced Science</span>
+                        <span class="chip chip-plus">Advanced Mathematics</span>
+                        <span class="chip chip-plus">Model UN (MUN)</span>
+                        <span class="chip chip-plus">Kewirausahaan Sosial</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot">📕</div>
+                <div class="timeline-content">
+                    <div class="timeline-kelas">Kelas XII · Tahap Pemantapan</div>
+                    <h3>Pemantapan PTN & Capstone Internasional</h3>
+                    <p>Fokus ganda: pemantapan SNBT/SNBP dengan bimbingan intensif, dan penyelesaian proyek capstone pengayaan internasional sebagai portofolio kelulusan. Siswa mendapatkan bimbingan karier terstruktur untuk persiapan masuk PTN dalam negeri maupun universitas luar negeri.</p>
+                    <div class="timeline-chips">
+                        <span class="chip">Bimbel SNBT Intensif</span>
+                        <span class="chip chip-plus">Research & Academic Writing</span>
+                        <span class="chip chip-plus">Capstone Project (Plus)</span>
+                        <span class="chip">Bimbingan PTN & Karier</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PENDEKATAN PEMBELAJARAN -->
+<section class="pendekatan-section">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Metode Belajar</div>
+            <h2 class="section-heading">Pendekatan Pembelajaran</h2>
+            <p class="section-sub">Guru kami menggunakan beragam metode pedagogi mutakhir yang selaras dengan standar nasional sekaligus praktik terbaik pendidikan internasional.</p>
+        </div>
+        <div class="pendekatan-grid">
+            <div class="pendekatan-card reveal">
+                <div class="pendekatan-num">01</div>
+                <div class="pendekatan-body">
+                    <h3>Inquiry-Based Learning</h3>
+                    <p>Siswa dilatih untuk bertanya, menyelidiki, dan menemukan jawaban sendiri melalui eksperimen dan riset terbimbing. Metode ini menjadi pondasi program Plus untuk menumbuhkan jiwa ilmuwan sejak dini.</p>
+                </div>
+            </div>
+            <div class="pendekatan-card reveal">
+                <div class="pendekatan-num">02</div>
+                <div class="pendekatan-body">
+                    <h3>Bilingual Instruction</h3>
+                    <p>Guru sains dan matematika menyampaikan materi dalam dua bahasa secara bergantian. Kosakata akademis bahasa Inggris diperkenalkan secara sistematis sejak kelas X untuk kesiapan kuliah internasional.</p>
+                </div>
+            </div>
+            <div class="pendekatan-card reveal">
+                <div class="pendekatan-num">03</div>
+                <div class="pendekatan-body">
+                    <h3>Project-Based Learning</h3>
+                    <p>Proyek lintas mata pelajaran dikerjakan dalam tim, mengintegrasikan kompetensi sains, teknologi, bahasa, dan karakter dalam satu produk nyata yang dapat dipresentasikan di forum nasional maupun internasional.</p>
+                </div>
+            </div>
+            <div class="pendekatan-card reveal">
+                <div class="pendekatan-num">04</div>
+                <div class="pendekatan-body">
+                    <h3>Differentiated Instruction</h3>
+                    <p>Setiap siswa memiliki trajectory belajar yang disesuaikan dengan kemampuan dan kecepatan belajarnya. Program Plus menyediakan jalur akselerasi bagi siswa berbakat tanpa meninggalkan teman seangkatan.</p>
+                </div>
+            </div>
+            <div class="pendekatan-card reveal">
+                <div class="pendekatan-num">05</div>
+                <div class="pendekatan-body">
+                    <h3>Flipped Classroom</h3>
+                    <p>Materi dasar dipelajari mandiri melalui modul digital dan video bilingual. Waktu tatap muka dioptimalkan untuk diskusi mendalam, latihan soal tingkat lanjut, dan eksplorasi konsep bersama.</p>
+                </div>
+            </div>
+            <div class="pendekatan-card reveal">
+                <div class="pendekatan-num">06</div>
+                <div class="pendekatan-body">
+                    <h3>Integrasi Teknologi & AI</h3>
+                    <p>Platform e-learning, simulasi digital, dan alat kolaborasi daring terintegrasi penuh. Siswa juga dibekali literasi AI untuk memanfaatkan teknologi secara etis dan produktif dalam proses belajar mereka.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SISTEM PENILAIAN -->
+<section class="penilaian-section">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Evaluasi Belajar</div>
+            <h2 class="section-heading">Sistem Penilaian</h2>
+            <p class="section-sub">Penilaian holistik menggabungkan asesmen nasional standar dengan evaluasi kompetensi pengayaan internasional.</p>
+        </div>
+        <div class="penilaian-grid">
+            <div class="penilaian-card reveal">
+                <div class="penilaian-icon">📝</div>
+                <div class="penilaian-pct">35%</div>
+                <h4>Asesmen Formatif</h4>
+                <p>Kuis harian, tugas, observasi, dan refleksi — pemantauan progres berkelanjutan sesuai standar nasional.</p>
+            </div>
+            <div class="penilaian-card reveal">
+                <div class="penilaian-icon">🗂️</div>
+                <div class="penilaian-pct">25%</div>
+                <h4>Proyek & Portofolio Plus</h4>
+                <p>Karya nyata dari program pengayaan: laporan riset, prototipe teknologi, dan portofolio bilingual.</p>
+            </div>
+            <div class="penilaian-card reveal">
+                <div class="penilaian-icon">📊</div>
+                <div class="penilaian-pct">30%</div>
+                <h4>Asesmen Sumatif</h4>
+                <p>Ujian tengah dan akhir semester berbasis standar nasional, ditambah ujian pengayaan tingkat lanjut.</p>
+            </div>
+            <div class="penilaian-card reveal">
+                <div class="penilaian-icon">🌱</div>
+                <div class="penilaian-pct">10%</div>
+                <h4>Karakter & Kepemimpinan</h4>
+                <p>Kehadiran, sikap, partisipasi program Plus, leadership camp, dan kontribusi pada komunitas sekolah.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="kurikulum-cta">
+    <div class="section-inner reveal">
+        <h2>Siap Tumbuh Bersama Kami?</h2>
+        <p>Daftarkan putra-putri Anda dan biarkan mereka berkembang dengan Kurikulum Nasional Plus — fondasi nasional yang kuat, wawasan internasional yang luas.</p>
+        <div class="cta-actions">
+            <a href="ppdb.html" class="btn-primary">Daftar PPDB Sekarang &rarr;</a>
+            <a href="study-exchange.html" class="btn-secondary">Program Study Exchange</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="section-inner">
+        <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr; gap: 2rem;">
+            <div>
+                <div class="footer-brand-name">SMA Nusantara Unggul</div>
+                <p class="footer-brand-sub">Jl. Pahlawan No. 88, Bandung, Jawa Barat 40135<br>Telp: (022) 4200-8800 · info@smanu.sch.id</p>
+                <p class="footer-brand-sub" style="margin-top:.75rem;">Terakreditasi A oleh BAN-S/M<br>NPSN: 200400088</p>
+            </div>
+            <div class="footer-col">
+                <h4>Menu Utama</h4>
+                <ul>
+                    <li><a href="index.html">Beranda & Tentang Sekolah</a></li>
+                    <li><a href="guru.html">Profil Guru</a></li>
+                    <li><a href="fasilitas-ekskul.html">Fasilitas & Ekstrakurikuler</a></li>
+                    <li><a href="kurikulum.html">Sistem Kurikulum</a></li>
+                    <li><a href="study-exchange.html">Study Exchange</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Sistem & Layanan</h4>
+                <ul>
+                    <li><a href="ppdb.html">Pendaftaran PPDB</a></li>
+                    <li><a href="data-akademik.html">Data Akademik (Admin)</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer-divider"/>
+        <div class="footer-bottom">
+            <span>© 2026 SMA Nusantara Unggul. Seluruh hak dilindungi.</span>
+            <span>Dibuat oleh <span class="footer-bottom-accent">Kelompok 6 - Pengembangan Web Bisnis Digital 2024</span></span>
+        </div>
+    </div>
+</footer>
+
+<script>
+function switchMapel(panelId, btn) {
+    document.querySelectorAll('.mapel-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.mapel-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById(panelId).classList.add('active');
+    btn.classList.add('active');
+}
+</script>
+
+    <!-- COLOR THEME SWITCHER -->
+    <div class="color-switcher" id="themeSwitcher">
+        <span class="color-switcher-label">Tema</span>
+        <button class="theme-btn active" data-theme="default" title="Navy Klasik"></button>
+        <button class="theme-btn" data-theme="zamrud" title="Hijau Zamrud"></button>
+        <button class="theme-btn" data-theme="ungu" title="Ungu Royal"></button>
+        <button class="theme-btn" data-theme="garuda" title="Merah Garuda"></button>
+        <button class="theme-btn" data-theme="emas" title="Emas Matahari"></button>
+        <button class="theme-btn" data-theme="langit" title="Langit Biru"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

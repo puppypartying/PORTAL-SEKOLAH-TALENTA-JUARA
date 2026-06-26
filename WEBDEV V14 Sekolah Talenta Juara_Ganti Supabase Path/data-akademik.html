@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SMA Nusantara Unggul — Portal Resmi</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400..600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+<div class="nav-logo-mark" style="background: transparent; padding: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border: none;">
+    <svg width="100%" height="100%" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Gradasi Emas Mewah -->
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F9F295" />
+                <stop offset="35%" stop-color="#E0AA3E" />
+                <stop offset="70%" stop-color="#B8860B" />
+                <stop offset="100%" stop-color="#8A5A19" />
+            </linearGradient>
+            <!-- Gradasi Biru Dalam -->
+            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1E3A8A" />
+                <stop offset="50%" stop-color="#0F172A" />
+                <stop offset="100%" stop-color="#020617" />
+            </linearGradient>
+        </defs>
+
+        <!-- Perisai Utama (Royal Blue & Gold) -->
+        <path d="M 125 15 C 195 15 220 45 220 110 C 220 185 125 235 125 235 C 125 235 30 185 30 110 C 30 45 55 15 125 15 Z" fill="url(#blueGradient)" stroke="url(#goldGradient)" stroke-width="8" stroke-linejoin="round"/>
+
+        <!-- Garis List Perisai Dalam -->
+        <path d="M 125 32 C 180 32 198 57 198 110 C 198 170 125 212 125 212 C 125 212 52 170 52 110 C 52 57 70 32 125 32 Z" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.8"/>
+
+        <!-- Bintang Puncak (Keunggulan & Spiritual) -->
+        <polygon points="125,42 131,58 149,58 135,69 140,86 125,75 110,86 115,69 101,58 119,58" fill="url(#goldGradient)" />
+
+        <!-- Monogram NU Eksklusif -->
+        <text x="125" y="152" font-family="'DM Serif Display', 'Times New Roman', serif" font-size="70" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" letter-spacing="3">NU</text>
+
+        <!-- Sayap/Buku Terbuka (Pondasi Ilmu) -->
+        <path d="M 125 175 Q 125 155 180 140 Q 180 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <path d="M 125 175 Q 125 155 70 140 Q 70 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        
+        <!-- Berlian Kecil di Bawah -->
+        <polygon points="125,200 130,208 125,216 120,208" fill="url(#goldGradient)" />
+    </svg>
+</div>
+        <div>
+            <div class="nav-logo-text">SMA Nusantara Unggul</div>
+            <div class="nav-logo-sub">Bandung, Jawa Barat</div>
+        </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="guru.html">Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas</a></li>
+            <li><a href="lingkungan-sekolah.html">Lingkungan</a></li>
+            <li><a href="data-akademik.html">Akademik</a></li>
+            <li><a href="kurikulum.html">Kurikulum</a></li>
+            <li><a href="study-exchange.html">Exchange</a></li>
+            <li><a href="ppdb.html">PPDB</a></li>
+            </ul>
+        <button class="hamburger" id="hambBtn" aria-label="Buka menu" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Beranda</a>
+    <a href="index.html#tentang" onclick="toggleMobileNav()">Tentang</a>
+    <a href="guru.html" onclick="toggleMobileNav()">Guru</a>
+    <a href="fasilitas-ekskul.html" onclick="toggleMobileNav()">Fasilitas & Ekskul</a>
+    <a href="data-akademik.html" onclick="toggleMobileNav()">Data Akademik</a>
+    <a href="kurikulum.html" onclick="toggleMobileNav()">Kurikulum</a>
+    <a href="study-exchange.html" onclick="toggleMobileNav()">Study Exchange</a>
+    <a href="ppdb.html" onclick="toggleMobileNav()" style="color:var(--navy); font-weight:600;">
+        Daftar PPDB
+    </a>
+</div>
+
+<!-- DATA AKADEMIK (CRUD READ) -->
+<section class="data-section" id="data">
+    <div class="section-inner">
+        <div class="reveal">
+        <div class="section-label">Manajemen Data</div>
+        <h2 class="section-heading">Data Akademik</h2>
+        <p class="section-sub">Kelola dan pantau data guru, fasilitas, serta ekstrakulikuler sekolah secara terpusat.</p>
+        </div>
+        <div style="margin-top: 2.5rem;" class="reveal">
+        <div class="data-tabs">
+            <button class="data-tab active" onclick="switchTab('tab-guru', this)">Data Guru</button>
+            <button class="data-tab" onclick="switchTab('tab-fasilitas', this)">Fasilitas</button>
+            <button class="data-tab" onclick="switchTab('tab-ekskul', this)">Ekskul</button>
+            <button class="data-tab" onclick="switchTab('tab-siswa', this)">Calon Siswa (PPDB)</button>
+        </div>
+
+        <!-- TAB GURU -->
+        <div class="data-panel active" id="tab-guru">
+            <div class="data-topbar">
+            <div class="data-search">
+                <span>🔍</span>
+                <input type="text" placeholder="Cari nama guru..." oninput="searchTable('teacherTable', this.value)" id="searchGuru"/>
+            </div>
+            <button class="btn-add" onclick="openModal('modal-guru', null)">+ Tambah Guru</button>
+            </div>
+            <div style="overflow-x:auto; border-radius: var(--r-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+            <table class="data-table" id="teacherTable">
+                <thead>
+                <tr>
+                    <th>Nama Guru</th>
+                    <th>Mata Pelajaran</th>
+                    <th>Pendidikan</th>
+                    <th>Pengalaman</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+                </thead>
+                <tbody id="teacherTableBody">
+                <tr data-id="1" data-jabatan="Kepala Sekolah" data-foto-file="Drs. H. Ahmad Subhan, M.Pd..jpg">
+                    <td>Drs. H. Ahmad Subhan, M.Pd.</td>
+                    <td>Biologi</td>
+                    <td>S2</td>
+                    <td>28 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 1)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 1)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="2" data-jabatan="Waka Kurikulum" data-foto-file="Dra. Herlina Mansyur, M.Pd..jpg">
+                    <td>Dra. Herlina Mansyur, M.Pd.</td>
+                    <td>Bahasa Indonesia</td>
+                    <td>S2</td>
+                    <td>24 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 2)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 2)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="3" data-jabatan="Waka Kesiswaan" data-foto-file="Muhammad Ridwan, S.Pd., M.M..jpg">
+                    <td>Muhammad Ridwan, S.Pd., M.M.</td>
+                    <td>Ekonomi</td>
+                    <td>S2</td>
+                    <td>18 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 3)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 3)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="4" data-jabatan="Waka Sarana Prasarana" data-foto-file="Fitri Handayani, S.Pd..jpg">
+                    <td>Fitri Handayani, S.Pd.</td>
+                    <td>Matematika</td>
+                    <td>S1</td>
+                    <td>15 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 4)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 4)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="5" data-jabatan="Waka Humas" data-foto-file="Dani Ramadhan, S.Sos..jpg">
+                    <td>Dani Ramadhan, S.Sos.</td>
+                    <td>Sosiologi</td>
+                    <td>S1</td>
+                    <td>11 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 5)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 5)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="6" data-jabatan="Kepala Laboratorium IPA" data-foto-file="Dr. Andi Wijaya, M.Si..jpg">
+                    <td>Dr. Andi Wijaya, M.Si.</td>
+                    <td>Biologi</td>
+                    <td>S3</td>
+                    <td>20 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 6)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 6)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="7" data-jabatan="Kepala Laboratorium Komputer" data-foto-file="Citra Utami, S.Kom..jpg">
+                    <td>Citra Utami, S.Kom.</td>
+                    <td>Informatika</td>
+                    <td>S1</td>
+                    <td>9 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 7)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 7)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="8" data-jabatan="Kepala Perpustakaan" data-foto-file="Nining Suryani, S.S., M.Hum..jpg">
+                    <td>Nining Suryani, S.S., M.Hum.</td>
+                    <td>Bahasa Inggris</td>
+                    <td>S2</td>
+                    <td>16 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 8)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 8)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="9" data-jabatan="Kepala UKS" data-foto-file="Dewi Lestari, S.Pd..jpg">
+                    <td>Dewi Lestari, S.Pd.</td>
+                    <td>Kimia</td>
+                    <td>S1</td>
+                    <td>13 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 9)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 9)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="10" data-jabatan="Pembina OSIS" data-foto-file="Ahmad Fauzi, S.Pd..jpg">
+                    <td>Ahmad Fauzi, S.Pd.</td>
+                    <td>PJOK</td>
+                    <td>S1</td>
+                    <td>10 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 10)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 10)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="11" data-jabatan="Wali Kelas XII-MIPA 1" data-foto-file="Rizky Pratama, S.Si..jpg">
+                    <td>Rizky Pratama, S.Si.</td>
+                    <td>Fisika</td>
+                    <td>S1</td>
+                    <td>8 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 11)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 11)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="12" data-jabatan="Wali Kelas XI-IPS 1" data-foto-file="Ratih Kumala, S.Pd..jpg">
+                    <td>Ratih Kumala, S.Pd.</td>
+                    <td>Geografi</td>
+                    <td>S1</td>
+                    <td>12 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 12)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 12)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="13" data-jabatan="Wali Kelas X-1" data-foto-file="Bagus Setiawan, S.Pd..jpg">
+                    <td>Bagus Setiawan, S.Pd.</td>
+                    <td>Sejarah</td>
+                    <td>S1</td>
+                    <td>7 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 13)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 13)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="14" data-jabatan="Wali Kelas XII-IPS 2" data-foto-file="Sri Wahyuni, S.Pd..jpg">
+                    <td>Sri Wahyuni, S.Pd.</td>
+                    <td>Akuntansi</td>
+                    <td>S1</td>
+                    <td>14 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 14)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 14)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="15" data-jabatan="Pembina Kerohanian Islam (Rohis)" data-foto-file="Lukman Hakim, S.Ag., M.Pd.I..jpg">
+                    <td>Lukman Hakim, S.Ag., M.Pd.I.</td>
+                    <td>Pendidikan Agama Islam</td>
+                    <td>S2</td>
+                    <td>17 Tahun</td>
+                    <td><span class="status-badge status-active">Aktif</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 15)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 15)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                <tr data-id="16" data-jabatan="Koordinator Gerakan Literasi Sekolah" data-foto-file="Taufik Hidayat, S.H..jpg">
+                    <td>Taufik Hidayat, S.H.</td>
+                    <td>PPKn</td>
+                    <td>S1</td>
+                    <td>11 Tahun</td>
+                    <td><span class="status-badge status-inactive">Cuti</span></td>
+                    <td>
+                    <button class="action-btn" onclick="openModal('modal-guru', 16)" title="Edit">✏️</button>
+                    <button class="action-btn del" onclick="deleteRow('teacherTableBody', 16)" title="Hapus">🗑️</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="data-empty" id="emptyGuru">Tidak ada data guru yang ditemukan.</div>
+        </div>
+
+        <!-- TAB FASILITAS -->
+        <div class="data-panel" id="tab-fasilitas">
+            <div class="data-topbar">
+            <div class="data-search">
+                <span>🔍</span>
+                <input type="text" placeholder="Cari fasilitas..." oninput="searchTable('fasilitasTable', this.value)"/>
+            </div>
+            <button class="btn-add" onclick="openModal('modal-fasilitas', null)">+ Tambah Fasilitas</button>
+            </div>
+            <div style="overflow-x:auto; border-radius: var(--r-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+            <table class="data-table" id="fasilitasTable">
+                <thead>
+                <tr><th>Nama Fasilitas</th><th>Kapasitas</th><th>Kondisi</th><th>Lokasi</th><th>Status</th><th>Aksi</th></tr>
+                </thead>
+                <tbody id="fasilitasTableBody">
+                <tr data-id="1"><td>ICT Laboratory</td><td>40 Unit PC</td><td>Sangat Baik</td><td>Gedung A Lt. 2</td><td><span class="status-badge status-active">Tersedia</span></td><td><button class="action-btn" onclick="openModal('modal-fasilitas', 1)">✏️</button><button class="action-btn del" onclick="deleteRow('fasilitasTableBody', 1)">🗑️</button></td></tr>
+                <tr data-id="2"><td>Science Laboratory</td><td>36 Siswa</td><td>Sangat Baik</td><td>Gedung B Lt. 1</td><td><span class="status-badge status-active">Tersedia</span></td><td><button class="action-btn" onclick="openModal('modal-fasilitas', 2)">✏️</button><button class="action-btn del" onclick="deleteRow('fasilitasTableBody', 2)">🗑️</button></td></tr>
+                <tr data-id="3"><td>Masjid Sekolah</td><td>500 Jamaah</td><td>Sangat Baik</td><td>Area Tengah</td><td><span class="status-badge status-active">Tersedia</span></td><td><button class="action-btn" onclick="openModal('modal-fasilitas', 3)">✏️</button><button class="action-btn del" onclick="deleteRow('fasilitasTableBody', 3)">🗑️</button></td></tr>
+                <tr data-id="4"><td>Perpustakaan Digital</td><td>12.000+ Buku</td><td>Baik</td><td>Gedung C Lt. 1</td><td><span class="status-badge status-active">Tersedia</span></td><td><button class="action-btn" onclick="openModal('modal-fasilitas', 4)">✏️</button><button class="action-btn del" onclick="deleteRow('fasilitasTableBody', 4)">🗑️</button></td></tr>
+                <tr data-id="5"><td>Fatimah Amphitheatre</td><td>300 Kursi</td><td>Sangat Baik</td><td>Gedung Seni</td><td><span class="status-badge status-inactive">Digunakan</span></td><td><button class="action-btn" onclick="openModal('modal-fasilitas', 5)">✏️</button><button class="action-btn del" onclick="deleteRow('fasilitasTableBody', 5)">🗑️</button></td></tr>
+                <tr data-id="6"><td>Sports Facilities</td><td>Multi-lapangan</td><td>Baik</td><td>Area Outdoor & Indoor</td><td><span class="status-badge status-active">Tersedia</span></td><td><button class="action-btn" onclick="openModal('modal-fasilitas', 6)">✏️</button><button class="action-btn del" onclick="deleteRow('fasilitasTableBody', 6)">🗑️</button></td></tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="data-empty" id="emptyFasilitas">Tidak ada fasilitas yang ditemukan.</div>
+        </div>
+
+        <!-- TAB EKSKUL -->
+        <div class="data-panel" id="tab-ekskul">
+            <div class="data-topbar">
+            <div class="data-search">
+                <span>🔍</span>
+                <input type="text" placeholder="Cari ekskul..." oninput="searchTable('ekskriTable', this.value)"/>
+            </div>
+            <button class="btn-add" onclick="openModal('modal-ekskul', null)">+ Tambah Ekskul</button>
+            </div>
+            <div style="overflow-x:auto; border-radius: var(--r-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+            <table class="data-table" id="ekskriTable">
+                <thead>
+                <tr><th>Nama Ekskul</th><th>Pembina</th><th>Jadwal</th><th>Anggota</th><th>Prestasi</th><th>Aksi</th></tr>
+                </thead>
+                <tbody id="ekskriTableBody">
+                <tr data-id="1"><td>Robotik</td><td>Lilis Fitriani</td><td>Senin &amp; Kamis</td><td>42</td><td>Juara 1 Nasional</td><td><button class="action-btn" onclick="openModal('modal-ekskul', 1)">✏️</button><button class="action-btn del" onclick="deleteRow('ekskriTableBody', 1)">🗑️</button></td></tr>
+                <tr data-id="2"><td>Paduan Suara</td><td>Maya Kusuma</td><td>Rabu</td><td>35</td><td>Juara II Provinsi</td><td><button class="action-btn" onclick="openModal('modal-ekskul', 2)">✏️</button><button class="action-btn del" onclick="deleteRow('ekskriTableBody', 2)">🗑️</button></td></tr>
+                <tr data-id="3"><td>Pencak Silat</td><td>Dedi Wahyudi</td><td>Selasa &amp; Jumat</td><td>44</td><td>—</td><td><button class="action-btn" onclick="openModal('modal-ekskul', 3)">✏️</button><button class="action-btn del" onclick="deleteRow('ekskriTableBody', 3)">🗑️</button></td></tr>
+                <tr data-id="4"><td>Coding Club</td><td>Lilis Fitriani</td><td>Jumat</td><td>36</td><td>—</td><td><button class="action-btn" onclick="openModal('modal-ekskul', 4)">✏️</button><button class="action-btn del" onclick="deleteRow('ekskriTableBody', 4)">🗑️</button></td></tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="data-empty" id="emptyEkskul">Tidak ada ekskul yang ditemukan.</div>
+        </div>
+
+        <!-- TAB CALON SISWA (PPDB) -->
+        <div class="data-panel" id="tab-siswa">
+            <div class="data-topbar">
+            <div class="data-search">
+                <span>🔍</span>
+                <input type="text" placeholder="Cari pendaftar..." oninput="searchTable('siswaTable', this.value)"/>
+            </div>
+            <span style="font-size:12.5px; color:var(--muted); font-family:var(--display-ui);">Data terisi otomatis dari formulir PPDB</span>
+            </div>
+            <div style="overflow-x:auto; border-radius: var(--r-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+            <table class="data-table" id="siswaTable">
+                <thead>
+                <tr>
+                    <th>Nama Lengkap</th>
+                    <th>Asal SMP/MTs</th>
+                    <th>Jalur Pendaftaran</th>
+                    <th>NISN</th>
+                    <th>Bukti Berkas</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+                </thead>
+                <tbody id="siswaTableBody">
+                <tr data-id="1">
+                    <td>Nadia Putri Lestari</td>
+                    <td>SMPN 5 Bandung</td>
+                    <td>Prestasi Rapor</td>
+                    <td>0081234567</td>
+                    <td><a href="#" style="color:var(--primary); font-size:13px; text-decoration:underline; font-weight:500;">📄 Rapor_Nadia.pdf</a></td>
+                    <td><span class="status-badge status-active">Diverifikasi</span></td>
+                    <td><button class="action-btn del" onclick="deleteRow('siswaTableBody', 1)">🗑️</button></td>
+                </tr>
+                <tr data-id="2">
+                    <td>Reza Maulana</td>
+                    <td>SMPN 2 Cimahi</td>
+                    <td>Zonasi</td>
+                    <td>0098765432</td>
+                    <td><a href="#" style="color:var(--primary); font-size:13px; text-decoration:underline; font-weight:500;">📄 KK_RezaM.jpg</a></td>
+                    <td><span class="status-badge status-inactive">Menunggu</span></td>
+                    <td><button class="action-btn del" onclick="deleteRow('siswaTableBody', 2)">🗑️</button></td>
+                </tr>
+                <tr data-id="3">
+                    <td>Alya Maharani</td>
+                    <td>SMPN 1 Bandung</td>
+                    <td>Prestasi Lomba</td>
+                    <td>0085566778</td>
+                    <td><a href="#" style="color:var(--primary); font-size:13px; text-decoration:underline; font-weight:500;">📄 Sertifikat_Alya.pdf</a></td>
+                    <td><span class="status-badge status-active">Diverifikasi</span></td>
+                    <td><button class="action-btn del" onclick="deleteRow('siswaTableBody', 3)">🗑️</button></td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="data-empty" id="emptySiswa">Belum ada pendaftar yang ditemukan.</div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="section-inner">
+        <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr; gap: 2rem;">
+        <div>
+            <div class="footer-brand-name">SMA Nusantara Unggul</div>
+            <p class="footer-brand-sub">Jl. Pahlawan No. 88, Bandung, Jawa Barat 40135<br>Telp: (022) 4200-8800 · info@smanu.sch.id</p>
+            <p class="footer-brand-sub" style="margin-top:.75rem;">Terakreditasi A oleh BAN-S/M<br>NPSN: 200400088</p>
+        </div>
+        <div class="footer-col">
+            <h4>Menu Utama</h4>
+            <ul>
+            <li><a href="index.html">Beranda & Tentang Sekolah</a></li>
+            <li><a href="guru.html">Profil Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas & Ekstrakurikuler</a></li>
+            <li><a href="kurikulum.html">Sistem Kurikulum</a></li>
+            <li><a href="study-exchange.html">Study Exchange</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Sistem & Layanan</h4>
+            <ul>
+            <li><a href="ppdb.html">Pendaftaran PPDB</a></li>
+            <li><a href="data-akademik.html">Data Akademik (Admin)</a></li>
+            </ul>
+        </div>
+        </div>
+        <hr class="footer-divider"/>
+        <div class="footer-bottom">
+        <span>© 2026 SMA Nusantara Unggul. Seluruh hak dilindungi.</span>
+        <span>Dibuat oleh <span class="footer-bottom-accent">Kelompok 6 - Pengembangan Web Bisnis Digital 2024</span></span>
+        </div>
+    </div>
+</footer>
+    <div class="modal-overlay" id="modal-guru">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('modal-guru')">✕</button>
+        <h3 id="modal-guru-title">Tambah Data Guru</h3>
+        <div class="form-group"><label>Nama Lengkap</label><input type="text" id="mg-nama" placeholder="Dr. Nama Guru, M.Pd."/></div>
+        <div class="form-group"><label>Mata Pelajaran</label><input type="text" id="mg-mapel" placeholder="Matematika, Fisika, ..."/></div>
+        <div class="form-group"><label>Pendidikan Terakhir</label>
+        <select id="mg-pendidikan"><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select>
+        </div>
+        <div class="form-group"><label>Lama Pengalaman</label><input type="text" id="mg-exp" placeholder="10 Tahun"/></div>
+        <div class="form-group">
+    <label>Foto Guru</label>
+    <input type="file" id="mg-foto" accept="image/*"/>
+    <img id="mg-foto-preview" style="width:60px;height:60px;border-radius:50%;object-fit:cover;display:none;margin-top:8px">
+</div>
+        <div class="form-group"><label>Status</label>
+        <select id="mg-status"><option value="Aktif">Aktif</option><option value="Cuti">Cuti</option><option value="Non-Aktif">Non-Aktif</option></select>
+        </div>
+        <div class="modal-actions">
+        <button class="btn-modal-cancel" onclick="closeModal('modal-guru')">Batal</button>
+        <button class="btn-modal-save" onclick="saveGuruRow()">Simpan</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL FASILITAS -->
+<div class="modal-overlay" id="modal-fasilitas">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('modal-fasilitas')">✕</button>
+        <h3 id="modal-fasilitas-title">Tambah Fasilitas</h3>
+        <div class="form-group"><label>Nama Fasilitas</label><input type="text" id="mf-nama" placeholder="Laboratorium Komputer"/></div>
+        <div class="form-group"><label>Kapasitas</label><input type="text" id="mf-kap" placeholder="40 Unit PC / 36 Siswa"/></div>
+        <div class="form-group"><label>Kondisi</label>
+        <select id="mf-kondisi"><option value="Sangat Baik">Sangat Baik</option><option value="Baik">Baik</option><option value="Cukup">Cukup</option></select>
+        </div>
+        <div class="form-group"><label>Lokasi</label><input type="text" id="mf-lokasi" placeholder="Gedung A Lt. 2"/></div>
+        <div class="form-group"><label>Status</label>
+        <select id="mf-status"><option value="Tersedia">Tersedia</option><option value="Digunakan">Digunakan</option><option value="Perbaikan">Perbaikan</option></select>
+        </div>
+        <div class="modal-actions">
+        <button class="btn-modal-cancel" onclick="closeModal('modal-fasilitas')">Batal</button>
+        <button class="btn-modal-save" onclick="saveFasRow()">Simpan</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL EKSKUL -->
+<div class="modal-overlay" id="modal-ekskul">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('modal-ekskul')">✕</button>
+        <h3 id="modal-ekskul-title">Tambah Ekskul</h3>
+        <div class="form-group"><label>Nama Ekskul</label><input type="text" id="me-nama" placeholder="Robotik, Paduan Suara, ..."/></div>
+        <div class="form-group"><label>Pembina</label><input type="text" id="me-pembina" placeholder="Nama pembina"/></div>
+        <div class="form-group"><label>Jadwal</label><input type="text" id="me-jadwal" placeholder="Senin & Kamis"/></div>
+        <div class="form-group"><label>Jumlah Anggota</label><input type="text" id="me-anggota" placeholder="42"/></div>
+        <div class="form-group"><label>Prestasi</label><input type="text" id="me-prestasi" placeholder="Juara 1 Nasional (opsional)"/></div>
+        <div class="modal-actions">
+        <button class="btn-modal-cancel" onclick="closeModal('modal-ekskul')">Batal</button>
+        <button class="btn-modal-save" onclick="saveEkskulRow()">Simpan</button>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon">✅</span>
+    <span id="toastMsg">Data berhasil disimpan.</span>
+</div>
+
+    <!-- COLOR THEME SWITCHER -->
+    <div class="color-switcher" id="themeSwitcher">
+        <span class="color-switcher-label">Tema</span>
+        <button class="theme-btn active" data-theme="default" title="Navy Klasik"></button>
+        <button class="theme-btn" data-theme="zamrud" title="Hijau Zamrud"></button>
+        <button class="theme-btn" data-theme="ungu" title="Ungu Royal"></button>
+        <button class="theme-btn" data-theme="garuda" title="Merah Garuda"></button>
+        <button class="theme-btn" data-theme="emas" title="Emas Matahari"></button>
+        <button class="theme-btn" data-theme="langit" title="Langit Biru"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

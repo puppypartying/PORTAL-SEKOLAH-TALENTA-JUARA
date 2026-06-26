@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SMA Nusantara Unggul — Portal Resmi</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400..600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+<div class="nav-logo-mark" style="background: transparent; padding: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border: none;">
+    <svg width="100%" height="100%" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Gradasi Emas Mewah -->
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F9F295" />
+                <stop offset="35%" stop-color="#E0AA3E" />
+                <stop offset="70%" stop-color="#B8860B" />
+                <stop offset="100%" stop-color="#8A5A19" />
+            </linearGradient>
+            <!-- Gradasi Biru Dalam -->
+            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1E3A8A" />
+                <stop offset="50%" stop-color="#0F172A" />
+                <stop offset="100%" stop-color="#020617" />
+            </linearGradient>
+        </defs>
+
+        <!-- Perisai Utama (Royal Blue & Gold) -->
+        <path d="M 125 15 C 195 15 220 45 220 110 C 220 185 125 235 125 235 C 125 235 30 185 30 110 C 30 45 55 15 125 15 Z" fill="url(#blueGradient)" stroke="url(#goldGradient)" stroke-width="8" stroke-linejoin="round"/>
+
+        <!-- Garis List Perisai Dalam -->
+        <path d="M 125 32 C 180 32 198 57 198 110 C 198 170 125 212 125 212 C 125 212 52 170 52 110 C 52 57 70 32 125 32 Z" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.8"/>
+
+        <!-- Bintang Puncak (Keunggulan & Spiritual) -->
+        <polygon points="125,42 131,58 149,58 135,69 140,86 125,75 110,86 115,69 101,58 119,58" fill="url(#goldGradient)" />
+
+        <!-- Monogram NU Eksklusif -->
+        <text x="125" y="152" font-family="'DM Serif Display', 'Times New Roman', serif" font-size="70" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" letter-spacing="3">NU</text>
+
+        <!-- Sayap/Buku Terbuka (Pondasi Ilmu) -->
+        <path d="M 125 175 Q 125 155 180 140 Q 180 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <path d="M 125 175 Q 125 155 70 140 Q 70 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        
+        <!-- Berlian Kecil di Bawah -->
+        <polygon points="125,200 130,208 125,216 120,208" fill="url(#goldGradient)" />
+    </svg>
+</div>            <div>
+                <div class="nav-logo-text">SMA Nusantara Unggul</div>
+                <div class="nav-logo-sub">Bandung, Jawa Barat</div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="guru.html">Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas</a></li>
+            <li><a href="lingkungan-sekolah.html">Lingkungan</a></li>
+            <li><a href="data-akademik.html">Akademik</a></li>
+            <li><a href="kurikulum.html">Kurikulum</a></li>
+            <li><a href="study-exchange.html">Exchange</a></li>
+            <li><a href="ppdb.html">PPDB</a></li>
+            </ul>
+        <button class="hamburger" id="hambBtn" aria-label="Buka menu" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Beranda</a>
+    <a href="index.html#tentang" onclick="toggleMobileNav()">Tentang</a>
+    <a href="guru.html" onclick="toggleMobileNav()">Guru</a>
+    <a href="fasilitas-ekskul.html" onclick="toggleMobileNav()">Fasilitas & Ekskul</a>
+    <a href="data-akademik.html" onclick="toggleMobileNav()">Data Akademik</a>
+    <a href="kurikulum.html" onclick="toggleMobileNav()">Kurikulum</a>
+    <a href="study-exchange.html" onclick="toggleMobileNav()">Study Exchange</a>
+    <a href="ppdb.html" onclick="toggleMobileNav()" style="color:var(--navy); font-weight:600;">
+        Daftar PPDB
+    </a>
+</div>
+
+
+<!-- GURU -->
+<section class="teachers-section" id="guru">
+<div class="section-inner">
+    <div class="reveal">
+    <div class="section-label">Tenaga Pendidik</div>
+    <h2 class="section-heading">Guru &amp; Pengajar</h2>
+    <p class="section-sub">Didukung oleh 16 guru berpengalaman dan berkompeten, siap membimbing setiap siswa menuju potensi terbaik mereka.</p>
+    <div class="struktur-link-wrap">
+        <a href="struktur-sekolah.html" class="btn-struktur">🏫 Lihat Struktur Organisasi Sekolah</a>
+    </div>
+    </div>
+    <div class="teacher-controls">
+    <button class="filter-btn active" onclick="filterTeachers('semua', this)">Semua</button>
+    <button class="filter-btn" onclick="filterTeachers('ipa', this)">IPA</button>
+    <button class="filter-btn" onclick="filterTeachers('ips', this)">IPS</button>
+    <button class="filter-btn" onclick="filterTeachers('bahasa', this)">Bahasa</button>
+    <button class="filter-btn" onclick="filterTeachers('tek', this)">Teknologi</button>
+    <button class="filter-btn" onclick="filterTeachers('pend', this)">Pendidikan</button>
+    </div>
+    <div class="teacher-grid" id="teacherGrid">
+
+    <!-- 1. Drs. H. Ahmad Subhan, M.Pd. — Kepala Sekolah -->
+    <!-- images/Drs. H. Ahmad Subhan, M.Pd. - Kepala Sekolah.jpg -->
+    <div class="teacher-card reveal" data-dept="ipa">
+        <div class="teacher-avatar avatar-bg-1" id="avatar-1">
+            <img src="images/Drs. H. Ahmad Subhan, M.Pd..jpg"
+                 alt="Drs. H. Nendang Sukmadilaga, M.Pd."
+                 onerror="this.style.display='none'; document.getElementById('initials-1').style.display='flex'">
+            <span id="initials-1" class="avatar-initials" style="display:none">AS</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Drs. H. Nendang Sukmadilaga, M.Pd.</div>
+        <div class="teacher-subject">Kepala Sekolah</div>
+        <div class="teacher-mapel">Biologi</div>
+        </div>
+    </div>
+
+    <!-- 2. Dra. Herlina Mansyur, M.Pd. — Waka Kurikulum -->
+    <!-- images/Dra. Herlina Mansyur, M.Pd. - Waka Kurikulum.jpg -->
+    <div class="teacher-card reveal" data-dept="bahasa">
+        <div class="teacher-avatar avatar-bg-2" id="avatar-2">
+            <img src="images/Dra. Herlina Mansyur, M.Pd..jpg"
+                 alt="Dra. Euis Indah Siti Masyitoh, M.Pd."
+                 onerror="this.style.display='none'; document.getElementById('initials-2').style.display='flex'">
+            <span id="initials-2" class="avatar-initials" style="display:none">HM</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Dra. Euis Indah Siti Masyitoh, M.Pd.</div>
+        <div class="teacher-subject">Waka Kurikulum</div>
+        <div class="teacher-mapel">Bahasa Indonesia</div>
+        </div>
+    </div>
+
+    <!-- 3. Muhammad Ridwan, S.Pd., M.M. — Waka Kesiswaan -->
+    <!-- images/Muhammad Ridwan, S.Pd., M.M. - Waka Kesiswaan.jpg -->
+    <div class="teacher-card reveal" data-dept="ips">
+        <div class="teacher-avatar avatar-bg-3" id="avatar-3">
+            <img src="images/Muhammad Ridwan, S.Pd., M.M..jpg"
+                 alt="Muhammad Ridwan, S.Pd., M.M."
+                 onerror="this.style.display='none'; document.getElementById('initials-3').style.display='flex'">
+            <span id="initials-3" class="avatar-initials" style="display:none">MR</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Ridwan, S.Pd., M.M.</div>
+        <div class="teacher-subject">Waka Kesiswaan</div>
+        <div class="teacher-mapel">Ekonomi</div>
+        </div>
+    </div>
+
+    <!-- 4. Fitri Handayani, S.Pd. — Waka Sarana Prasarana -->
+    <!-- images/Fitri Handayani, S.Pd. - Waka Sarana Prasarana.jpg -->
+    <div class="teacher-card reveal" data-dept="ipa">
+        <div class="teacher-avatar avatar-bg-4" id="avatar-4">
+            <img src="images/Fitri Handayani, S.Pd..jpg"
+                 alt="Fitri Handayani, S.Pd."
+                 onerror="this.style.display='none'; document.getElementById('initials-4').style.display='flex'">
+            <span id="initials-4" class="avatar-initials" style="display:none">FH</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Fitri Handayani, S.Pd.</div>
+        <div class="teacher-subject">Waka Sarana Prasarana</div>
+        <div class="teacher-mapel">Matematika</div>
+        </div>
+    </div>
+
+    <!-- 5. Dani Ramadhan, S.Sos. — Waka Humas -->
+    <!-- images/Dani Ramadhan, S.Sos. - Waka Humas.jpg -->
+    <div class="teacher-card reveal" data-dept="ips">
+        <div class="teacher-avatar avatar-bg-5" id="avatar-5">
+            <img src="images/Dani Ramadhan, S.Sos..jpg"
+                 alt="Dani Ramadhan, S.Sos."
+                 onerror="this.style.display='none'; document.getElementById('initials-5').style.display='flex'">
+            <span id="initials-5" class="avatar-initials" style="display:none">DR</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Dani Ramadhan, S.Sos.</div>
+        <div class="teacher-subject">Waka Humas</div>
+        <div class="teacher-mapel">Sosiologi</div>
+        </div>
+    </div>
+
+    <!-- 6. Dr. Andi Wijaya, M.Si. — Kepala Laboratorium IPA -->
+    <!-- images/Dr. Andi Wijaya, M.Si. - Kepala Laboratorium IPA.jpg -->
+    <div class="teacher-card reveal" data-dept="ipa">
+        <div class="teacher-avatar avatar-bg-6" id="avatar-6">
+            <img src="images/Dr. Andi Wijaya, M.Si..jpg"
+                 alt="Dr. Andi Wijaya, M.Si."
+                 onerror="this.style.display='none'; document.getElementById('initials-6').style.display='flex'">
+            <span id="initials-6" class="avatar-initials" style="display:none">AW</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Dr. Andi Wijaya, M.Si.</div>
+        <div class="teacher-subject">Kepala Laboratorium IPA</div>
+        <div class="teacher-mapel">Biologi</div>
+        </div>
+    </div>
+
+    <!-- 7. Citra Utami, S.Kom. — Kepala Laboratorium Komputer -->
+    <!-- images/Citra Utami, S.Kom. - Kepala Laboratorium Komputer.jpg -->
+    <div class="teacher-card reveal" data-dept="tek">
+        <div class="teacher-avatar avatar-bg-7" id="avatar-7">
+            <img src="images/Citra Utami, S.Kom..jpg"
+                 alt="Citra Utami, S.Kom."
+                 onerror="this.style.display='none'; document.getElementById('initials-7').style.display='flex'">
+            <span id="initials-7" class="avatar-initials" style="display:none">CU</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Citra Utami, S.Kom.</div>
+        <div class="teacher-subject">Kepala Laboratorium Komputer</div>
+        <div class="teacher-mapel">Informatika</div>
+        </div>
+    </div>
+
+    <!-- 8. Nining Suryani, S.S., M.Hum. — Kepala Perpustakaan -->
+    <!-- images/Nining Suryani, S.S., M.Hum. - Kepala Perpustakaan.jpg -->
+    <div class="teacher-card reveal" data-dept="bahasa">
+        <div class="teacher-avatar avatar-bg-8" id="avatar-8">
+            <img src="images/Nining Suryani, S.S., M.Hum..jpg"
+                 alt="Nining Suryani, S.S., M.Hum."
+                 onerror="this.style.display='none'; document.getElementById('initials-8').style.display='flex'">
+            <span id="initials-8" class="avatar-initials" style="display:none">NS</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Kokom Kumalasari Binti Aga, S.S., M.Hum.</div>
+        <div class="teacher-subject">Kepala Perpustakaan</div>
+        <div class="teacher-mapel">Bahasa Inggris</div>
+        </div>
+    </div>
+
+    <!-- 9. Dewi Lestari, S.Pd. — Kepala UKS -->
+    <!-- images/Dewi Lestari, S.Pd. - Kepala UKS (Usaha Kesehatan Sekolah).jpg -->
+    <div class="teacher-card reveal" data-dept="ipa">
+        <div class="teacher-avatar avatar-bg-1" id="avatar-9">
+            <img src="images/Dewi Lestari, S.Pd..jpg"
+                 alt="Dewi Lestari, S.Pd."
+                 onerror="this.style.display='none'; document.getElementById('initials-9').style.display='flex'">
+            <span id="initials-9" class="avatar-initials" style="display:none">DL</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Dewi Lestari, S.Pd.</div>
+        <div class="teacher-subject">Kepala UKS</div>
+        <div class="teacher-mapel">Kimia</div>
+        </div>
+    </div>
+
+    <!-- 10. Ahmad Fauzi, S.Pd. — Pembina OSIS -->
+    <!-- images/Ahmad Fauzi, S.Pd. - Pembina OSIS.jpg -->
+    <div class="teacher-card reveal" data-dept="pend">
+        <div class="teacher-avatar avatar-bg-2" id="avatar-10">
+            <img src="images/Ahmad Fauzi, S.Pd..jpg"
+                 alt="Ahmad Fauzi, S.Pd."
+                 onerror="this.style.display='none'; document.getElementById('initials-10').style.display='flex'">
+            <span id="initials-10" class="avatar-initials" style="display:none">AF</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Ahmad Fauzi, S.Pd.</div>
+        <div class="teacher-subject">Pembina OSIS</div>
+        <div class="teacher-mapel">PJOK</div>
+        </div>
+    </div>
+
+    <!-- 11. Rizky Pratama, S.Si. — Wali Kelas XII-MIPA 1 -->
+    <!-- images/Rizky Pratama, S.Si. - Wali Kelas XII-MIPA 1.jpg -->
+    <div class="teacher-card reveal" data-dept="ipa">
+        <div class="teacher-avatar avatar-bg-3" id="avatar-11">
+            <img src="images/Rizky Pratama, S.Si..jpg"
+                 alt="Rizky Pratama, S.Si."
+                 onerror="this.style.display='none'; document.getElementById('initials-11').style.display='flex'">
+            <span id="initials-11" class="avatar-initials" style="display:none">RP</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Rizky Pratama, S.Si.</div>
+        <div class="teacher-subject">Wali Kelas XII-MIPA 1</div>
+        <div class="teacher-mapel">Fisika</div>
+        </div>
+    </div>
+
+    <!-- 12. Ratih Kumala, S.Pd. — Wali Kelas XI-IPS 1 -->
+    <!-- images/Ratih Kumala, S.Pd. - Wali Kelas XI-IPS 1.jpg -->
+    <div class="teacher-card reveal" data-dept="ips">
+        <div class="teacher-avatar avatar-bg-4" id="avatar-12">
+            <img src="images/Ratih Kumala, S.Pd..jpg"
+                 alt="Ratih Kumala, S.Pd."
+                 onerror="this.style.display='none'; document.getElementById('initials-12').style.display='flex'">
+            <span id="initials-12" class="avatar-initials" style="display:none">RK</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Ratih Kumala, S.Pd.</div>
+        <div class="teacher-subject">Wali Kelas XI-IPS 1</div>
+        <div class="teacher-mapel">Geografi</div>
+        </div>
+    </div>
+
+    <!-- 13. Bagus Setiawan, S.Pd. — Wali Kelas X-1 -->
+    <!-- images/Bagus Setiawan, S.Pd. - Wali Kelas X-1.jpg -->
+    <div class="teacher-card reveal" data-dept="ips">
+        <div class="teacher-avatar avatar-bg-5" id="avatar-13">
+            <img src="images/Bagus Setiawan, S.Pd..jpg"
+                 alt="Bagus Setiawan, S.Pd."
+                 onerror="this.style.display='none'; document.getElementById('initials-13').style.display='flex'">
+            <span id="initials-13" class="avatar-initials" style="display:none">BS</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Bagus Setiawan, S.Pd.</div>
+        <div class="teacher-subject">Wali Kelas X-1</div>
+        <div class="teacher-mapel">Sejarah</div>
+        </div>
+    </div>
+
+    <!-- 14. Sri Wahyuni, S.Pd. — Wali Kelas XII-IPS 2 -->
+    <!-- images/Sri Wahyuni, S.Pd. - Wali Kelas XII-IPS 2.jpg -->
+    <div class="teacher-card reveal" data-dept="ips">
+        <div class="teacher-avatar avatar-bg-6" id="avatar-14">
+            <img src="images/Sri Wahyuni, S.Pd..jpg"
+                 alt="Sri Wahyuni, S.Pd."
+                 onerror="this.style.display='none'; document.getElementById('initials-14').style.display='flex'">
+            <span id="initials-14" class="avatar-initials" style="display:none">SW</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Sri Wahyuni, S.Pd.</div>
+        <div class="teacher-subject">Wali Kelas XII-IPS 2</div>
+        <div class="teacher-mapel">Akuntansi</div>
+        </div>
+    </div>
+
+    <!-- 15. Lukman Hakim, S.Ag., M.Pd.I. — Pembina Rohis -->
+    <!-- images/Lukman Hakim, S.Ag., M.Pd.I. - Pembina Kerohanian Islam (Rohis).jpg -->
+    <div class="teacher-card reveal" data-dept="pend">
+        <div class="teacher-avatar avatar-bg-7" id="avatar-15">
+            <img src="images/Lukman Hakim, S.Ag., M.Pd.I..jpg"
+                 alt="Lukman Hakim, S.Ag., M.Pd.I."
+                 onerror="this.style.display='none'; document.getElementById('initials-15').style.display='flex'">
+            <span id="initials-15" class="avatar-initials" style="display:none">LH</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Lukman Hakim, S.Ag., M.Pd.I.</div>
+        <div class="teacher-subject">Pembina Kerohanian Islam (Rohis)</div>
+        <div class="teacher-mapel">Pendidikan Agama Islam</div>
+        </div>
+    </div>
+
+    <!-- 16. Taufik Hidayat, S.H. — Koordinator Literasi -->
+    <!-- images/Taufik Hidayat, S.H. - Koordinator Gerakan Literasi Sekolah.jpg -->
+    <div class="teacher-card reveal" data-dept="pend">
+        <div class="teacher-avatar avatar-bg-8" id="avatar-16">
+            <img src="images/Taufik Hidayat, S.H..jpg"
+                 alt="Taufik Hidayat, S.H."
+                 onerror="this.style.display='none'; document.getElementById('initials-16').style.display='flex'">
+            <span id="initials-16" class="avatar-initials" style="display:none">TH</span>
+        </div>
+        <div class="teacher-info">
+        <div class="teacher-name">Taufik Hidayat, S.H.</div>
+        <div class="teacher-subject">Koordinator Gerakan Literasi Sekolah</div>
+        <div class="teacher-mapel">PPKn</div>
+        </div>
+    </div>
+
+    </div><!-- /teacher-grid -->
+</div>
+</section>
+
+<div class="modal-overlay" id="modal-guru">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('modal-guru')">✕</button>
+        <h3 id="modal-guru-title">Tambah Data Guru</h3>
+        <div class="form-group"><label>Nama Lengkap</label><input type="text" id="mg-nama" placeholder="Dr. Nama Guru, M.Pd."/></div>
+        <div class="form-group"><label>Mata Pelajaran</label><input type="text" id="mg-mapel" placeholder="Matematika, Fisika, ..."/></div>
+        <div class="form-group"><label>Pendidikan Terakhir</label>
+        <select id="mg-pendidikan"><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select>
+        </div>
+        <div class="form-group"><label>Lama Pengalaman</label><input type="text" id="mg-exp" placeholder="10 Tahun"/></div>
+        <div class="form-group"><label>Status</label>
+        <select id="mg-status"><option value="Aktif">Aktif</option><option value="Cuti">Cuti</option><option value="Non-Aktif">Non-Aktif</option></select>
+        </div>
+        <div class="modal-actions">
+        <button class="btn-modal-cancel" onclick="closeModal('modal-guru')">Batal</button>
+        <button class="btn-modal-save" onclick="saveGuruRow()">Simpan</button>
+        </div>
+    </div>
+</div>
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon">✅</span>
+    <span id="toastMsg">Data berhasil disimpan.</span>
+</div>
+<!-- FOOTER -->
+<footer>
+    <div class="section-inner">
+        <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr; gap: 2rem;">
+        <div>
+            <div class="footer-brand-name">SMA Nusantara Unggul</div>
+            <p class="footer-brand-sub">Jl. Pahlawan No. 88, Bandung, Jawa Barat 40135<br>Telp: (022) 4200-8800 · info@smanu.sch.id</p>
+            <p class="footer-brand-sub" style="margin-top:.75rem;">Terakreditasi A oleh BAN-S/M<br>NPSN: 200400088</p>
+        </div>
+        <div class="footer-col">
+            <h4>Menu Utama</h4>
+            <ul>
+            <li><a href="index.html">Beranda & Tentang Sekolah</a></li>
+            <li><a href="guru.html">Profil Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas & Ekstrakurikuler</a></li>
+            <li><a href="kurikulum.html">Sistem Kurikulum</a></li>
+            <li><a href="study-exchange.html">Study Exchange</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Sistem & Layanan</h4>
+            <ul>
+            <li><a href="ppdb.html">Pendaftaran PPDB</a></li>
+            <li><a href="data-akademik.html">Data Akademik (Admin)</a></li>
+            </ul>
+        </div>
+        </div>
+        <hr class="footer-divider"/>
+        <div class="footer-bottom">
+        <span>© 2026 SMA Nusantara Unggul. Seluruh hak dilindungi.</span>
+        <span>Dibuat oleh <span class="footer-bottom-accent">Kelompok 6 - Pengembangan Web Bisnis Digital 2024</span></span>
+        </div>
+    </div>
+</footer>
+
+<style>
+/* --- Avatar with photo support --- */
+.teacher-avatar {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.teacher-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 50%;
+}
+.avatar-initials {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+/* --- Struktur link button --- */
+.struktur-link-wrap {
+    margin-top: 1.25rem;
+}
+.btn-struktur {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .6rem 1.25rem;
+    background: var(--navy, #1a2e55);
+    color: #fff;
+    border-radius: 8px;
+    font-size: .9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity .2s;
+}
+.btn-struktur:hover { opacity: .85; }
+</style>
+
+    <!-- COLOR THEME SWITCHER -->
+    <div class="color-switcher" id="themeSwitcher">
+        <span class="color-switcher-label">Tema</span>
+        <button class="theme-btn active" data-theme="default" title="Navy Klasik"></button>
+        <button class="theme-btn" data-theme="zamrud" title="Hijau Zamrud"></button>
+        <button class="theme-btn" data-theme="ungu" title="Ungu Royal"></button>
+        <button class="theme-btn" data-theme="garuda" title="Merah Garuda"></button>
+        <button class="theme-btn" data-theme="emas" title="Emas Matahari"></button>
+        <button class="theme-btn" data-theme="langit" title="Langit Biru"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

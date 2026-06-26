@@ -1,0 +1,60 @@
+<svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="55%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="goldP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9F295"/>
+      <stop offset="40%" stop-color="#E0AA3E"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#bgP)"/>
+  <!-- subtle grid -->
+  <g stroke="#ffffff" stroke-opacity="0.05">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+    <line x1="800" y1="0" x2="800" y2="600"/>
+    <line x1="1000" y1="0" x2="1000" y2="600"/>
+  </g>
+  <!-- decorative circles -->
+  <circle cx="1050" cy="80" r="180" fill="#ffffff" opacity="0.04"/>
+  <circle cx="100" cy="520" r="220" fill="#E0AA3E" opacity="0.06"/>
+
+  <!-- podium -->
+  <g>
+    <rect x="430" y="380" width="120" height="120" fill="#ffffff" opacity="0.10" rx="6"/>
+    <rect x="560" y="320" width="140" height="180" fill="#ffffff" opacity="0.16" rx="6"/>
+    <rect x="710" y="400" width="120" height="100" fill="#ffffff" opacity="0.10" rx="6"/>
+    <text x="490" y="455" font-family="Inter, sans-serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="middle" opacity="0.6">2</text>
+    <text x="630" y="420" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="#ffffff" text-anchor="middle" opacity="0.85">1</text>
+    <text x="770" y="465" font-family="Inter, sans-serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="middle" opacity="0.6">3</text>
+  </g>
+
+  <!-- medal -->
+  <g transform="translate(620,210)">
+    <path d="M -22 0 L 0 60 L 22 0 Z" fill="url(#goldP)" opacity="0.85"/>
+    <path d="M -22 0 L -50 60 L -28 60 Z" fill="#1E3A8A" opacity="0.5"/>
+    <path d="M 22 0 L 50 60 L 28 60 Z" fill="#1E3A8A" opacity="0.5"/>
+    <circle cx="0" cy="20" r="78" fill="url(#goldP)" stroke="#ffffff" stroke-width="4"/>
+    <circle cx="0" cy="20" r="58" fill="none" stroke="#1E3A8A" stroke-width="3" opacity="0.5"/>
+    <polygon points="0,-12 9,7 28,9 14,23 18,42 0,32 -18,42 -14,23 -28,9 -9,7" transform="translate(0,20)" fill="#1E3A8A" opacity="0.7"/>
+  </g>
+
+  <!-- stars -->
+  <g fill="#E0AA3E" opacity="0.5">
+    <polygon points="170,150 176,166 193,166 179,176 184,193 170,183 156,193 161,176 147,166 164,166"/>
+    <polygon points="1020,260 1025,273 1039,273 1028,281 1032,295 1020,287 1008,295 1012,281 1001,273 1015,273"/>
+    <polygon points="980,500 985,512 998,512 988,520 992,533 980,525 968,533 972,520 962,512 975,512"/>
+  </g>
+
+  <text x="600" y="100" font-family="'DM Serif Display', serif" font-size="44" fill="#ffffff" text-anchor="middle" opacity="0.92">Prestasi Internasional Siswa</text>
+</svg>

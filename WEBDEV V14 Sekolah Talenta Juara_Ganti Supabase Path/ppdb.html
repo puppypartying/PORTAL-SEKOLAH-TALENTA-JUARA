@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SMA Nusantara Unggul — Portal Resmi</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400..600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+<div class="nav-logo-mark" style="background: transparent; padding: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border: none;">
+    <svg width="100%" height="100%" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Gradasi Emas Mewah -->
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F9F295" />
+                <stop offset="35%" stop-color="#E0AA3E" />
+                <stop offset="70%" stop-color="#B8860B" />
+                <stop offset="100%" stop-color="#8A5A19" />
+            </linearGradient>
+            <!-- Gradasi Biru Dalam -->
+            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1E3A8A" />
+                <stop offset="50%" stop-color="#0F172A" />
+                <stop offset="100%" stop-color="#020617" />
+            </linearGradient>
+        </defs>
+
+        <!-- Perisai Utama (Royal Blue & Gold) -->
+        <path d="M 125 15 C 195 15 220 45 220 110 C 220 185 125 235 125 235 C 125 235 30 185 30 110 C 30 45 55 15 125 15 Z" fill="url(#blueGradient)" stroke="url(#goldGradient)" stroke-width="8" stroke-linejoin="round"/>
+
+        <!-- Garis List Perisai Dalam -->
+        <path d="M 125 32 C 180 32 198 57 198 110 C 198 170 125 212 125 212 C 125 212 52 170 52 110 C 52 57 70 32 125 32 Z" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.8"/>
+
+        <!-- Bintang Puncak (Keunggulan & Spiritual) -->
+        <polygon points="125,42 131,58 149,58 135,69 140,86 125,75 110,86 115,69 101,58 119,58" fill="url(#goldGradient)" />
+
+        <!-- Monogram NU Eksklusif -->
+        <text x="125" y="152" font-family="'DM Serif Display', 'Times New Roman', serif" font-size="70" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" letter-spacing="3">NU</text>
+
+        <!-- Sayap/Buku Terbuka (Pondasi Ilmu) -->
+        <path d="M 125 175 Q 125 155 180 140 Q 180 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <path d="M 125 175 Q 125 155 70 140 Q 70 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        
+        <!-- Berlian Kecil di Bawah -->
+        <polygon points="125,200 130,208 125,216 120,208" fill="url(#goldGradient)" />
+    </svg>
+</div>        <div>
+            <div class="nav-logo-text">SMA Nusantara Unggul</div>
+            <div class="nav-logo-sub">Bandung, Jawa Barat</div>
+        </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="guru.html">Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas</a></li>
+            <li><a href="lingkungan-sekolah.html">Lingkungan</a></li>
+            <li><a href="data-akademik.html">Akademik</a></li>
+            <li><a href="kurikulum.html">Kurikulum</a></li>
+            <li><a href="study-exchange.html">Exchange</a></li>
+            <li><a href="ppdb.html">PPDB</a></li>
+            </ul>
+        <button class="hamburger" id="hambBtn" aria-label="Buka menu" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Beranda</a>
+    <a href="index.html#tentang" onclick="toggleMobileNav()">Tentang</a>
+    <a href="guru.html" onclick="toggleMobileNav()">Guru</a>
+    <a href="fasilitas-ekskul.html" onclick="toggleMobileNav()">Fasilitas & Ekskul</a>
+    <a href="data-akademik.html" onclick="toggleMobileNav()">Data Akademik</a>
+    <a href="kurikulum.html" onclick="toggleMobileNav()">Kurikulum</a>
+    <a href="study-exchange.html" onclick="toggleMobileNav()">Study Exchange</a>
+    <a href="ppdb.html" onclick="toggleMobileNav()" style="color:var(--navy); font-weight:600;">
+        Daftar PPDB
+    </a>
+</div>
+
+<!-- PPDB FORM -->
+<section class="ppdb-section" id="ppdb">
+    <div class="section-inner">
+        <div class="ppdb-grid">
+        <div class="ppdb-left reveal">
+            <div class="section-label">Pendaftaran Siswa Baru</div>
+            <h2 class="section-heading">Bergabunglah Bersama Kami</h2>
+            <p>Daftarkan diri Anda sebagai bagian dari komunitas SMA Nusantara Unggul. Proses pendaftaran online mudah, cepat, dan transparan.</p>
+            <div class="ppdb-poin">
+            <div class="ppdb-poin-item">Tanpa biaya pendaftaran awal</div>
+            <div class="ppdb-poin-item">Pengumuman seleksi dalam 7 hari kerja</div>
+            <div class="ppdb-poin-item">Tersedia jalur prestasi dan reguler</div>
+            <div class="ppdb-poin-item">Beasiswa bagi calon siswa berprestasi</div>
+            </div>
+        </div>
+        <div class="ppdb-form reveal" id="ppdbFormContainer">
+            <h3>Formulir Pendaftaran PPDB</h3>
+            
+            <!-- FORM YANG DIUBAH MULAI DARI SINI -->
+            <form id="ppdbForm" onsubmit="submitPPDB(event)" novalidate>
+            <div class="form-row">
+                <div class="form-group">
+                <label>NIK *</label>
+                <input type="text" id="ppdb-nik" placeholder="16 Digit NIK KK" maxlength="16" />
+                <span class="form-error" id="err-nik">NIK wajib diisi 16 digit.</span>
+                </div>
+                <div class="form-group">
+                <label>NISN *</label>
+                <input type="text" id="ppdb-nisn" placeholder="10 Digit NISN" maxlength="10" />
+                <span class="form-error" id="err-nisn">NISN wajib diisi 10 digit.</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                <label>Nama Lengkap *</label>
+                <input type="text" id="ppdb-nama" placeholder="Nama sesuai Ijazah/KK" />
+                <span class="form-error" id="err-nama">Nama lengkap wajib diisi (min. 3 karakter).</span>
+                </div>
+                <div class="form-group">
+                <label>Jenis Kelamin *</label>
+                <select id="ppdb-jk">
+                    <option value="">Pilih...</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                </select>
+                <span class="form-error" id="err-jk">Jenis kelamin wajib dipilih.</span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                <label>Tempat Lahir *</label>
+                <input type="text" id="ppdb-ttl" placeholder="Kota/Kabupaten" />
+                <span class="form-error" id="err-ttl">Tempat lahir wajib diisi.</span>
+                </div>
+                <div class="form-group">
+                <label>Tanggal Lahir *</label>
+                <input type="date" id="ppdb-dob" />
+                <span class="form-error" id="err-dob">Tanggal lahir wajib diisi.</span>
+                </div>
+            </div>
+            <div class="form-group full" style="margin-top:.25rem;">
+                <label>Alamat Domisili Lengkap *</label>
+                <textarea id="ppdb-alamat" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan..."></textarea>
+                <span class="form-error" id="err-alamat">Alamat domisili wajib diisi.</span>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                <label>Nomor HP / WA *</label>
+                <input type="tel" id="ppdb-hp" placeholder="08xx-xxxx-xxxx" />
+                <span class="form-error" id="err-hp">Nomor HP wajib diisi (min. 10 digit).</span>
+                </div>
+                <div class="form-group">
+                <label>Asal SMP/MTs *</label>
+                <input type="text" id="ppdb-asal" placeholder="Nama sekolah asal" />
+                <span class="form-error" id="err-asal">Asal sekolah wajib diisi.</span>
+                </div>
+            </div>
+            <div class="form-group full">
+                <label>Jalur Pendaftaran *</label>
+                <select id="ppdb-jalur">
+                <option value="">Pilih Jalur PPDB...</option>
+                <option value="zonasi">Zonasi (Jarak Domisili)</option>
+                <option value="afirmasi">Afirmasi / KETM</option>
+                <option value="prestasi-rapor">Prestasi Nilai Rapor</option>
+                <option value="prestasi-lomba">Prestasi Perlombaan</option>
+                <option value="pindah">Perpindahan Tugas Ortu/Wali</option>
+                </select>
+                <span class="form-error" id="err-jalur">Jalur pendaftaran wajib dipilih.</span>
+            </div>
+            <div class="form-group full" style="margin-top: .5rem; padding: 10px; border: 1px dashed #ccc; border-radius: 6px;">
+                <label style="display:block; font-weight:600; margin-bottom: 5px;">Upload Berkas</label>
+                <input type="file" id="ppdb-berkas" accept=".pdf, .jpg, .jpeg, .png" style="font-size: 0.85rem;" />
+            </div>
+            <button type="submit" class="btn-submit" style="margin-top: 1rem;">Kirim Pendaftaran &rarr;</button>
+            </form>
+            <!-- FORM YANG DIUBAH BERAKHIR DI SINI -->
+
+            <div class="form-success" id="ppdbSuccess">
+            <div class="form-success-icon">🎉</div>
+            <h4>Pendaftaran Berhasil Dikirim!</h4>
+            <p>Terima kasih telah mendaftar. Tim kami akan menghubungi Anda dalam 7 hari kerja melalui email dan nomor HP yang telah didaftarkan.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</section> 
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon">✅</span>
+    <span id="toastMsg">Data berhasil disimpan.</span>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="section-inner">
+        <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr; gap: 2rem;">
+        <div>
+            <div class="footer-brand-name">SMA Nusantara Unggul</div>
+            <p class="footer-brand-sub">Jl. Pahlawan No. 88, Bandung, Jawa Barat 40135<br>Telp: (022) 4200-8800 · info@smanu.sch.id</p>
+            <p class="footer-brand-sub" style="margin-top:.75rem;">Terakreditasi A oleh BAN-S/M<br>NPSN: 200400088</p>
+        </div>
+        <div class="footer-col">
+            <h4>Menu Utama</h4>
+            <ul>
+            <li><a href="index.html">Beranda & Tentang Sekolah</a></li>
+            <li><a href="guru.html">Profil Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas & Ekstrakurikuler</a></li>
+            <li><a href="kurikulum.html">Sistem Kurikulum</a></li>
+            <li><a href="study-exchange.html">Study Exchange</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Sistem & Layanan</h4>
+            <ul>
+            <li><a href="ppdb.html">Pendaftaran PPDB</a></li>
+            <li><a href="data-akademik.html">Data Akademik (Admin)</a></li>
+            </ul>
+        </div>
+        </div>
+        <hr class="footer-divider"/>
+        <div class="footer-bottom">
+        <span>© 2026 SMA Nusantara Unggul. Seluruh hak dilindungi.</span>
+        <span>Dibuat oleh <span class="footer-bottom-accent">Kelompok 6 - Pengembangan Web Bisnis Digital 2024</span></span>
+        </div>
+    </div>
+</footer>
+
+    <!-- COLOR THEME SWITCHER -->
+    <div class="color-switcher" id="themeSwitcher">
+        <span class="color-switcher-label">Tema</span>
+        <button class="theme-btn active" data-theme="default" title="Navy Klasik"></button>
+        <button class="theme-btn" data-theme="zamrud" title="Hijau Zamrud"></button>
+        <button class="theme-btn" data-theme="ungu" title="Ungu Royal"></button>
+        <button class="theme-btn" data-theme="garuda" title="Merah Garuda"></button>
+        <button class="theme-btn" data-theme="emas" title="Emas Matahari"></button>
+        <button class="theme-btn" data-theme="langit" title="Langit Biru"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

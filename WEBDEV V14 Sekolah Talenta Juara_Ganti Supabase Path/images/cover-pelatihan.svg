@@ -1,0 +1,54 @@
+<svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="55%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="goldT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9F295"/>
+      <stop offset="40%" stop-color="#E0AA3E"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#bgT)"/>
+  <circle cx="1080" cy="120" r="200" fill="#ffffff" opacity="0.04"/>
+  <circle cx="100" cy="500" r="220" fill="#E0AA3E" opacity="0.06"/>
+
+  <!-- whiteboard -->
+  <g transform="translate(300,80)">
+    <rect x="0" y="0" width="600" height="360" rx="10" fill="#ffffff" opacity="0.96"/>
+    <rect x="0" y="0" width="600" height="360" rx="10" fill="none" stroke="url(#goldT)" stroke-width="10"/>
+    <!-- diagram content -->
+    <circle cx="150" cy="120" r="55" fill="none" stroke="#1E3A8A" stroke-width="6"/>
+    <text x="150" y="128" font-family="Inter, sans-serif" font-size="22" fill="#1E3A8A" text-anchor="middle" font-weight="700">Murid</text>
+    <circle cx="450" cy="120" r="55" fill="none" stroke="#E0AA3E" stroke-width="6"/>
+    <text x="450" y="128" font-family="Inter, sans-serif" font-size="22" fill="#B8860B" text-anchor="middle" font-weight="700">Guru</text>
+    <path d="M 205 120 L 395 120" stroke="#334155" stroke-width="4" stroke-dasharray="8 8" marker-end="url(#arrowT)"/>
+    <defs>
+      <marker id="arrowT" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#334155"/>
+      </marker>
+    </defs>
+    <!-- lines of text -->
+    <rect x="60" y="230" width="480" height="14" rx="4" fill="#cbd5e1"/>
+    <rect x="60" y="262" width="380" height="14" rx="4" fill="#cbd5e1"/>
+    <rect x="60" y="294" width="430" height="14" rx="4" fill="#cbd5e1"/>
+    <rect x="60" y="200" width="180" height="18" rx="4" fill="#1E3A8A"/>
+  </g>
+
+  <!-- stand -->
+  <g transform="translate(480,440)">
+    <rect x="0" y="0" width="240" height="14" fill="#1E3A8A" opacity="0.4"/>
+    <rect x="100" y="14" width="14" height="60" fill="#1E3A8A" opacity="0.4"/>
+    <rect x="40" y="74" width="160" height="10" fill="#1E3A8A" opacity="0.4"/>
+  </g>
+
+  <!-- book icon -->
+  <g transform="translate(150,420)" fill="url(#goldT)">
+    <path d="M0 0 L80 0 L80 90 Q40 75 0 90 Z" opacity="0.85"/>
+    <path d="M90 0 L170 0 L170 90 Q130 75 90 90 Z" opacity="0.6"/>
+  </g>
+
+  <text x="600" y="55" font-family="'DM Serif Display', serif" font-size="40" fill="#ffffff" text-anchor="middle" opacity="0.92">Pengembangan Profesional Guru</text>
+</svg>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SMA Nusantara Unggul — Portal Resmi</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400..600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+<div class="nav-logo-mark" style="background: transparent; padding: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border: none;">
+    <svg width="100%" height="100%" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Gradasi Emas Mewah -->
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F9F295" />
+                <stop offset="35%" stop-color="#E0AA3E" />
+                <stop offset="70%" stop-color="#B8860B" />
+                <stop offset="100%" stop-color="#8A5A19" />
+            </linearGradient>
+            <!-- Gradasi Biru Dalam -->
+            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1E3A8A" />
+                <stop offset="50%" stop-color="#0F172A" />
+                <stop offset="100%" stop-color="#020617" />
+            </linearGradient>
+        </defs>
+
+        <!-- Perisai Utama (Royal Blue & Gold) -->
+        <path d="M 125 15 C 195 15 220 45 220 110 C 220 185 125 235 125 235 C 125 235 30 185 30 110 C 30 45 55 15 125 15 Z" fill="url(#blueGradient)" stroke="url(#goldGradient)" stroke-width="8" stroke-linejoin="round"/>
+
+        <!-- Garis List Perisai Dalam -->
+        <path d="M 125 32 C 180 32 198 57 198 110 C 198 170 125 212 125 212 C 125 212 52 170 52 110 C 52 57 70 32 125 32 Z" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.8"/>
+
+        <!-- Bintang Puncak (Keunggulan & Spiritual) -->
+        <polygon points="125,42 131,58 149,58 135,69 140,86 125,75 110,86 115,69 101,58 119,58" fill="url(#goldGradient)" />
+
+        <!-- Monogram NU Eksklusif -->
+        <text x="125" y="152" font-family="'DM Serif Display', 'Times New Roman', serif" font-size="70" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" letter-spacing="3">NU</text>
+
+        <!-- Sayap/Buku Terbuka (Pondasi Ilmu) -->
+        <path d="M 125 175 Q 125 155 180 140 Q 180 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <path d="M 125 175 Q 125 155 70 140 Q 70 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        
+        <!-- Berlian Kecil di Bawah -->
+        <polygon points="125,200 130,208 125,216 120,208" fill="url(#goldGradient)" />
+    </svg>
+</div>        <div>
+            <div class="nav-logo-text">SMA Nusantara Unggul</div>
+            <div class="nav-logo-sub">Bandung, Jawa Barat</div>
+        </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="guru.html">Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas</a></li>
+            <li><a href="lingkungan-sekolah.html">Lingkungan</a></li>
+            <li><a href="data-akademik.html">Akademik</a></li>
+            <li><a href="kurikulum.html">Kurikulum</a></li>
+            <li><a href="study-exchange.html">Exchange</a></li>
+            <li><a href="ppdb.html">PPDB</a></li>
+            </ul>
+        <button class="hamburger" id="hambBtn" aria-label="Buka menu" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Beranda</a>
+    <a href="index.html#tentang" onclick="toggleMobileNav()">Tentang</a>
+    <a href="guru.html" onclick="toggleMobileNav()">Guru</a>
+    <a href="fasilitas-ekskul.html" onclick="toggleMobileNav()">Fasilitas & Ekskul</a>
+    <a href="data-akademik.html" onclick="toggleMobileNav()">Data Akademik</a>
+    <a href="kurikulum.html" onclick="toggleMobileNav()">Kurikulum</a>
+    <a href="study-exchange.html" onclick="toggleMobileNav()">Study Exchange</a>
+    <a href="ppdb.html" onclick="toggleMobileNav()" style="color:var(--navy); font-weight:600;">
+        Daftar PPDB
+    </a>
+</div>
+
+<!-- FASILITAS -->
+<section id="fasilitas">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Infrastruktur</div>
+      <h2 class="section-heading">Fasilitas Sekolah</h2>
+      <p class="section-sub">Lingkungan belajar yang dirancang untuk mendorong kreativitas, inovasi, dan keunggulan akademik.</p>
+    </div>
+    <div class="facilities-grid">
+      
+      <!-- 1. ICT Laboratory (Unggulan - Urutan 1) -->
+      <a href="https://www.alirsyadsatya.sch.id/about-us/facilities" target="_blank" class="facility-card featured reveal" style="text-decoration: none; color: inherit;">
+        <div class="facility-img">
+          <img src="images/ICT lab.jpg" alt="ICT Laboratory" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <span class="facility-tag">Unggulan</span>
+        <div class="facility-body">
+          <h3>ICT Laboratory</h3>
+          <p>Fasilitas laboratorium komputer modern dengan perangkat berspesifikasi tinggi untuk mendukung pembelajaran coding, desain, dan literasi digital siswa.</p>
+          <div style="margin-top: 12px; font-weight: 600; color: #1e3a8a; font-size: 0.9rem;">Info Selengkapnya &rarr;</div>
+        </div>
+      </a>
+
+      <!-- 2. Science Laboratory -->
+      <a href="https://www.alirsyadsatya.sch.id/about-us/facilities" target="_blank" class="facility-card reveal" style="text-decoration: none; color: inherit;">
+        <div class="facility-img">
+          <img src="images/science lab.jpg" alt="Science Laboratory" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="facility-body">
+          <h3>Science Laboratory</h3>
+          <p>Laboratorium sains berstandar internasional yang dilengkapi alat peraga mutakhir untuk eksperimen Biologi, Fisika, dan Kimia secara komprehensif.</p>
+          <div style="margin-top: 12px; font-weight: 600; color: #1e3a8a; font-size: 0.9rem;">Info Selengkapnya &rarr;</div>
+        </div>
+      </a>
+
+      <!-- 3. Masjid / Prayer Room -->
+      <a href="https://www.alirsyadsatya.sch.id/about-us/facilities" target="_blank" class="facility-card reveal" style="text-decoration: none; color: inherit;">
+        <div class="facility-img">
+          <img src="images/masjid.jpg" alt="Masjid" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="facility-body">
+          <h3>Masjid Sekolah</h3>
+          <p>Sarana ibadah yang luas, bersih, dan nyaman. Menjadi pusat kegiatan keagamaan untuk membentuk karakter serta spiritualitas Islami siswa.</p>
+          <div style="margin-top: 12px; font-weight: 600; color: #1e3a8a; font-size: 0.9rem;">Info Selengkapnya &rarr;</div>
+        </div>
+      </a>
+
+      <!-- 4. Perpustakaan Digital (Tetap di posisinya) -->
+      <a href="https://play.google.com/store/apps/details?id=id.kubuku.kbk1993466&hl=id" target="_blank" class="facility-card reveal" style="text-decoration: none; color: inherit;">
+        <div class="facility-img">
+          <img src="images/perpus3-680x554.jpeg" alt="Perpustakaan Digital" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="facility-body">
+          <h3>Perpustakaan Digital</h3>
+          <p>Koleksi 12.000+ buku cetak dan akses digital ke 50.000+ e-book serta jurnal ilmiah internasional.</p>
+          <div style="margin-top: 12px; font-weight: 600; color: #1e3a8a; font-size: 0.9rem;">Info Selengkapnya &rarr;</div>
+        </div>
+      </a>
+
+      <!-- 5. Fatimah Amphitheatre (Unggulan - Urutan 5) -->
+      <a href="https://www.alirsyadsatya.sch.id/about-us/facilities" target="_blank" class="facility-card featured reveal" style="text-decoration: none; color: inherit;">
+        <div class="facility-img">
+          <img src="images/Fatimah theatre.jpg" alt="Fatimah Amphitheatre" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <span class="facility-tag">Unggulan</span>
+        <div class="facility-body">
+          <h3>Fatimah Amphitheatre</h3>
+          <p>Ruang pertunjukan dan pertemuan eksklusif bergaya teater, dirancang khusus untuk mendukung pentas seni, seminar, dan berbagai acara besar sekolah.</p>
+          <div style="margin-top: 12px; font-weight: 600; color: #1e3a8a; font-size: 0.9rem;">Info Selengkapnya &rarr;</div>
+        </div>
+      </a>
+
+      <!-- 6. Sports Facilities -->
+      <a href="https://www.alirsyadsatya.sch.id/about-us/facilities" target="_blank" class="facility-card reveal" style="text-decoration: none; color: inherit;">
+        <div class="facility-img">
+          <img src="images/sport facilities.jpg" alt="Sports Facilities" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="facility-body">
+          <h3>Sports Facilities</h3>
+          <p>Fasilitas olahraga komprehensif indoor maupun outdoor untuk mewadahi aktivitas fisik, ekstrakurikuler, dan menjaga kebugaran siswa.</p>
+          <div style="margin-top: 12px; font-weight: 600; color: #1e3a8a; font-size: 0.9rem;">Info Selengkapnya &rarr;</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- EKSKUL CAROUSEL -->
+<section class="ekskul-section" id="ekskul">
+  <div class="section-inner">
+
+    <!-- Foto Prestasi (Award Banner) -->
+    <div class="ekskul-award-banner reveal">
+      <img src="images/Award.jpg" alt="Penghargaan & Prestasi Ekskul SMA Nusantara Unggul" class="ekskul-award-img">
+      <div class="ekskul-award-overlay">
+        <div class="ekskul-award-badge">🏆 Sekolah Terprestasi</div>
+        <h3 class="ekskul-award-title">48 Penghargaan Diraih oleh Ekskul Kami di Tahun 2025</h3>
+        <p class="ekskul-award-desc">Dari kompetisi robotika nasional hingga festival seni provinsi — siswa SMA Nusantara Unggul terus menorehkan prestasi membanggakan di berbagai bidang.</p>
+      </div>
+    </div>
+
+    <div class="ekskul-header reveal">
+      <div>
+        <div class="section-label">Kegiatan Siswa</div>
+        <h2 class="section-heading">Ekstrakurikuler</h2>
+        <p class="section-sub">24 program ekskul aktif untuk mengembangkan bakat, minat, dan kepemimpinan siswa. Temukan komunitas yang tepat untukmu!</p>
+      </div>
+      <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <a href="ekskul-detail.html" class="btn-lihat-ekskul">Lihat Semua Ekskul &rarr;</a>
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="moveCarousel(-1)" aria-label="Sebelumnya">&#8592;</button>
+          <button class="carousel-btn" onclick="moveCarousel(1)" aria-label="Berikutnya">&#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-outer reveal">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- 1. Robotik -->
+        <a href="ekskul-detail.html#robotik" class="ekskul-card ekskul-card-link">
+          <div class="ekskul-card-top ekskul-blue" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=400&h=220&fit=crop" alt="Robotik" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="ekskul-card-body">
+            <div class="ekskul-card-title">Robotik</div>
+            <div class="ekskul-card-sub">Juara Nasional WRO 2025</div>
+            <div class="ekskul-card-count">42 Anggota</div>
+            <div class="ekskul-card-cta">Selengkapnya &rarr;</div>
+          </div>
+        </a>
+
+        <!-- 2. Sepak Bola -->
+        <a href="ekskul-detail.html#sepakbola" class="ekskul-card ekskul-card-link">
+          <div class="ekskul-card-top ekskul-green" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&h=220&fit=crop" alt="Sepak Bola" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="ekskul-card-body">
+            <div class="ekskul-card-title">Sepak Bola</div>
+            <div class="ekskul-card-sub">Liga Pelajar Jabar 2025</div>
+            <div class="ekskul-card-count">38 Anggota</div>
+            <div class="ekskul-card-cta">Selengkapnya &rarr;</div>
+          </div>
+        </a>
+
+        <!-- 3. Paduan Suara -->
+        <a href="ekskul-detail.html#paduansuara" class="ekskul-card ekskul-card-link">
+          <div class="ekskul-card-top ekskul-amber" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=220&fit=crop" alt="Paduan Suara" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="ekskul-card-body">
+            <div class="ekskul-card-title">Paduan Suara</div>
+            <div class="ekskul-card-sub">Juara II Provinsi 2025</div>
+            <div class="ekskul-card-count">35 Anggota</div>
+            <div class="ekskul-card-cta">Selengkapnya &rarr;</div>
+          </div>
+        </a>
+
+        <!-- 4. Karya Ilmiah -->
+        <a href="ekskul-detail.html#karyailmiah" class="ekskul-card ekskul-card-link">
+          <div class="ekskul-card-top ekskul-purple" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=220&fit=crop" alt="Karya Ilmiah" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="ekskul-card-body">
+            <div class="ekskul-card-title">Karya Ilmiah</div>
+            <div class="ekskul-card-sub">LKTI Nasional Finalis</div>
+            <div class="ekskul-card-count">28 Anggota</div>
+            <div class="ekskul-card-cta">Selengkapnya &rarr;</div>
+          </div>
+        </a>
+
+        <!-- 5. Tari Tradisional -->
+        <a href="ekskul-detail.html#tari" class="ekskul-card ekskul-card-link">
+          <div class="ekskul-card-top ekskul-pink" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=400&h=220&fit=crop" alt="Tari Tradisional" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="ekskul-card-body">
+            <div class="ekskul-card-title">Tari Tradisional</div>
+            <div class="ekskul-card-sub">Pelestarian Budaya Sunda</div>
+            <div class="ekskul-card-count">31 Anggota</div>
+            <div class="ekskul-card-cta">Selengkapnya &rarr;</div>
+          </div>
+        </a>
+
+        <!-- 6. Fotografi -->
+        <a href="ekskul-detail.html#fotografi" class="ekskul-card ekskul-card-link">
+          <div class="ekskul-card-top ekskul-teal" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=220&fit=crop" alt="Fotografi" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="ekskul-card-body">
+            <div class="ekskul-card-title">Fotografi</div>
+            <div class="ekskul-card-sub">Pameran Karya Tahunan</div>
+            <div class="ekskul-card-count">22 Anggota</div>
+            <div class="ekskul-card-cta">Selengkapnya &rarr;</div>
+          </div>
+        </a>
+
+        <!-- 7. Pencak Silat -->
+        <a href="ekskul-detail.html#pencaksilat" class="ekskul-card ekskul-card-link">
+          <div class="ekskul-card-top ekskul-red" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=400&h=220&fit=crop" alt="Pencak Silat" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="ekskul-card-body">
+            <div class="ekskul-card-title">Pencak Silat</div>
+            <div class="ekskul-card-sub">Tradisi &amp; Prestasi Jabar</div>
+            <div class="ekskul-card-count">44 Anggota</div>
+            <div class="ekskul-card-cta">Selengkapnya &rarr;</div>
+          </div>
+        </a>
+
+        <!-- 8. Coding Club -->
+        <a href="ekskul-detail.html#coding" class="ekskul-card ekskul-card-link">
+          <div class="ekskul-card-top ekskul-navy" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&h=220&fit=crop" alt="Coding Club" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="ekskul-card-body">
+            <div class="ekskul-card-title">Coding Club</div>
+            <div class="ekskul-card-sub">Pemrograman &amp; AI</div>
+            <div class="ekskul-card-count">36 Anggota</div>
+            <div class="ekskul-card-cta">Selengkapnya &rarr;</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+
+    <!-- CTA bawah -->
+    <div class="ekskul-cta-wrap reveal">
+      <p class="ekskul-cta-text">Ingin bergabung? Pendaftaran ekskul dibuka setiap awal tahun ajaran.</p>
+      <a href="ekskul-detail.html" class="btn-lihat-ekskul btn-lihat-ekskul-lg">Lihat Semua 24 Ekskul &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="section-inner">
+        <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr; gap: 2rem;">
+        <div>
+            <div class="footer-brand-name">SMA Nusantara Unggul</div>
+            <p class="footer-brand-sub">Jl. Pahlawan No. 88, Bandung, Jawa Barat 40135<br>Telp: (022) 4200-8800 · info@smanu.sch.id</p>
+            <p class="footer-brand-sub" style="margin-top:.75rem;">Terakreditasi A oleh BAN-S/M<br>NPSN: 200400088</p>
+        </div>
+        <div class="footer-col">
+            <h4>Menu Utama</h4>
+            <ul>
+            <li><a href="index.html">Beranda & Tentang Sekolah</a></li>
+            <li><a href="guru.html">Profil Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas & Ekstrakurikuler</a></li>
+            <li><a href="kurikulum.html">Sistem Kurikulum</a></li>
+            <li><a href="study-exchange.html">Study Exchange</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Sistem & Layanan</h4>
+            <ul>
+            <li><a href="ppdb.html">Pendaftaran PPDB</a></li>
+            <li><a href="data-akademik.html">Data Akademik (Admin)</a></li>
+            </ul>
+        </div>
+        </div>
+        <hr class="footer-divider"/>
+        <div class="footer-bottom">
+        <span>© 2026 SMA Nusantara Unggul. Seluruh hak dilindungi.</span>
+        <span>Dibuat oleh <span class="footer-bottom-accent">Kelompok 6 - Pengembangan Web Bisnis Digital 2024</span></span>
+        </div>
+    </div>
+</footer>
+
+    <!-- COLOR THEME SWITCHER -->
+    <div class="color-switcher" id="themeSwitcher">
+        <span class="color-switcher-label">Tema</span>
+        <button class="theme-btn active" data-theme="default" title="Navy Klasik"></button>
+        <button class="theme-btn" data-theme="zamrud" title="Hijau Zamrud"></button>
+        <button class="theme-btn" data-theme="ungu" title="Ungu Royal"></button>
+        <button class="theme-btn" data-theme="garuda" title="Merah Garuda"></button>
+        <button class="theme-btn" data-theme="emas" title="Emas Matahari"></button>
+        <button class="theme-btn" data-theme="langit" title="Langit Biru"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

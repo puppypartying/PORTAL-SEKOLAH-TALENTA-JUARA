@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ekstrakurikuler — SMA Nusantara Unggul</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400..600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== EKSKUL DETAIL PAGE ===== */
+
+.ekskul-hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 60%, #1d4ed8 100%);
+    padding: 5rem 0 4rem;
+    color: #fff;
+    text-align: center;
+}
+.ekskul-hero-breadcrumb {
+    font-size: .8rem;
+    opacity: .65;
+    margin-bottom: 1rem;
+    letter-spacing: .06em;
+}
+.ekskul-hero-breadcrumb a { color: #fff; text-decoration: none; }
+.ekskul-hero-breadcrumb a:hover { text-decoration: underline; }
+.ekskul-hero h1 {
+    font-family: var(--display-serif, serif);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    margin-bottom: .75rem;
+}
+.ekskul-hero p {
+    font-size: 1rem;
+    opacity: .8;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+.ekskul-hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+.ekskul-stat { text-align: center; }
+.ekskul-stat-num {
+    font-family: var(--display-ui, 'Space Grotesk', sans-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: #E0AA3E;
+}
+.ekskul-stat-label { font-size: .78rem; opacity: .7; margin-top: .2rem; }
+
+/* Filter tabs */
+.ekskul-filter-bar {
+    background: #fff;
+    border-bottom: 1px solid #E5E7EB;
+    position: sticky;
+    top: 64px;
+    z-index: 40;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.ekskul-filter-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    gap: .5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.ekskul-filter-inner::-webkit-scrollbar { display: none; }
+.ekskul-filter-tab {
+    flex-shrink: 0;
+    padding: .85rem 1.1rem;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--muted, #888);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: color .2s, border-color .2s;
+    font-family: inherit;
+}
+.ekskul-filter-tab.active,
+.ekskul-filter-tab:hover {
+    color: var(--navy, #1E3A8A);
+    border-bottom-color: var(--navy, #1E3A8A);
+}
+
+/* Award photo section */
+.ekskul-prestasi-section {
+    background: var(--off-white, #F8F9FB);
+    padding: 3.5rem 0;
+}
+.ekskul-prestasi-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+.ekskul-prestasi-img-wrap {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,.12);
+    aspect-ratio: 16/9;
+}
+.ekskul-prestasi-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.ekskul-prestasi-content .section-label { margin-bottom: .5rem; }
+.ekskul-prestasi-content h2 {
+    font-family: var(--display-serif, serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: .75rem;
+    color: var(--ink, #1a1a1a);
+}
+.ekskul-prestasi-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+.ekskul-prestasi-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    font-size: .875rem;
+    color: var(--ink, #333);
+    line-height: 1.5;
+}
+.ekskul-prestasi-list li::before {
+    content: "🏅";
+    flex-shrink: 0;
+    margin-top: .05rem;
+}
+
+/* Ekskul grid section */
+.ekskul-all-section { padding: 4rem 0; }
+.ekskul-all-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+.ekskul-all-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+/* Ekskul detail card */
+.ekskul-detail-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,.07);
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+    display: flex;
+    flex-direction: column;
+    scroll-margin-top: 130px;
+}
+.ekskul-detail-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,.12);
+}
+.ekskul-detail-card-header {
+    padding: 1.5rem 1.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.ekskul-detail-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+.ekskul-detail-card-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--ink, #1a1a1a);
+}
+.ekskul-detail-card-category {
+    font-size: .75rem;
+    color: var(--muted, #888);
+    margin-top: 2px;
+    font-family: var(--display-ui, sans-serif);
+    letter-spacing: .04em;
+}
+
+.ekskul-detail-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    background: #E5E7EB;
+}
+.ekskul-detail-card-img-placeholder {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.ekskul-detail-card-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+.ekskul-detail-card-desc {
+    font-size: .875rem;
+    color: var(--muted, #555);
+    line-height: 1.6;
+}
+.ekskul-detail-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: auto;
+    padding-top: .5rem;
+    border-top: 1px solid #F0F0F0;
+}
+.ekskul-meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    background: #F1F5FF;
+    color: var(--navy, #1E3A8A);
+    font-size: .73rem;
+    font-weight: 600;
+    padding: .3rem .65rem;
+    border-radius: 999px;
+    font-family: var(--display-ui, sans-serif);
+}
+.ekskul-meta-chip.chip-gold {
+    background: #FEF3C7;
+    color: #92400E;
+}
+.ekskul-meta-chip.chip-green {
+    background: #D1FAE5;
+    color: #065F46;
+}
+
+/* Jadwal table */
+.ekskul-jadwal {
+    background: #F8F9FB;
+    border-radius: 8px;
+    padding: .75rem 1rem;
+    margin-top: .25rem;
+}
+.ekskul-jadwal-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8rem;
+    padding: .2rem 0;
+    color: var(--ink, #333);
+}
+.ekskul-jadwal-row:not(:last-child) {
+    border-bottom: 1px dashed #E5E7EB;
+}
+.ekskul-jadwal-label { color: var(--muted, #888); }
+
+/* CTA bottom */
+.ekskul-detail-cta {
+    background: linear-gradient(135deg, #0F172A, #1E3A8A);
+    padding: 3.5rem 0;
+    text-align: center;
+    color: #fff;
+}
+.ekskul-detail-cta h2 {
+    font-family: var(--display-serif, serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: .5rem;
+}
+.ekskul-detail-cta p {
+    opacity: .75;
+    font-size: .9rem;
+    margin-bottom: 1.75rem;
+}
+.ekskul-detail-cta-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.btn-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .75rem 1.75rem;
+    background: #E0AA3E;
+    color: #1a1a1a;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: .9rem;
+    text-decoration: none;
+    transition: opacity .2s, transform .2s;
+}
+.btn-cta-primary:hover { opacity: .9; transform: translateY(-1px); }
+.btn-cta-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .75rem 1.75rem;
+    background: transparent;
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,.45);
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: .9rem;
+    text-decoration: none;
+    transition: border-color .2s, background .2s;
+}
+.btn-cta-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+
+@media (max-width: 768px) {
+    .ekskul-prestasi-inner { grid-template-columns: 1fr; }
+    .ekskul-all-grid { grid-template-columns: 1fr; }
+    .ekskul-detail-card-img, .ekskul-detail-card-img-placeholder { height: 200px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+<div class="nav-logo-mark" style="background: transparent; padding: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border: none;">
+    <svg width="100%" height="100%" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F9F295" />
+                <stop offset="35%" stop-color="#E0AA3E" />
+                <stop offset="70%" stop-color="#B8860B" />
+                <stop offset="100%" stop-color="#8A5A19" />
+            </linearGradient>
+            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1E3A8A" />
+                <stop offset="50%" stop-color="#0F172A" />
+                <stop offset="100%" stop-color="#020617" />
+            </linearGradient>
+        </defs>
+        <path d="M 125 15 C 195 15 220 45 220 110 C 220 185 125 235 125 235 C 125 235 30 185 30 110 C 30 45 55 15 125 15 Z" fill="url(#blueGradient)" stroke="url(#goldGradient)" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M 125 32 C 180 32 198 57 198 110 C 198 170 125 212 125 212 C 125 212 52 170 52 110 C 52 57 70 32 125 32 Z" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.8"/>
+        <polygon points="125,42 131,58 149,58 135,69 140,86 125,75 110,86 115,69 101,58 119,58" fill="url(#goldGradient)" />
+        <text x="125" y="152" font-family="'DM Serif Display', 'Times New Roman', serif" font-size="70" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" letter-spacing="3">NU</text>
+        <path d="M 125 175 Q 125 155 180 140 Q 180 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <path d="M 125 175 Q 125 155 70 140 Q 70 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <polygon points="125,200 130,208 125,216 120,208" fill="url(#goldGradient)" />
+    </svg>
+</div>
+        <div>
+            <div class="nav-logo-text">SMA Nusantara Unggul</div>
+            <div class="nav-logo-sub">Bandung, Jawa Barat</div>
+        </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="guru.html">Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas</a></li>
+            <li><a href="lingkungan-sekolah.html">Lingkungan</a></li>
+            <li><a href="data-akademik.html">Akademik</a></li>
+            <li><a href="kurikulum.html">Kurikulum</a></li>
+            <li><a href="study-exchange.html">Exchange</a></li>
+            <li><a href="ppdb.html">PPDB</a></li>
+            </ul>
+        <button class="hamburger" id="hambBtn" aria-label="Buka menu" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Beranda</a>
+    <a href="index.html#tentang" onclick="toggleMobileNav()">Tentang</a>
+    <a href="guru.html" onclick="toggleMobileNav()">Guru</a>
+    <a href="fasilitas-ekskul.html" onclick="toggleMobileNav()">Fasilitas & Ekskul</a>
+    <a href="data-akademik.html" onclick="toggleMobileNav()">Data Akademik</a>
+    <a href="kurikulum.html" onclick="toggleMobileNav()">Kurikulum</a>
+    <a href="study-exchange.html" onclick="toggleMobileNav()">Study Exchange</a>
+    <a href="ppdb.html" onclick="toggleMobileNav()" style="color:var(--navy); font-weight:600;">
+        Daftar PPDB
+    </a>
+</div>
+
+<!-- HERO -->
+<section class="ekskul-hero">
+  <div class="section-inner">
+    <div class="ekskul-hero-breadcrumb">
+      <a href="index.html">Beranda</a> &rsaquo; 
+      <a href="fasilitas-ekskul.html">Fasilitas</a> &rsaquo; 
+      Ekstrakurikuler
+    </div>
+    <h1>Program Ekstrakurikuler</h1>
+    <p>24 ekskul aktif yang dirancang untuk mengembangkan bakat, minat, karakter, dan jiwa kepemimpinan setiap siswa SMA Nusantara Unggul.</p>
+    <div class="ekskul-hero-stats">
+      <div class="ekskul-stat">
+        <div class="ekskul-stat-num">24</div>
+        <div class="ekskul-stat-label">Program Ekskul</div>
+      </div>
+      <div class="ekskul-stat">
+        <div class="ekskul-stat-num">580+</div>
+        <div class="ekskul-stat-label">Anggota Aktif</div>
+      </div>
+      <div class="ekskul-stat">
+        <div class="ekskul-stat-num">48</div>
+        <div class="ekskul-stat-label">Penghargaan 2025</div>
+      </div>
+      <div class="ekskul-stat">
+        <div class="ekskul-stat-num">12</div>
+        <div class="ekskul-stat-label">Pelatih Profesional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER TABS -->
+<div class="ekskul-filter-bar">
+  <div class="ekskul-filter-inner">
+    <button class="ekskul-filter-tab active" onclick="filterEkskul('semua', this)">Semua</button>
+    <button class="ekskul-filter-tab" onclick="filterEkskul('sains', this)">Sains & Teknologi</button>
+    <button class="ekskul-filter-tab" onclick="filterEkskul('olahraga', this)">Olahraga & Bela Diri</button>
+    <button class="ekskul-filter-tab" onclick="filterEkskul('seni', this)">Seni & Budaya</button>
+    <button class="ekskul-filter-tab" onclick="filterEkskul('akademik', this)">Akademik</button>
+  </div>
+</div>
+
+<!-- PRESTASI BANNER -->
+<section class="ekskul-prestasi-section">
+  <div class="ekskul-prestasi-inner">
+    <div class="ekskul-prestasi-img-wrap">
+      <img src="images/Award.jpg" alt="Piala dan Penghargaan Ekskul SMA Nusantara Unggul">
+    </div>
+    <div class="ekskul-prestasi-content">
+      <div class="section-label">Rekam Prestasi</div>
+      <h2>Kami Bangga dengan Setiap Pencapaian Siswa</h2>
+      <p style="font-size:.875rem; color:var(--muted); line-height:1.65;">Ekstrakurikuler di SMA Nusantara Unggul bukan sekadar kegiatan tambahan — ini adalah tempat lahirnya juara dan pemimpin masa depan.</p>
+      <ul class="ekskul-prestasi-list">
+        <li>Juara 1 Nasional World Robot Olympiad (WRO) 2025 — Tim Robotik</li>
+        <li>Juara II Paduan Suara Tingkat Provinsi Jawa Barat 2025</li>
+        <li>Finalis LKTI (Lomba Karya Tulis Ilmiah) Nasional 2025</li>
+        <li>Juara III Pencak Silat Tingkat Provinsi Jawa Barat 2025</li>
+        <li>Peserta Terbaik Pameran Fotografi Antar-SMA Kota Bandung 2025</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SEMUA EKSKUL GRID -->
+<section class="ekskul-all-section">
+  <div class="ekskul-all-inner">
+    <div class="section-label">Program Lengkap</div>
+    <h2 class="section-heading">Semua Ekstrakurikuler</h2>
+    <p class="section-sub">Pilih ekskul sesuai minat dan bakatmu. Setiap ekskul dibimbing oleh pelatih berpengalaman dan tersertifikasi.</p>
+
+    <div class="ekskul-all-grid" id="ekskulGrid">
+
+      <!-- 1. ROBOTIK -->
+      <div class="ekskul-detail-card" id="robotik" data-kategori="sains">
+        <div class="ekskul-detail-card-header">
+          <div class="ekskul-detail-icon ekskul-blue">🤖</div>
+          <div>
+            <div class="ekskul-detail-card-title">Robotik</div>
+            <div class="ekskul-detail-card-category">SAINS & TEKNOLOGI</div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?w=600&h=360&fit=crop" alt="Ekskul Robotik" class="ekskul-detail-card-img">
+        <div class="ekskul-detail-card-body">
+          <p class="ekskul-detail-card-desc">
+            Ekskul Robotik SMA Nusantara Unggul adalah salah satu yang paling berprestasi di tingkat nasional. Anggota dilatih merancang, merakit, dan memprogram robot untuk kompetisi bergengsi. Menggunakan perangkat Arduino, LEGO Mindstorms, hingga ROS (Robot Operating System).
+          </p>
+          <div class="ekskul-jadwal">
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Latihan Rutin</span><span>Selasa & Kamis, 15.00–17.30</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Lokasi</span><span>ICT Laboratory Lt. 2</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pembina</span><span>Citra Utami, S.Kom.</span></div>
+          </div>
+          <div class="ekskul-detail-card-meta">
+            <span class="ekskul-meta-chip">🏆 Juara Nasional WRO 2025</span>
+            <span class="ekskul-meta-chip chip-green">42 Anggota</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. SEPAK BOLA -->
+      <div class="ekskul-detail-card" id="sepakbola" data-kategori="olahraga">
+        <div class="ekskul-detail-card-header">
+          <div class="ekskul-detail-icon ekskul-green">⚽</div>
+          <div>
+            <div class="ekskul-detail-card-title">Sepak Bola</div>
+            <div class="ekskul-detail-card-category">OLAHRAGA</div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=360&fit=crop" alt="Ekskul Sepak Bola" class="ekskul-detail-card-img">
+        <div class="ekskul-detail-card-body">
+          <p class="ekskul-detail-card-desc">
+            Tim Sepak Bola SMA Nusantara Unggul aktif berkompetisi di Liga Pelajar Jawa Barat. Berlatih dengan sistem taktik modern dibawah bimbingan pelatih berlisensi AFC. Program ini menekankan disiplin, kerja sama tim, dan mental juara.
+          </p>
+          <div class="ekskul-jadwal">
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Latihan Rutin</span><span>Senin & Rabu & Jumat, 06.30–08.00</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Lokasi</span><span>Lapangan Olahraga Utama</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pembina</span><span>Ahmad Fauzi, S.Pd.</span></div>
+          </div>
+          <div class="ekskul-detail-card-meta">
+            <span class="ekskul-meta-chip">🏅 Liga Pelajar Jabar 2025</span>
+            <span class="ekskul-meta-chip chip-green">38 Anggota</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PADUAN SUARA -->
+      <div class="ekskul-detail-card" id="paduansuara" data-kategori="seni">
+        <div class="ekskul-detail-card-header">
+          <div class="ekskul-detail-icon ekskul-amber">🎵</div>
+          <div>
+            <div class="ekskul-detail-card-title">Paduan Suara</div>
+            <div class="ekskul-detail-card-category">SENI & BUDAYA</div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=360&fit=crop" alt="Ekskul Paduan Suara" class="ekskul-detail-card-img">
+        <div class="ekskul-detail-card-body">
+          <p class="ekskul-detail-card-desc">
+            Paduan Suara SMA Nusantara Unggul dikenal dengan harmoni vokal yang kuat dan penampilan memukau. Ekskul ini aktif tampil di berbagai acara resmi sekolah, festival seni antar-SMA, hingga kompetisi tingkat provinsi. Terbuka untuk semua siswa yang mencintai musik vokal.
+          </p>
+          <div class="ekskul-jadwal">
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Latihan Rutin</span><span>Rabu & Sabtu, 14.00–16.30</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Lokasi</span><span>Fatimah Amphitheatre</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pembina</span><span>Kokom Kumalasari Binti Aga, S.S., M.Hum.</span></div>
+          </div>
+          <div class="ekskul-detail-card-meta">
+            <span class="ekskul-meta-chip chip-gold">🥈 Juara II Provinsi 2025</span>
+            <span class="ekskul-meta-chip chip-green">35 Anggota</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. KARYA ILMIAH -->
+      <div class="ekskul-detail-card" id="karyailmiah" data-kategori="akademik">
+        <div class="ekskul-detail-card-header">
+          <div class="ekskul-detail-icon ekskul-purple">✍️</div>
+          <div>
+            <div class="ekskul-detail-card-title">Karya Ilmiah</div>
+            <div class="ekskul-detail-card-category">AKADEMIK</div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=360&fit=crop" alt="Ekskul Karya Ilmiah" class="ekskul-detail-card-img">
+        <div class="ekskul-detail-card-body">
+          <p class="ekskul-detail-card-desc">
+            Kelompok Karya Ilmiah Remaja (KIR) SMA Nusantara Unggul membimbing siswa untuk melakukan penelitian ilmiah yang sistematis, mulai dari penyusunan proposal, pengumpulan data, hingga presentasi di hadapan juri nasional. Anggota aktif mempublikasikan hasil riset di jurnal pelajar.
+          </p>
+          <div class="ekskul-jadwal">
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pertemuan</span><span>Kamis, 15.00–17.00</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Lokasi</span><span>Ruang Riset & Diskusi Lt. 3</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pembina</span><span>Rizky Pratama, S.Si.</span></div>
+          </div>
+          <div class="ekskul-detail-card-meta">
+            <span class="ekskul-meta-chip">📄 Finalis LKTI Nasional 2025</span>
+            <span class="ekskul-meta-chip chip-green">28 Anggota</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. TARI TRADISIONAL -->
+      <div class="ekskul-detail-card" id="tari" data-kategori="seni">
+        <div class="ekskul-detail-card-header">
+          <div class="ekskul-detail-icon ekskul-pink">💃</div>
+          <div>
+            <div class="ekskul-detail-card-title">Tari Tradisional</div>
+            <div class="ekskul-detail-card-category">SENI & BUDAYA</div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=600&h=360&fit=crop" alt="Ekskul Tari Tradisional" class="ekskul-detail-card-img">
+        <div class="ekskul-detail-card-body">
+          <p class="ekskul-detail-card-desc">
+            Ekskul Tari Tradisional SMA Nusantara Unggul melestarikan kekayaan budaya Sunda dan Nusantara melalui latihan tari Jaipong, Merak, dan berbagai tarian daerah lainnya. Siswa tampil secara rutin di acara sekolah, pemerintah kota, dan festival budaya nasional.
+          </p>
+          <div class="ekskul-jadwal">
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Latihan Rutin</span><span>Selasa & Jumat, 15.00–17.00</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Lokasi</span><span>Fatimah Amphitheatre</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pembina</span><span>Sri Wahyuni, S.Pd.</span></div>
+          </div>
+          <div class="ekskul-detail-card-meta">
+            <span class="ekskul-meta-chip">🌺 Pelestarian Budaya Sunda</span>
+            <span class="ekskul-meta-chip chip-green">31 Anggota</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. FOTOGRAFI -->
+      <div class="ekskul-detail-card" id="fotografi" data-kategori="seni">
+        <div class="ekskul-detail-card-header">
+          <div class="ekskul-detail-icon ekskul-teal">📸</div>
+          <div>
+            <div class="ekskul-detail-card-title">Fotografi</div>
+            <div class="ekskul-detail-card-category">SENI & TEKNOLOGI</div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=600&h=360&fit=crop" alt="Ekskul Fotografi" class="ekskul-detail-card-img">
+        <div class="ekskul-detail-card-body">
+          <p class="ekskul-detail-card-desc">
+            Ekskul Fotografi membuka ruang ekspresi kreatif bagi siswa melalui lensa kamera. Program mencakup teknik pengambilan gambar, komposisi, pencahayaan, hingga editing foto profesional dengan Adobe Lightroom. Karya terbaik dipamerkan dalam Pameran Fotografi Tahunan SMA Nusantara Unggul.
+          </p>
+          <div class="ekskul-jadwal">
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pertemuan</span><span>Sabtu, 09.00–12.00</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Lokasi</span><span>Studio Fotografi & ICT Lab</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pembina</span><span>Taufik Hidayat, S.H.</span></div>
+          </div>
+          <div class="ekskul-detail-card-meta">
+            <span class="ekskul-meta-chip">🎨 Pameran Karya Tahunan</span>
+            <span class="ekskul-meta-chip chip-green">22 Anggota</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. PENCAK SILAT -->
+      <div class="ekskul-detail-card" id="pencaksilat" data-kategori="olahraga">
+        <div class="ekskul-detail-card-header">
+          <div class="ekskul-detail-icon ekskul-red">🥋</div>
+          <div>
+            <div class="ekskul-detail-card-title">Pencak Silat</div>
+            <div class="ekskul-detail-card-category">OLAHRAGA & BELA DIRI</div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&h=360&fit=crop" alt="Ekskul Pencak Silat" class="ekskul-detail-card-img">
+        <div class="ekskul-detail-card-body">
+          <p class="ekskul-detail-card-desc">
+            Pencak Silat adalah ekskul kebanggan SMA Nusantara Unggul sebagai representasi seni bela diri tradisional Sunda. Anggota dibina oleh pelatih bersertifikat IPSI untuk mengikuti kompetisi tingkat kota hingga provinsi, sekaligus membentuk karakter yang kuat, disiplin, dan berjiwa ksatria.
+          </p>
+          <div class="ekskul-jadwal">
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Latihan Rutin</span><span>Senin, Rabu & Sabtu, 06.30–08.00</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Lokasi</span><span>Sports Facility & Lapangan Utama</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pembina</span><span>Bagus Setiawan, S.Pd.</span></div>
+          </div>
+          <div class="ekskul-detail-card-meta">
+            <span class="ekskul-meta-chip chip-gold">🥉 Juara III Provinsi Jabar 2025</span>
+            <span class="ekskul-meta-chip chip-green">44 Anggota</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. CODING CLUB -->
+      <div class="ekskul-detail-card" id="coding" data-kategori="sains">
+        <div class="ekskul-detail-card-header">
+          <div class="ekskul-detail-icon ekskul-navy">💻</div>
+          <div>
+            <div class="ekskul-detail-card-title">Coding Club</div>
+            <div class="ekskul-detail-card-category">SAINS & TEKNOLOGI</div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600&h=360&fit=crop" alt="Ekskul Coding Club" class="ekskul-detail-card-img">
+        <div class="ekskul-detail-card-body">
+          <p class="ekskul-detail-card-desc">
+            Coding Club adalah komunitas siswa yang antusias di bidang pemrograman, kecerdasan buatan, dan pengembangan aplikasi. Anggota belajar Python, JavaScript, web development, dan dasar-dasar machine learning. Program ini menjadi jembatan menuju karier di industri teknologi masa depan.
+          </p>
+          <div class="ekskul-jadwal">
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pertemuan</span><span>Selasa & Kamis, 15.30–17.30</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Lokasi</span><span>ICT Laboratory Lt. 2</span></div>
+            <div class="ekskul-jadwal-row"><span class="ekskul-jadwal-label">Pembina</span><span>Citra Utami, S.Kom.</span></div>
+          </div>
+          <div class="ekskul-detail-card-meta">
+            <span class="ekskul-meta-chip">🤖 Pemrograman & AI</span>
+            <span class="ekskul-meta-chip chip-green">36 Anggota</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /ekskul-all-grid -->
+
+    <!-- No result message -->
+    <div id="noResult" style="display:none; text-align:center; padding:3rem 0; color:var(--muted);">
+      <div style="font-size:2.5rem; margin-bottom:.75rem;">🔍</div>
+      <p>Tidak ada ekskul di kategori ini yang ditampilkan saat ini.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="ekskul-detail-cta">
+  <div class="section-inner">
+    <h2>Siap Bergabung?</h2>
+    <p>Pendaftaran ekskul dibuka setiap awal tahun ajaran baru. Daftarkan dirimu sekarang melalui halaman PPDB atau langsung hubungi pembina ekskul pilihanmu.</p>
+    <div class="ekskul-detail-cta-btns">
+      <a href="ppdb.html" class="btn-cta-primary">📋 Daftar PPDB Sekarang</a>
+      <a href="fasilitas-ekskul.html" class="btn-cta-outline">← Kembali ke Fasilitas</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="section-inner">
+        <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr; gap: 2rem;">
+        <div>
+            <div class="footer-brand-name">SMA Nusantara Unggul</div>
+            <p class="footer-brand-sub">Jl. Pahlawan No. 88, Bandung, Jawa Barat 40135<br>Telp: (022) 4200-8800 · info@smanu.sch.id</p>
+            <p class="footer-brand-sub" style="margin-top:.75rem;">Terakreditasi A oleh BAN-S/M<br>NPSN: 200400088</p>
+        </div>
+        <div class="footer-col">
+            <h4>Menu Utama</h4>
+            <ul>
+            <li><a href="index.html">Beranda & Tentang Sekolah</a></li>
+            <li><a href="guru.html">Profil Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas & Ekstrakurikuler</a></li>
+            <li><a href="kurikulum.html">Sistem Kurikulum</a></li>
+            <li><a href="study-exchange.html">Study Exchange</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Sistem & Layanan</h4>
+            <ul>
+            <li><a href="ppdb.html">Pendaftaran PPDB</a></li>
+            <li><a href="data-akademik.html">Data Akademik (Admin)</a></li>
+            </ul>
+        </div>
+        </div>
+        <hr class="footer-divider"/>
+        <div class="footer-bottom">
+        <span>© 2026 SMA Nusantara Unggul. Seluruh hak dilindungi.</span>
+        <span>Dibuat oleh <span class="footer-bottom-accent">Kelompok 6 - Pengembangan Web Bisnis Digital 2024</span></span>
+        </div>
+    </div>
+</footer>
+<script>
+// Filter ekskul by category
+function filterEkskul(kategori, btn) {
+  document.querySelectorAll('.ekskul-filter-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const cards = document.querySelectorAll('.ekskul-detail-card');
+  let visible = 0;
+  cards.forEach(card => {
+    if (kategori === 'semua' || card.dataset.kategori === kategori) {
+      card.style.display = 'flex';
+      visible++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  document.getElementById('noResult').style.display = visible === 0 ? 'block' : 'none';
+}
+
+// Scroll to anchor if hash exists
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.style.boxShadow = '0 0 0 3px #1E3A8A55, 0 8px 32px rgba(0,0,0,.15)';
+        setTimeout(() => { target.style.boxShadow = ''; }, 2000);
+      }, 300);
+    }
+  }
+});
+</script>
+
+    <!-- COLOR THEME SWITCHER -->
+    <div class="color-switcher" id="themeSwitcher">
+        <span class="color-switcher-label">Tema</span>
+        <button class="theme-btn active" data-theme="default" title="Navy Klasik"></button>
+        <button class="theme-btn" data-theme="zamrud" title="Hijau Zamrud"></button>
+        <button class="theme-btn" data-theme="ungu" title="Ungu Royal"></button>
+        <button class="theme-btn" data-theme="garuda" title="Merah Garuda"></button>
+        <button class="theme-btn" data-theme="emas" title="Emas Matahari"></button>
+        <button class="theme-btn" data-theme="langit" title="Langit Biru"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="55%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="goldC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9F295"/>
+      <stop offset="40%" stop-color="#E0AA3E"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#bgC)"/>
+  <circle cx="1080" cy="500" r="220" fill="#ffffff" opacity="0.04"/>
+  <circle cx="100" cy="80" r="180" fill="#E0AA3E" opacity="0.06"/>
+
+  <!-- laptop -->
+  <g transform="translate(330,140)">
+    <rect x="0" y="0" width="540" height="330" rx="16" fill="#1f2937"/>
+    <rect x="16" y="16" width="508" height="298" rx="6" fill="#0b1220"/>
+    <!-- screen code lines -->
+    <g font-family="monospace" font-size="18" fill="#94a3b8">
+      <rect x="40" y="44" width="120" height="14" rx="4" fill="#E0AA3E" opacity="0.85"/>
+      <rect x="40" y="76" width="220" height="14" rx="4" fill="#60a5fa" opacity="0.7"/>
+      <rect x="70" y="108" width="180" height="14" rx="4" fill="#34d399" opacity="0.7"/>
+      <rect x="70" y="140" width="260" height="14" rx="4" fill="#94a3b8" opacity="0.5"/>
+      <rect x="40" y="172" width="90" height="14" rx="4" fill="#E0AA3E" opacity="0.85"/>
+      <rect x="40" y="204" width="300" height="14" rx="4" fill="#60a5fa" opacity="0.7"/>
+      <rect x="70" y="236" width="200" height="14" rx="4" fill="#34d399" opacity="0.7"/>
+      <rect x="40" y="268" width="150" height="14" rx="4" fill="#94a3b8" opacity="0.5"/>
+    </g>
+    <!-- keyboard base -->
+    <path d="M -30 330 L 570 330 L 600 400 L -60 400 Z" fill="#374151"/>
+    <rect x="200" y="370" width="140" height="14" rx="7" fill="#1f2937"/>
+  </g>
+
+  <!-- code brackets floating -->
+  <g font-family="monospace" font-weight="700" fill="url(#goldC)" opacity="0.85">
+    <text x="120" y="180" font-size="90">&lt;/&gt;</text>
+    <text x="1000" y="450" font-size="70">{ }</text>
+  </g>
+
+  <text x="600" y="80" font-family="'DM Serif Display', serif" font-size="40" fill="#ffffff" text-anchor="middle" opacity="0.92">Belajar Coding Bersama</text>
+</svg>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SMA Nusantara Unggul — Program Study Exchange</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400..600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ============================================================
+   STUDY EXCHANGE PAGE — page-specific styles
+   ============================================================ */
+.page-hero {
+    padding: 9rem 0 5rem;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--grad-mesh);
+    pointer-events: none;
+}
+.page-hero-accent {
+    position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: linear-gradient(to bottom, transparent, var(--amber) 30%, var(--amber) 70%, transparent);
+}
+.page-hero-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    position: relative; z-index: 1;
+}
+.page-hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--amber-light); color: var(--amber);
+    border: 1px solid rgba(200,137,42,0.25);
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+    font-family: var(--display-ui);
+}
+.page-hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--amber); flex-shrink: 0;
+}
+.page-hero h1 {
+    font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    line-height: 1.1; letter-spacing: -0.02em; color: var(--ink);
+    margin-bottom: 1rem;
+}
+.page-hero h1 em { font-style: italic; color: var(--navy); }
+.page-hero-desc {
+    font-size: 1.05rem; line-height: 1.75; color: var(--body-text);
+    margin-bottom: 2rem;
+}
+.page-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* Hero right panel */
+.hero-info-panel {
+    background: var(--grad-navy);
+    border-radius: var(--r-xl);
+    padding: 2rem;
+    color: #fff;
+    box-shadow: var(--shadow-lg);
+    position: relative; overflow: hidden;
+}
+.hero-info-panel::after {
+    content: ''; position: absolute; right: -30px; top: -30px;
+    width: 160px; height: 160px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+}
+.hero-info-panel::before {
+    content: ''; position: absolute; left: -40px; bottom: -50px;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,137,42,0.15), transparent 70%);
+}
+.hero-panel-label {
+    font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    opacity: 0.6; margin-bottom: 1rem; font-family: var(--display-ui);
+    position: relative; z-index: 1;
+}
+.hero-panel-title {
+    font-family: var(--serif); font-size: 1.4rem; line-height: 1.25;
+    margin-bottom: 1.5rem; position: relative; z-index: 1;
+}
+.hero-panel-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; position: relative; z-index: 1;
+}
+.hero-panel-stat {
+    background: rgba(255,255,255,0.08); border-radius: var(--r-md);
+    padding: 1rem; border: 1px solid rgba(255,255,255,0.1);
+}
+.hero-panel-stat-num {
+    font-family: var(--serif-alt); font-size: 1.8rem; font-weight: 600;
+    color: var(--amber); line-height: 1; margin-bottom: .25rem;
+}
+.hero-panel-stat-label { font-size: .75rem; opacity: 0.65; font-family: var(--display-ui); }
+
+/* ---- Negara Mitra ---- */
+.mitra-section { padding: 6rem 0; background: var(--off-white); }
+.mitra-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+.mitra-card {
+    background: var(--card-bg);
+    border-radius: var(--r-xl);
+    padding: 1.75rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform .22s, box-shadow .22s, border-color .2s;
+    cursor: default;
+}
+.mitra-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(30,58,95,0.2);
+}
+.mitra-flag {
+    font-size: 2.5rem; margin-bottom: 1rem; display: block;
+}
+.mitra-card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: .75rem;
+}
+.mitra-card-header h3 {
+    font-family: var(--display-ui); font-size: 1rem; font-weight: 600;
+    color: var(--ink);
+}
+.mitra-status {
+    font-size: .7rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    font-family: var(--display-ui);
+}
+.status-aktif { background: #DCFCE7; color: #166534; }
+.status-upcoming { background: var(--amber-light); color: var(--amber); }
+.mitra-school {
+    font-size: .85rem; color: var(--muted); margin-bottom: .5rem;
+}
+.mitra-detail {
+    font-size: .8rem; color: var(--body-text); line-height: 1.6; margin-bottom: 1rem;
+}
+.mitra-chips { display: flex; gap: .4rem; flex-wrap: wrap; }
+.mitra-chip {
+    background: var(--navy-light); color: var(--navy);
+    border-radius: 20px; padding: 2px 10px;
+    font-size: .72rem; font-family: var(--display-ui); font-weight: 500;
+}
+
+/* ---- Program Tracks ---- */
+.tracks-section { padding: 6rem 0; background: var(--white); }
+.tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+.track-card {
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform .22s, box-shadow .22s;
+}
+.track-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+.track-header {
+    padding: 1.75rem 1.75rem 1.25rem;
+    background: var(--grad-navy);
+    color: #fff; position: relative; overflow: hidden;
+}
+.track-header::after {
+    content: ''; position: absolute; right: -20px; top: -20px;
+    width: 100px; height: 100px; border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+}
+.track-icon { font-size: 2rem; margin-bottom: .75rem; position: relative; z-index: 1; }
+.track-duration {
+    font-size: .72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    opacity: 0.6; margin-bottom: .4rem; font-family: var(--display-ui);
+    position: relative; z-index: 1;
+}
+.track-header h3 {
+    font-family: var(--serif); font-size: 1.3rem; line-height: 1.2;
+    position: relative; z-index: 1;
+}
+.track-body {
+    padding: 1.5rem 1.75rem;
+    background: var(--card-bg);
+}
+.track-body p {
+    font-size: .875rem; line-height: 1.65; color: var(--body-text);
+    margin-bottom: 1.25rem;
+}
+.track-features { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.track-features li {
+    font-size: .82rem; color: var(--body-text); display: flex; align-items: flex-start; gap: .6rem;
+}
+.track-features li::before { content: '✓'; color: var(--navy); font-weight: 700; flex-shrink: 0; }
+
+/* ---- Persyaratan ---- */
+.syarat-section { padding: 6rem 0; background: var(--off-white); }
+.syarat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2.5rem;
+    align-items: start;
+}
+.syarat-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.syarat-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    background: var(--card-bg); border-radius: var(--r-lg);
+    padding: 1.25rem; border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+.syarat-no {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--grad-navy); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .75rem; font-weight: 700; font-family: var(--display-ui);
+    flex-shrink: 0;
+}
+.syarat-text h4 {
+    font-family: var(--display-ui); font-size: .9rem; font-weight: 600;
+    color: var(--ink); margin-bottom: .25rem;
+}
+.syarat-text p { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+.syarat-cta-box {
+    background: var(--grad-navy);
+    border-radius: var(--r-xl);
+    padding: 2.5rem;
+    color: #fff;
+    box-shadow: var(--shadow-lg);
+    position: sticky; top: 80px;
+}
+.syarat-cta-box h3 {
+    font-family: var(--serif); font-size: 1.5rem; margin-bottom: .75rem;
+}
+.syarat-cta-box p { font-size: .875rem; color: rgba(255,255,255,0.75); line-height: 1.65; margin-bottom: 1.5rem; }
+.cta-deadline {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--r-md); padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.cta-deadline-label { font-size: .72rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--display-ui); margin-bottom: .25rem; }
+.cta-deadline-date { font-family: var(--serif-alt); font-size: 1.25rem; font-weight: 600; color: var(--amber); }
+.btn-cta-white {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; background: #fff; color: var(--navy);
+    padding: 13px 24px; border-radius: var(--r-xl);
+    font-size: 14px; font-weight: 600; font-family: var(--display-ui);
+    text-decoration: none; border: none; cursor: pointer;
+    transition: filter .2s, transform .15s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+.btn-cta-white:hover { filter: brightness(0.96); transform: translateY(-1px); }
+
+/* ---- Testimoni ---- */
+.testimoni-section { padding: 6rem 0; background: var(--white); }
+.testimoni-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+.testimoni-card {
+    background: var(--card-bg);
+    border-radius: var(--r-xl);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform .22s, box-shadow .22s;
+}
+.testimoni-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+.testimoni-quote {
+    font-size: 2rem; line-height: 1; color: var(--amber);
+    font-family: var(--serif); margin-bottom: .75rem;
+}
+.testimoni-text {
+    font-size: .9rem; line-height: 1.7; color: var(--body-text);
+    margin-bottom: 1.5rem; font-style: italic;
+}
+.testimoni-author {
+    display: flex; align-items: center; gap: .75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+.testimoni-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--navy-light); display: flex; align-items: center;
+    justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+}
+.testimoni-name { font-family: var(--display-ui); font-size: .9rem; font-weight: 600; color: var(--ink); }
+.testimoni-info { font-size: .78rem; color: var(--muted); }
+
+/* ---- FAQ ---- */
+.faq-section { padding: 6rem 0; background: var(--off-white); }
+.faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: .75rem; }
+.faq-item {
+    background: var(--card-bg); border-radius: var(--r-lg);
+    border: 1px solid var(--border); overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+.faq-q {
+    width: 100%; background: none; border: none; cursor: pointer;
+    padding: 1.25rem 1.5rem; text-align: left;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    font-family: var(--display-ui); font-size: .95rem; font-weight: 600; color: var(--ink);
+    transition: color .2s;
+}
+.faq-q:hover { color: var(--navy); }
+.faq-q-icon { font-size: 1rem; flex-shrink: 0; transition: transform .25s; }
+.faq-item.open .faq-q-icon { transform: rotate(45deg); }
+.faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height .3s ease, padding .3s ease;
+    font-size: .875rem; line-height: 1.7; color: var(--body-text);
+    padding: 0 1.5rem;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.25rem; }
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+    .page-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .tracks-grid { grid-template-columns: 1fr; }
+    .testimoni-grid { grid-template-columns: 1fr 1fr; }
+    .syarat-grid { grid-template-columns: 1fr; }
+    .syarat-cta-box { position: static; }
+}
+@media (max-width: 600px) {
+    .testimoni-grid { grid-template-columns: 1fr; }
+    .hero-panel-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+<div class="nav-logo-mark" style="background: transparent; padding: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border: none;">
+    <svg width="100%" height="100%" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F9F295" />
+                <stop offset="35%" stop-color="#E0AA3E" />
+                <stop offset="70%" stop-color="#B8860B" />
+                <stop offset="100%" stop-color="#8A5A19" />
+            </linearGradient>
+            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1E3A8A" />
+                <stop offset="50%" stop-color="#0F172A" />
+                <stop offset="100%" stop-color="#020617" />
+            </linearGradient>
+        </defs>
+        <path d="M 125 15 C 195 15 220 45 220 110 C 220 185 125 235 125 235 C 125 235 30 185 30 110 C 30 45 55 15 125 15 Z" fill="url(#blueGradient)" stroke="url(#goldGradient)" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M 125 32 C 180 32 198 57 198 110 C 198 170 125 212 125 212 C 125 212 52 170 52 110 C 52 57 70 32 125 32 Z" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.8"/>
+        <polygon points="125,42 131,58 149,58 135,69 140,86 125,75 110,86 115,69 101,58 119,58" fill="url(#goldGradient)" />
+        <text x="125" y="152" font-family="'DM Serif Display', 'Times New Roman', serif" font-size="70" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" letter-spacing="3">NU</text>
+        <path d="M 125 175 Q 125 155 180 140 Q 180 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <path d="M 125 175 Q 125 155 70 140 Q 70 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <polygon points="125,200 130,208 125,216 120,208" fill="url(#goldGradient)" />
+    </svg>
+</div>
+            <div>
+                <div class="nav-logo-text">SMA Nusantara Unggul</div>
+                <div class="nav-logo-sub">Bandung, Jawa Barat</div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="guru.html">Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas</a></li>
+            <li><a href="lingkungan-sekolah.html">Lingkungan</a></li>
+            <li><a href="data-akademik.html">Akademik</a></li>
+            <li><a href="kurikulum.html">Kurikulum</a></li>
+            <li><a href="study-exchange.html">Exchange</a></li>
+            <li><a href="ppdb.html">PPDB</a></li>
+            </ul>
+        <button class="hamburger" id="hambBtn" aria-label="Buka menu" onclick="toggleMobileNav()">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Beranda</a>
+    <a href="index.html#tentang" onclick="toggleMobileNav()">Tentang</a>
+    <a href="guru.html" onclick="toggleMobileNav()">Guru</a>
+    <a href="fasilitas-ekskul.html" onclick="toggleMobileNav()">Fasilitas & Ekskul</a>
+    <a href="data-akademik.html" onclick="toggleMobileNav()">Data Akademik</a>
+    <a href="kurikulum.html" onclick="toggleMobileNav()">Kurikulum</a>
+    <a href="study-exchange.html" onclick="toggleMobileNav()" style="color:var(--navy); font-weight:600;">Study Exchange</a>
+    <a href="ppdb.html" onclick="toggleMobileNav()" style="color:var(--navy); font-weight:600;">Daftar PPDB</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero-accent"></div>
+    <div class="page-hero-inner">
+        <div class="reveal">
+            <div class="page-hero-eyebrow">Program Internasional · Kelas Dunia</div>
+            <h1>Program <em>Study Exchange</em> Internasional</h1>
+            <p class="page-hero-desc">Perluas cakrawala berpikir siswa dengan pengalaman belajar di sekolah mitra terkemuka di Asia dan Eropa. Membangun perspektif global, kemampuan adaptasi, dan jaringan internasional sejak dini.</p>
+            <div class="page-hero-actions">
+                <a href="https://bina-antarbudaya.or.id/afs-program/" target="_blank" rel="noopener" class="btn-primary">Daftar Program &rarr;</a>
+                <a href="#syarat" class="btn-secondary">Lihat Persyaratan</a>
+            </div>
+        </div>
+        <div class="reveal">
+            <div class="hero-info-panel">
+                <div class="hero-panel-label">📢 Pendaftaran Batch 2026 Dibuka</div>
+                <div class="hero-panel-title">Raih Pengalaman Belajar Internasional Terbaik Bersama SMA Nusantara Unggul</div>
+                <div class="hero-panel-stats">
+                    <div class="hero-panel-stat">
+                        <div class="hero-panel-stat-num">8</div>
+                        <div class="hero-panel-stat-label">Negara Mitra</div>
+                    </div>
+                    <div class="hero-panel-stat">
+                        <div class="hero-panel-stat-num">12</div>
+                        <div class="hero-panel-stat-label">Sekolah Partner</div>
+                    </div>
+                    <div class="hero-panel-stat">
+                        <div class="hero-panel-stat-num">240+</div>
+                        <div class="hero-panel-stat-label">Alumni Exchange</div>
+                    </div>
+                    <div class="hero-panel-stat">
+                        <div class="hero-panel-stat-num">95%</div>
+                        <div class="hero-panel-stat-label">Tingkat Kepuasan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NEGARA MITRA -->
+<section class="mitra-section">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Jaringan Global</div>
+            <h2 class="section-heading">Negara & Sekolah Mitra</h2>
+            <p class="section-sub">Kami telah membangun kemitraan resmi dengan sekolah-sekolah unggulan dari berbagai negara untuk program pertukaran pelajar berkualitas tinggi.</p>
+        </div>
+        <div class="mitra-grid">
+            <div class="mitra-card reveal">
+                <span class="mitra-flag">🇯🇵</span>
+                <div class="mitra-card-header">
+                    <h3>Jepang</h3>
+                    <span class="mitra-status status-aktif">Aktif</span>
+                </div>
+                <div class="mitra-school">Osaka Prefectural Ikeda High School</div>
+                <div class="mitra-detail">Program satu semester di Osaka dengan fokus pada sains & teknologi, bahasa Jepang, dan pertukaran budaya melalui kegiatan kokuritsu.</div>
+                <div class="mitra-chips">
+                    <span class="mitra-chip">4–6 Bulan</span>
+                    <span class="mitra-chip">Sains & Teknologi</span>
+                    <span class="mitra-chip">Bahasa Jepang</span>
+                </div>
+            </div>
+            <div class="mitra-card reveal">
+                <span class="mitra-flag">🇩🇪</span>
+                <div class="mitra-card-header">
+                    <h3>Jerman</h3>
+                    <span class="mitra-status status-aktif">Aktif</span>
+                </div>
+                <div class="mitra-school">Gymnasium am Moltkeplatz, Gelsenkirchen</div>
+                <div class="mitra-detail">Pertukaran pelajar berbasis STEM dengan kurikulum Eropa, kunjungan industri, dan pengalaman hidup bersama keluarga angkat Jerman.</div>
+                <div class="mitra-chips">
+                    <span class="mitra-chip">3 Bulan</span>
+                    <span class="mitra-chip">STEM</span>
+                    <span class="mitra-chip">Homestay</span>
+                </div>
+            </div>
+            <div class="mitra-card reveal">
+                <span class="mitra-flag">🇲🇾</span>
+                <div class="mitra-card-header">
+                    <h3>Malaysia</h3>
+                    <span class="mitra-status status-aktif">Aktif</span>
+                </div>
+                <div class="mitra-school">SMK Sultan Alam Shah, Putrajaya</div>
+                <div class="mitra-detail">Program short exchange 2 minggu yang terjangkau, berfokus pada kolaborasi proyek sosial, kewirausahaan, dan kepemimpinan remaja ASEAN.</div>
+                <div class="mitra-chips">
+                    <span class="mitra-chip">2 Minggu</span>
+                    <span class="mitra-chip">Leadership</span>
+                    <span class="mitra-chip">ASEAN</span>
+                </div>
+            </div>
+            <div class="mitra-card reveal">
+                <span class="mitra-flag">🇰🇷</span>
+                <div class="mitra-card-header">
+                    <h3>Korea Selatan</h3>
+                    <span class="mitra-status status-aktif">Aktif</span>
+                </div>
+                <div class="mitra-school">Hankuk Academy of Foreign Studies, Seoul</div>
+                <div class="mitra-detail">Pertukaran bahasa dan budaya di sekolah internasional terkemuka Seoul, dengan kegiatan olimpiade sains dan kunjungan laboratorium teknologi.</div>
+                <div class="mitra-chips">
+                    <span class="mitra-chip">1 Bulan</span>
+                    <span class="mitra-chip">Bahasa Korea</span>
+                    <span class="mitra-chip">Teknologi</span>
+                </div>
+            </div>
+            <div class="mitra-card reveal">
+                <span class="mitra-flag">🇦🇺</span>
+                <div class="mitra-card-header">
+                    <h3>Australia</h3>
+                    <span class="mitra-status status-aktif">Aktif</span>
+                </div>
+                <div class="mitra-school">Melbourne Grammar School, Victoria</div>
+                <div class="mitra-detail">Program intensif Bahasa Inggris akademis, riset lingkungan hidup, dan kunjungan universitas untuk persiapan studi lanjut ke perguruan tinggi internasional.</div>
+                <div class="mitra-chips">
+                    <span class="mitra-chip">6 Minggu</span>
+                    <span class="mitra-chip">Bahasa Inggris</span>
+                    <span class="mitra-chip">Riset</span>
+                </div>
+            </div>
+            <div class="mitra-card reveal">
+                <span class="mitra-flag">🇸🇬</span>
+                <div class="mitra-card-header">
+                    <h3>Singapura</h3>
+                    <span class="mitra-status status-aktif">Aktif</span>
+                </div>
+                <div class="mitra-school">Raffles Institution, Singapore</div>
+                <div class="mitra-detail">Program joint academy dengan salah satu sekolah terbaik Asia, mencakup kompetisi STEM, model PBB, dan program mentoring dari alumni universitas top dunia.</div>
+                <div class="mitra-chips">
+                    <span class="mitra-chip">3 Minggu</span>
+                    <span class="mitra-chip">STEM Competition</span>
+                    <span class="mitra-chip">Model UN</span>
+                </div>
+            </div>
+            <div class="mitra-card reveal">
+                <span class="mitra-flag">🇳🇱</span>
+                <div class="mitra-card-header">
+                    <h3>Belanda</h3>
+                    <span class="mitra-status status-upcoming">Segera</span>
+                </div>
+                <div class="mitra-school">Gymnasium Felisenum, Velsen-Zuid</div>
+                <div class="mitra-detail">Program baru yang akan dibuka 2027 — pertukaran pelajar seni, desain, dan inovasi sosial di kota pelabuhan Belanda yang kaya budaya.</div>
+                <div class="mitra-chips">
+                    <span class="mitra-chip">1 Semester</span>
+                    <span class="mitra-chip">Seni & Desain</span>
+                    <span class="mitra-chip">Segera Buka</span>
+                </div>
+            </div>
+            <div class="mitra-card reveal">
+                <span class="mitra-flag">🇹🇭</span>
+                <div class="mitra-card-header">
+                    <h3>Thailand</h3>
+                    <span class="mitra-status status-upcoming">Segera</span>
+                </div>
+                <div class="mitra-school">Chulalongkorn University Demonstration School</div>
+                <div class="mitra-detail">Kolaborasi ASEAN dalam bidang pertanian berkelanjutan, keamanan pangan, dan inovasi teknologi hijau. Pembukaan program dijadwalkan 2027.</div>
+                <div class="mitra-chips">
+                    <span class="mitra-chip">1 Bulan</span>
+                    <span class="mitra-chip">Green Tech</span>
+                    <span class="mitra-chip">Segera Buka</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROGRAM TRACKS -->
+<section class="tracks-section">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Pilihan Program</div>
+            <h2 class="section-heading">Program Exchange yang Tersedia</h2>
+            <p class="section-sub">Tiga jalur program yang dapat disesuaikan dengan tujuan akademis, anggaran, dan jadwal siswa.</p>
+        </div>
+        <div class="tracks-grid">
+            <div class="track-card reveal">
+                <div class="track-header">
+                    <div class="track-icon">🌏</div>
+                    <div class="track-duration">2–4 Minggu</div>
+                    <h3>Short Exchange Program</h3>
+                </div>
+                <div class="track-body">
+                    <p>Program pertukaran singkat yang ideal untuk siswa kelas X dan XI yang ingin merasakan pengalaman internasional pertama kali tanpa meninggalkan kelas terlalu lama.</p>
+                    <ul class="track-features">
+                        <li>Kunjungan sekolah & kelas bersama</li>
+                        <li>Workshop budaya & bahasa lokal</li>
+                        <li>Homestay atau asrama sekolah mitra</li>
+                        <li>Proyek kolaborasi lintas budaya</li>
+                        <li>Sertifikat partisipasi internasional</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="track-card reveal">
+                <div class="track-header">
+                    <div class="track-icon">🎓</div>
+                    <div class="track-duration">1–3 Bulan</div>
+                    <h3>Academic Exchange Program</h3>
+                </div>
+                <div class="track-body">
+                    <p>Program pertukaran akademis menengah untuk siswa kelas XI pilihan. Siswa mengikuti kurikulum sekolah mitra secara penuh dan nilai yang diperoleh diakui oleh SMA Nusantara Unggul.</p>
+                    <ul class="track-features">
+                        <li>Belajar di kelas reguler sekolah mitra</li>
+                        <li>Nilai akademis diakui & dikonversi</li>
+                        <li>Bimbingan dari buddy siswa lokal</li>
+                        <li>Akses laboratorium & fasilitas mitra</li>
+                        <li>Laporan penelitian akhir program</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="track-card reveal">
+                <div class="track-header">
+                    <div class="track-icon">🏅</div>
+                    <div class="track-duration">4–6 Bulan</div>
+                    <h3>Semester Exchange Program</h3>
+                </div>
+                <div class="track-body">
+                    <p>Program satu semester penuh khusus siswa kelas XI berprestasi dengan beasiswa parsial. Pengalaman paling imersif yang mencakup akademis, budaya, dan pengembangan diri komprehensif.</p>
+                    <ul class="track-features">
+                        <li>Satu semester penuh di negara mitra</li>
+                        <li>Beasiswa parsial hingga 40%</li>
+                        <li>Transfer kredit akademis resmi</li>
+                        <li>Mentoring persiapan universitas internasional</li>
+                        <li>Jaringan alumni global seumur hidup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PERSYARATAN -->
+<section class="syarat-section" id="syarat">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Cara Mendaftar</div>
+            <h2 class="section-heading">Persyaratan & Pendaftaran</h2>
+            <p class="section-sub">Proses seleksi yang transparan dan kompetitif untuk memastikan kesiapan dan komitmen setiap peserta program exchange.</p>
+        </div>
+        <div class="syarat-grid">
+            <ul class="syarat-list reveal">
+                <li class="syarat-item">
+                    <div class="syarat-no">1</div>
+                    <div class="syarat-text">
+                        <h4>Siswa Aktif Kelas X atau XI</h4>
+                        <p>Program terbuka untuk siswa kelas X (Short Exchange) dan kelas XI (Academic & Semester Exchange) yang masih aktif terdaftar di SMA Nusantara Unggul.</p>
+                    </div>
+                </li>
+                <li class="syarat-item">
+                    <div class="syarat-no">2</div>
+                    <div class="syarat-text">
+                        <h4>Nilai Rapor Rata-Rata ≥ 80</h4>
+                        <p>Nilai rata-rata rapor dua semester terakhir minimal 80 untuk semua mata pelajaran wajib, dengan nilai Bahasa Inggris minimal 85.</p>
+                    </div>
+                </li>
+                <li class="syarat-item">
+                    <div class="syarat-no">3</div>
+                    <div class="syarat-text">
+                        <h4>Kemampuan Bahasa Inggris</h4>
+                        <p>Lulus tes wawancara Bahasa Inggris (setara CEFR B1 ke atas). Untuk program Jepang & Korea, nilai tambah jika memiliki kemampuan bahasa lokal dasar.</p>
+                    </div>
+                </li>
+                <li class="syarat-item">
+                    <div class="syarat-no">4</div>
+                    <div class="syarat-text">
+                        <h4>Surat Rekomendasi Guru</h4>
+                        <p>Dua surat rekomendasi dari guru wali kelas dan satu guru mata pelajaran yang menilai kemampuan adaptasi, motivasi, dan rekam jejak akademis siswa.</p>
+                    </div>
+                </li>
+                <li class="syarat-item">
+                    <div class="syarat-no">5</div>
+                    <div class="syarat-text">
+                        <h4>Persetujuan & Dukungan Orang Tua</h4>
+                        <p>Surat persetujuan orang tua/wali yang bermaterai, termasuk jaminan pembiayaan dan komitmen mendukung proses persiapan serta keberangkatan siswa.</p>
+                    </div>
+                </li>
+                <li class="syarat-item">
+                    <div class="syarat-no">6</div>
+                    <div class="syarat-text">
+                        <h4>Esai Motivasi</h4>
+                        <p>Esai motivasi 500–700 kata dalam Bahasa Indonesia dan Bahasa Inggris yang menjelaskan alasan mendaftar, rencana kontribusi, dan tujuan jangka panjang.</p>
+                    </div>
+                </li>
+            </ul>
+            <div class="reveal">
+                <div class="syarat-cta-box">
+                    <h3>Daftar Program Exchange</h3>
+                    <p>Jangan lewatkan kesempatan emas ini. Tempat sangat terbatas — hanya 15–20 siswa per batch untuk menjamin kualitas program.</p>
+                    <div class="cta-deadline">
+                        <div class="cta-deadline-label">Batas Pendaftaran Batch 2026</div>
+                        <div class="cta-deadline-date">31 Agustus 2026</div>
+                    </div>
+                    <a href="https://bina-antarbudaya.or.id/afs-program/" target="_blank" rel="noopener" class="btn-cta-white">Daftar Sekarang &rarr;</a>
+                    <p style="margin-top: 1rem; margin-bottom: 0; font-size: .78rem; opacity: 0.55; text-align: center;">
+                        Butuh info lebih lanjut? Hubungi tim Exchange kami di <strong>exchange@smanu.sch.id</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONI -->
+<section class="testimoni-section">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Cerita Alumni</div>
+            <h2 class="section-heading">Pengalaman Para Alumni</h2>
+            <p class="section-sub">Dengar langsung dari siswa yang telah merasakan manfaat transformatif program Study Exchange kami.</p>
+        </div>
+        <div class="testimoni-grid">
+            <div class="testimoni-card reveal">
+                <div class="testimoni-quote">"</div>
+                <div class="testimoni-text">Setengah semester di Osaka benar-benar mengubah cara pandang saya. Bukan hanya soal bahasa Jepang yang meningkat pesat, tapi bagaimana saya melihat dunia dengan lebih terbuka. Pengalaman ini yang mendorong saya diterima di Universitas Waseda.</div>
+                <div class="testimoni-author">
+                    <div class="testimoni-avatar">👨‍🎓</div>
+                    <div>
+                        <div class="testimoni-name">Rizky Aditya P.</div>
+                        <div class="testimoni-info">Alumni 2024 · Exchange ke Jepang · Kini mahasiswa Waseda University</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimoni-card reveal">
+                <div class="testimoni-quote">"</div>
+                <div class="testimoni-text">Program di Melbourne Grammar School membuka mata saya tentang sistem pendidikan dunia. Saya belajar riset sains serius untuk pertama kalinya. Kepercayaan diri saya naik berlipat ganda setelah kembali ke sini.</div>
+                <div class="testimoni-author">
+                    <div class="testimoni-avatar">👩‍🎓</div>
+                    <div>
+                        <div class="testimoni-name">Nadira Salsabila</div>
+                        <div class="testimoni-info">Alumni 2024 · Exchange ke Australia · Kini di ITB Jurusan Biologi</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimoni-card reveal">
+                <div class="testimoni-quote">"</div>
+                <div class="testimoni-text">Saya sempat ragu karena tidak terlalu fasih Bahasa Inggris. Tapi justru di sinilah saya tumbuh paling cepat. Tim exchange sekolah sangat suportif dari persiapan hingga kepulangan. Program terbaik yang pernah saya ikuti.</div>
+                <div class="testimoni-author">
+                    <div class="testimoni-avatar">👨‍🎓</div>
+                    <div>
+                        <div class="testimoni-name">Fajar Ramdhani</div>
+                        <div class="testimoni-info">Alumni 2023 · Exchange ke Singapura · Kini kuliah di NTU Singapore</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+    <div class="section-inner">
+        <div class="reveal">
+            <div class="section-label">Pertanyaan Umum</div>
+            <h2 class="section-heading">FAQ</h2>
+            <p class="section-sub">Jawaban atas pertanyaan yang paling sering kami terima dari siswa dan orang tua.</p>
+        </div>
+        <div class="faq-list reveal">
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Apakah nilai akademis selama exchange tetap dihitung untuk rapor di sini?
+                    <span class="faq-q-icon">+</span>
+                </button>
+                <div class="faq-a">Ya, untuk program Academic Exchange dan Semester Exchange, nilai yang diperoleh di sekolah mitra akan dikonversi dan diakui oleh SMA Nusantara Unggul sesuai panduan konversi akademis yang telah disepakati bersama. Siswa tetap mendapatkan rapor dengan nilai yang sah.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Berapa biaya yang harus disiapkan untuk program ini?
+                    <span class="faq-q-icon">+</span>
+                </button>
+                <div class="faq-a">Biaya bervariasi tergantung program dan negara tujuan. Short Exchange berkisar Rp 15–30 juta, Academic Exchange Rp 35–60 juta, dan Semester Exchange Rp 60–120 juta (sudah termasuk tiket PP, akomodasi, dan biaya program). Beasiswa parsial tersedia untuk Semester Exchange bagi siswa berprestasi.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Apakah siswa kelas XII bisa mendaftar?
+                    <span class="faq-q-icon">+</span>
+                </button>
+                <div class="faq-a">Program utama exchange ditujukan untuk siswa kelas X dan XI karena pertimbangan kesinambungan akademis. Namun, siswa kelas XII dapat mengikuti program Short Exchange (2 minggu) selama tidak berbenturan dengan jadwal ujian nasional dan persiapan SNBT/SNBP.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Bagaimana dengan keamanan dan pengawasan siswa di luar negeri?
+                    <span class="faq-q-icon">+</span>
+                </button>
+                <div class="faq-a">Setiap peserta exchange didampingi oleh koordinator program dari sekolah mitra dan terhubung langsung dengan tim Exchange SMA Nusantara Unggul. Orang tua mendapatkan laporan perkembangan rutin (mingguan/dua mingguan). Semua peserta juga dilindungi oleh asuransi perjalanan internasional komprehensif.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q" onclick="toggleFaq(this)">
+                    Kapan proses seleksi dilakukan dan kapan pengumuman hasilnya?
+                    <span class="faq-q-icon">+</span>
+                </button>
+                <div class="faq-a">Pendaftaran dibuka setiap semester. Untuk batch 2026/2027: pendaftaran 1 Juli–31 Agustus 2026, seleksi dokumen September, wawancara Oktober, dan pengumuman akhir November 2026. Keberangkatan dijadwalkan Januari–Februari 2027.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="section-inner">
+        <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr; gap: 2rem;">
+            <div>
+                <div class="footer-brand-name">SMA Nusantara Unggul</div>
+                <p class="footer-brand-sub">Jl. Pahlawan No. 88, Bandung, Jawa Barat 40135<br>Telp: (022) 4200-8800 · info@smanu.sch.id</p>
+                <p class="footer-brand-sub" style="margin-top:.75rem;">Terakreditasi A oleh BAN-S/M<br>NPSN: 200400088</p>
+            </div>
+            <div class="footer-col">
+                <h4>Menu Utama</h4>
+                <ul>
+                    <li><a href="index.html">Beranda & Tentang Sekolah</a></li>
+                    <li><a href="guru.html">Profil Guru</a></li>
+                    <li><a href="fasilitas-ekskul.html">Fasilitas & Ekstrakurikuler</a></li>
+                    <li><a href="kurikulum.html">Sistem Kurikulum</a></li>
+                    <li><a href="study-exchange.html">Study Exchange</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Sistem & Layanan</h4>
+                <ul>
+                    <li><a href="ppdb.html">Pendaftaran PPDB</a></li>
+                    <li><a href="data-akademik.html">Data Akademik (Admin)</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer-divider"/>
+        <div class="footer-bottom">
+            <span>© 2026 SMA Nusantara Unggul. Seluruh hak dilindungi.</span>
+            <span>Dibuat oleh <span class="footer-bottom-accent">Kelompok 6 - Pengembangan Web Bisnis Digital 2024</span></span>
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+}
+</script>
+
+    <!-- COLOR THEME SWITCHER -->
+    <div class="color-switcher" id="themeSwitcher">
+        <span class="color-switcher-label">Tema</span>
+        <button class="theme-btn active" data-theme="default" title="Navy Klasik"></button>
+        <button class="theme-btn" data-theme="zamrud" title="Hijau Zamrud"></button>
+        <button class="theme-btn" data-theme="ungu" title="Ungu Royal"></button>
+        <button class="theme-btn" data-theme="garuda" title="Merah Garuda"></button>
+        <button class="theme-btn" data-theme="emas" title="Emas Matahari"></button>
+        <button class="theme-btn" data-theme="langit" title="Langit Biru"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

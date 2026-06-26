@@ -1,0 +1,331 @@
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SMA Nusantara Unggul — Portal Resmi</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400..600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+<div class="nav-logo-mark" style="background: transparent; padding: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border: none;">
+    <svg width="100%" height="100%" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Gradasi Emas Mewah -->
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F9F295" />
+                <stop offset="35%" stop-color="#E0AA3E" />
+                <stop offset="70%" stop-color="#B8860B" />
+                <stop offset="100%" stop-color="#8A5A19" />
+            </linearGradient>
+            <!-- Gradasi Biru Dalam -->
+            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#1E3A8A" />
+                <stop offset="50%" stop-color="#0F172A" />
+                <stop offset="100%" stop-color="#020617" />
+            </linearGradient>
+        </defs>
+
+        <!-- Perisai Utama (Royal Blue & Gold) -->
+        <path d="M 125 15 C 195 15 220 45 220 110 C 220 185 125 235 125 235 C 125 235 30 185 30 110 C 30 45 55 15 125 15 Z" fill="url(#blueGradient)" stroke="url(#goldGradient)" stroke-width="8" stroke-linejoin="round"/>
+
+        <!-- Garis List Perisai Dalam -->
+        <path d="M 125 32 C 180 32 198 57 198 110 C 198 170 125 212 125 212 C 125 212 52 170 52 110 C 52 57 70 32 125 32 Z" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.8"/>
+
+        <!-- Bintang Puncak (Keunggulan & Spiritual) -->
+        <polygon points="125,42 131,58 149,58 135,69 140,86 125,75 110,86 115,69 101,58 119,58" fill="url(#goldGradient)" />
+
+        <!-- Monogram NU Eksklusif -->
+        <text x="125" y="152" font-family="'DM Serif Display', 'Times New Roman', serif" font-size="70" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" letter-spacing="3">NU</text>
+
+        <!-- Sayap/Buku Terbuka (Pondasi Ilmu) -->
+        <path d="M 125 175 Q 125 155 180 140 Q 180 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        <path d="M 125 175 Q 125 155 70 140 Q 70 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+        
+        <!-- Berlian Kecil di Bawah -->
+        <polygon points="125,200 130,208 125,216 120,208" fill="url(#goldGradient)" />
+    </svg>
+</div>            <div>
+                <div class="nav-logo-text">SMA Nusantara Unggul</div>
+                <div class="nav-logo-sub">Bandung, Jawa Barat</div>
+            </div>
+            </a>
+            <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="guru.html">Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas</a></li>
+            <li><a href="lingkungan-sekolah.html">Lingkungan</a></li>
+            <li><a href="data-akademik.html">Akademik</a></li>
+            <li><a href="kurikulum.html">Kurikulum</a></li>
+            <li><a href="study-exchange.html">Exchange</a></li>
+            <li><a href="ppdb.html">PPDB</a></li>
+            </ul>
+            <button class="hamburger" id="hambBtn" aria-label="Buka menu" onclick="toggleMobileNav()">
+            <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" onclick="toggleMobileNav()">Beranda</a>
+        <a href="index.html#tentang" onclick="toggleMobileNav()">Tentang</a>
+        <a href="guru.html" onclick="toggleMobileNav()">Guru</a>
+        <a href="fasilitas-ekskul.html" onclick="toggleMobileNav()">Fasilitas & Ekskul</a>
+        <a href="data-akademik.html" onclick="toggleMobileNav()">Data Akademik</a>
+        <a href="ppdb.html" onclick="toggleMobileNav()" style="color:var(--navy); font-weight:600;">
+            Daftar PPDB
+        </a>
+    </div>
+
+
+<!-- HERO -->
+<section class="hero" id="beranda">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-accent-line"></div>
+    <div class="hero-inner">
+        <div class="hero-left">
+        <div class="hero-eyebrow">Sekolah Unggul Nasional • Akreditasi A</div>
+        <h1>Membentuk <em>Generasi</em> Pemimpin Masa Depan</h1>
+        <p class="hero-desc">SMA Nusantara Unggul hadir dengan kurikulum berbasis proyek, tenaga pengajar berpengalaman, dan ekosistem belajar terbaik di Jawa Barat. Tempat di mana keunggulan menjadi kebiasaan.</p>
+        <div class="hero-actions">
+            <a href="ppdb.html#form-ppdb" class="btn-primary">
+    Daftar Sekarang &rarr;
+</a>
+            <a href="#tentang" class="btn-secondary">Pelajari Lebih Lanjut</a>
+        </div>
+        <div class="hero-stats">
+            <div>
+            <span class="hero-stat-num">98%</span>
+            <span class="hero-stat-label">Kelulusan PTN</span>
+            </div>
+            <div>
+            <span class="hero-stat-num">32+</span>
+            <span class="hero-stat-label">Prestasi Nasional</span>
+            </div>
+            <div>
+            <span class="hero-stat-num">24</span>
+            <span class="hero-stat-label">Program Ekskul</span>
+            </div>
+        </div>
+        </div>
+        <div class="hero-right">
+        <a href="ppdb.html" class="hero-card-link">
+    <div class="hero-card-main">
+        <div class="hero-card-main-tag">📢 Pengumuman Terbaru</div>
+        <div class="hero-card-main-title">
+            Penerimaan Peserta Didik Baru 2025/2026 Resmi Dibuka
+        </div>
+        <div class="hero-card-main-date">
+            Pendaftaran: 1 Juli – 31 Agustus 2025
+        </div>
+    </div>
+</a>
+        <div class="hero-card-row">
+            <div class="hero-mini-card">
+            <div class="hero-mini-card-icon">🏆</div>
+            <div class="hero-mini-card-num">47</div>
+            <div class="hero-mini-card-label">Medali Olimpiade</div>
+            </div>
+            <div class="hero-mini-card">
+            <div class="hero-mini-card-icon">📚</div>
+            <div class="hero-mini-card-num">1.240</div>
+            <div class="hero-mini-card-label">Siswa Aktif</div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-bar" aria-label="Pengumuman berjalan">
+    <div class="ticker-inner" id="ticker">
+        <span class="ticker-item">📌 PPDB 2025/2026 dibuka 1 Juli – 31 Agustus 2025</span>
+        <span class="ticker-item ticker-sep">•</span>
+        <span class="ticker-item">🏆 Juara 1 Olimpiade Matematika Tingkat Nasional 2025</span>
+        <span class="ticker-item ticker-sep">•</span>
+        <span class="ticker-item">📅 Ujian Akhir Semester Genap: 16–20 Juni 2025</span>
+        <span class="ticker-item ticker-sep">•</span>
+        <span class="ticker-item">🎓 Wisuda Angkatan 2025 akan diselenggarakan 5 Juli 2025</span>
+        <span class="ticker-item ticker-sep">•</span>
+        <span class="ticker-item">📌 PPDB 2025/2026 dibuka 1 Juli – 31 Agustus 2025</span>
+        <span class="ticker-item ticker-sep">•</span>
+        <span class="ticker-item">🏆 Juara 1 Olimpiade Matematika Tingkat Nasional 2025</span>
+        <span class="ticker-item ticker-sep">•</span>
+        <span class="ticker-item">📅 Ujian Akhir Semester Genap: 16–20 Juni 2025</span>
+        <span class="ticker-item ticker-sep">•</span>
+        <span class="ticker-item">🎓 Wisuda Angkatan 2025 akan diselenggarakan 5 Juli 2025</span>
+        <span class="ticker-item ticker-sep">•</span>
+    </div>
+</div>
+
+<!-- TENTANG / NEWS -->
+<section id="tentang">
+    <div class="section-inner">
+        <div class="reveal">
+        <div class="section-label">Berita & Pengumuman</div>
+        <h2 class="section-heading">Kabar Terkini dari Sekolah Unggul Nusantara</h2>
+        <p class="section-sub">Ikuti perkembangan terbaru, prestasi, dan kegiatan Nusantara Unggul.</p>
+        </div>
+        <div class="news-grid reveal">
+        <a href="berita-prestasi-ieom.html"
+            class="news-card-featured-link">
+
+            <div class="news-card-featured">
+                <div class="news-card-img">
+                    <img src="images/Award.jpg" alt="IEOM Awardee">
+                    <span class="news-badge">Prestasi</span>
+                </div>
+
+                <div class="news-card-body">
+                    <h3>Principia D Haniefah Gold Medal pada IEOM High School STEM Competition Award Singapore</h3>
+                    <p>Salah satu siswi SMAN 3 Bandung...</p>
+
+                    <div class="news-card-meta">
+                        <span>📅 18-20 Februari 2025</span>
+                        <span>·</span>
+                        <span>Ekskul & Prestasi</span>
+                    </div>
+                </div>
+            </div>
+
+        </a>
+        <div class="news-list">
+
+    <a href="berita-jadwal-semester.html" class="news-link">
+        <div class="news-list-item">
+            <div class="news-list-date">
+                <span class="news-list-date-day">20</span>
+                <span class="news-list-date-mon">Jun</span>
+            </div>
+            <div>
+                <div class="news-list-title">Jadwal Semester Ganjil 2025/2026</div>
+                <div class="news-list-cat">Akademik · Pengumuman Resmi</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="berita-ekskul-coding-club.html" class="news-link">
+        <div class="news-list-item">
+            <div class="news-list-date">
+                <span class="news-list-date-day">15</span>
+                <span class="news-list-date-mon">Jun</span>
+            </div>
+            <div>
+                <div class="news-list-title">Pembukaan Pendaftaran Ekskul Baru: Coding Club</div>
+                <div class="news-list-cat">Ekstrakulikuler · Kegiatan Siswa</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="berita-pelatihan-guru-kurikulum-merdeka.html" class="news-link">
+        <div class="news-list-item">
+            <div class="news-list-date">
+                <span class="news-list-date-day">10</span>
+                <span class="news-list-date-mon">Jun</span>
+            </div>
+            <div>
+                <div class="news-list-title">Pelatihan Guru: Implementasi Kurikulum Merdeka</div>
+                <div class="news-list-cat">Pengembangan SDM</div>
+            </div>
+        </div>
+    </a>
+
+    <a href="berita-beasiswa-prestasi-2025.html" class="news-link">
+        <div class="news-list-item">
+            <div class="news-list-date">
+                <span class="news-list-date-day">05</span>
+                <span class="news-list-date-mon">Jun</span>
+            </div>
+            <div>
+                <div class="news-list-title">Peluncuran Beasiswa Prestasi Siswa 2025</div>
+                <div class="news-list-cat">Beasiswa · Kesempatan</div>
+            </div>
+        </div>
+    </a>
+
+</div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section" style="padding: 4rem 0;">
+    <div class="section-inner">
+        <div class="stats-grid">
+        <div class="reveal">
+            <div class="stats-num">1.240</div>
+            <div class="stats-label">Siswa Aktif</div>
+        </div>
+        <div class="reveal">
+            <div class="stats-num">78</div>
+            <div class="stats-label">Tenaga Pengajar</div>
+        </div>
+        <div class="reveal">
+            <div class="stats-num">98%</div>
+            <div class="stats-label">Kelulusan PTN</div>
+        </div>
+        <div class="reveal">
+            <div class="stats-num">32+</div>
+            <div class="stats-label">Prestasi Nasional</div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="section-inner">
+        <div class="footer-grid" style="grid-template-columns: 2fr 1fr 1fr; gap: 2rem;">
+        <div>
+            <div class="footer-brand-name">SMA Nusantara Unggul</div>
+            <p class="footer-brand-sub">Jl. Pahlawan No. 88, Bandung, Jawa Barat 40135<br>Telp: (022) 4200-8800 · info@smanu.sch.id</p>
+            <p class="footer-brand-sub" style="margin-top:.75rem;">Terakreditasi A oleh BAN-S/M<br>NPSN: 200400088</p>
+        </div>
+        <div class="footer-col">
+            <h4>Menu Utama</h4>
+            <ul>
+            <li><a href="index.html">Beranda & Tentang Sekolah</a></li>
+            <li><a href="guru.html">Profil Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas & Ekstrakurikuler</a></li>
+            <li><a href="kurikulum.html">Sistem Kurikulum</a></li>
+            <li><a href="study-exchange.html">Study Exchange</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Sistem & Layanan</h4>
+            <ul>
+            <li><a href="ppdb.html">Pendaftaran PPDB</a></li>
+            <li><a href="data-akademik.html">Data Akademik (Admin)</a></li>
+            </ul>
+        </div>
+        </div>
+        <hr class="footer-divider"/>
+        <div class="footer-bottom">
+        <span>© 2026 SMA Nusantara Unggul. Seluruh hak dilindungi.</span>
+        <span>Dibuat oleh <span class="footer-bottom-accent">Kelompok 6 - Pengembangan Web Bisnis Digital 2024</span></span>
+        </div>
+    </div>
+</footer>
+
+    <!-- COLOR THEME SWITCHER -->
+    <div class="color-switcher" id="themeSwitcher">
+        <span class="color-switcher-label">Tema</span>
+        <button class="theme-btn active" data-theme="default" title="Navy Klasik"></button>
+        <button class="theme-btn" data-theme="zamrud" title="Hijau Zamrud"></button>
+        <button class="theme-btn" data-theme="ungu" title="Ungu Royal"></button>
+        <button class="theme-btn" data-theme="garuda" title="Merah Garuda"></button>
+        <button class="theme-btn" data-theme="emas" title="Emas Matahari"></button>
+        <button class="theme-btn" data-theme="langit" title="Langit Biru"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

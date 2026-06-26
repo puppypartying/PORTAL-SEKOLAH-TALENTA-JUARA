@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lingkungan Sekolah — SMA Nusantara Unggul</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,400..600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ──────────── NAV ──────────── -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <div class="nav-logo-mark" style="background:transparent;padding:0;width:52px;height:52px;display:flex;align-items:center;justify-content:center;border:none;">
+                <svg width="100%" height="100%" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#F9F295"/>
+                            <stop offset="35%" stop-color="#E0AA3E"/>
+                            <stop offset="70%" stop-color="#B8860B"/>
+                            <stop offset="100%" stop-color="#8A5A19"/>
+                        </linearGradient>
+                        <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#1E3A8A"/>
+                            <stop offset="50%" stop-color="#0F172A"/>
+                            <stop offset="100%" stop-color="#020617"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 125 15 C 195 15 220 45 220 110 C 220 185 125 235 125 235 C 125 235 30 185 30 110 C 30 45 55 15 125 15 Z" fill="url(#blueGradient)" stroke="url(#goldGradient)" stroke-width="8" stroke-linejoin="round"/>
+                    <path d="M 125 32 C 180 32 198 57 198 110 C 198 170 125 212 125 212 C 125 212 52 170 52 110 C 52 57 70 32 125 32 Z" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.8"/>
+                    <polygon points="125,42 131,58 149,58 135,69 140,86 125,75 110,86 115,69 101,58 119,58" fill="url(#goldGradient)"/>
+                    <text x="125" y="152" font-family="'DM Serif Display','Times New Roman',serif" font-size="70" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle" letter-spacing="3">NU</text>
+                    <path d="M 125 175 Q 125 155 180 140 Q 180 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+                    <path d="M 125 175 Q 125 155 70 140 Q 70 155 125 195 Z" fill="url(#goldGradient)" opacity="0.85"/>
+                    <polygon points="125,200 130,208 125,216 120,208" fill="url(#goldGradient)"/>
+                </svg>
+            </div>
+            <div>
+                <div class="nav-logo-text">SMA Nusantara Unggul</div>
+                <div class="nav-logo-sub">Bandung, Jawa Barat</div>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="guru.html">Guru</a></li>
+            <li><a href="fasilitas-ekskul.html">Fasilitas</a></li>
+            <li><a href="lingkungan-sekolah.html">Lingkungan</a></li>
+            <li><a href="data-akademik.html">Akademik</a></li>
+            <li><a href="kurikulum.html">Kurikulum</a></li>
+            <li><a href="study-exchange.html">Exchange</a></li>
+            <li><a href="ppdb.html">PPDB</a></li>
+            </ul>
+        <button class="hamburger" id="hambBtn" aria-label="Buka menu" onclick="toggleMobileNav()">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Beranda</a>
+    <a href="guru.html" onclick="toggleMobileNav()">Guru</a>
+    <a href="fasilitas-ekskul.html" onclick="toggleMobileNav()">Fasilitas</a>
+    <a href="lingkungan-sekolah.html" onclick="toggleMobileNav()">Lingkungan Sekolah</a>
+    <a href="data-akademik.html" onclick="toggleMobileNav()">Data Akademik</a>
+    <a href="ppdb.html" onclick="toggleMobileNav()" style="color:var(--navy);font-weight:600;">Daftar PPDB</a>
+</div>
+
+<!-- ──────────── HERO ──────────── -->
+<section class="lingk-hero">
+    <div class="lingk-hero-inner">
+        <div class="lingk-hero-badge">🌿 Sekolah Berbasis Lingkungan &amp; Komunitas</div>
+        <h1>Sekolah yang Hidup<br>di Tengah Masyarakat</h1>
+        <p>SMA Nusantara Unggul percaya bahwa pendidikan sejati tumbuh dari interaksi nyata antara sekolah, keluarga, dan komunitas. Program kami dirancang untuk melahirkan generasi yang berempati, peduli, dan siap berkontribusi.</p>
+        <div class="lingk-stats">
+            <div class="lingk-stat">
+                <span class="lingk-stat-num">48+</span>
+                <span class="lingk-stat-lbl">Kegiatan Sosial/Tahun</span>
+            </div>
+            <div class="lingk-stat">
+                <span class="lingk-stat-num">2.500+</span>
+                <span class="lingk-stat-lbl">Warga Terbantu</span>
+            </div>
+            <div class="lingk-stat">
+                <span class="lingk-stat-num">15</span>
+                <span class="lingk-stat-lbl">Mitra Komunitas</span>
+            </div>
+            <div class="lingk-stat">
+                <span class="lingk-stat-num">100%</span>
+                <span class="lingk-stat-lbl">Partisipasi Siswa</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── BAKTI SOSIAL HARI GURU ──────────── -->
+<section class="lingk-section" id="baksos-hari-guru">
+    <div class="lingk-container">
+        <div class="baksos-feature">
+            <div class="baksos-visual" style="background:linear-gradient(135deg,#1E3A5F,#C8892A);">
+                🎓
+                <div class="baksos-visual-overlay">
+                    Bakti Sosial Hari Guru Nasional • 25 November 2024<br>
+                    <strong>Desa Cikaret, Kabupaten Bandung</strong>
+                </div>
+            </div>
+            <div class="baksos-content">
+                <div class="lingk-section-badge">Kegiatan Unggulan</div>
+                <h3>Bakti Sosial Hari Guru — Bersama Masyarakat</h3>
+                <p>Setiap tanggal 25 November, SMA Nusantara Unggul menggelar Bakti Sosial Hari Guru sebagai wujud syukur atas jasa para pendidik sekaligus bentuk pengabdian nyata kepada masyarakat sekitar. Guru, siswa, dan wali murid bahu-membahu dalam berbagai aksi sosial yang menyentuh langsung kehidupan komunitas.</p>
+                <ul>
+                    <li>Pemeriksaan kesehatan gratis bagi warga kurang mampu</li>
+                    <li>Pembagian paket sembako untuk 300+ keluarga</li>
+                    <li>Santunan kepada 50 anak yatim piatu</li>
+                    <li>Perbaikan fasilitas umum &amp; taman baca desa</li>
+                    <li>Pertunjukan seni &amp; pentas budaya siswa</li>
+                    <li>Pembersihan lingkungan bersama warga</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="baksos-feature">
+            <div class="baksos-visual" style="background:linear-gradient(135deg,#14532D,#16A34A);">
+                🌱
+                <div class="baksos-visual-overlay">
+                    Program Penghijauan • Semester Genap 2024<br>
+                    <strong>1.200 Pohon Ditanam</strong>
+                </div>
+            </div>
+            <div class="baksos-content">
+                <div class="lingk-section-badge">Lingkungan Hijau</div>
+                <h3>Gerakan Tanam Pohon Bersama Komunitas</h3>
+                <p>Program penghijauan tahunan "SMA NU Hijau" mengajak seluruh civitas akademika bersama warga lokal untuk menanam pohon di area sekolah, bantaran sungai, dan lahan kritis di sekitar Bandung Selatan. Setiap siswa kelas X wajib menanam dan merawat minimal dua pohon selama satu tahun penuh.</p>
+                <ul>
+                    <li>1.200 bibit pohon produktif (mangga, jambu, rambutan)</li>
+                    <li>Kerja sama dengan Dinas Lingkungan Hidup Kab. Bandung</li>
+                    <li>Edukasi lingkungan untuk siswa SD sekitar</li>
+                    <li>Pemantauan pertumbuhan pohon via aplikasi sekolah</li>
+                    <li>Penghargaan "Siswa Paling Hijau" setiap semester</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="baksos-feature">
+            <div class="baksos-visual" style="background:linear-gradient(135deg,#581C87,#9333EA);">
+                📚
+                <div class="baksos-visual-overlay">
+                    Rumah Baca SMA NU • Aktif sejak 2022<br>
+                    <strong>3 Lokasi di Kec. Margahayu</strong>
+                </div>
+            </div>
+            <div class="baksos-content">
+                <div class="lingk-section-badge">Literasi Komunitas</div>
+                <h3>Rumah Baca &amp; Beasiswa Anak Desa</h3>
+                <p>Didirikan oleh OSIS dan guru-guru SMA Nusantara Unggul, Rumah Baca hadir sebagai ruang belajar gratis untuk anak-anak usia SD–SMP di tiga kelurahan sekitar sekolah. Siswa kelas XI dan XII menjadi tutor sukarela setiap akhir pekan, dipandu oleh guru-guru pembimbing.</p>
+                <ul>
+                    <li>5.000+ koleksi buku yang disumbangkan sivitas sekolah</li>
+                    <li>40 siswa SMA NU menjadi tutor sukarela aktif</li>
+                    <li>Program beasiswa bagi 12 anak berprestasi desa</li>
+                    <li>Kelas coding, sains, dan seni kreatif mingguan</li>
+                    <li>Donasi buku dari alumni &amp; orang tua siswa</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── IMPACT STRIP ──────────── -->
+<div class="impact-strip">
+    <div class="impact-strip-inner">
+        <h2>Dampak Nyata untuk Komunitas</h2>
+        <div class="impact-grid">
+            <div class="impact-item">
+                <div class="impact-icon">🏥</div>
+                <span class="impact-num">1.800+</span>
+                <span class="impact-lbl">Warga Periksa Kesehatan Gratis</span>
+            </div>
+            <div class="impact-item">
+                <div class="impact-icon">🎒</div>
+                <span class="impact-num">320</span>
+                <span class="impact-lbl">Paket Sembako Dibagikan</span>
+            </div>
+            <div class="impact-item">
+                <div class="impact-icon">🌳</div>
+                <span class="impact-num">1.200</span>
+                <span class="impact-lbl">Pohon Ditanam Bersama</span>
+            </div>
+            <div class="impact-item">
+                <div class="impact-icon">📖</div>
+                <span class="impact-num">480</span>
+                <span class="impact-lbl">Anak Mendapat Bimbingan Belajar</span>
+            </div>
+            <div class="impact-item">
+                <div class="impact-icon">🤝</div>
+                <span class="impact-num">15</span>
+                <span class="impact-lbl">Mitra Instansi &amp; LSM</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ──────────── PROGRAM KEGIATAN ──────────── -->
+<section class="lingk-section" id="program">
+    <div class="lingk-container">
+        <div class="lingk-section-badge">Program Tahunan</div>
+        <h2 class="lingk-section-title">Kalender Kegiatan Sosial &amp; Lingkungan</h2>
+        <p class="lingk-section-desc">Setiap kegiatan dirancang untuk membangun karakter siswa sekaligus memberikan manfaat nyata bagi masyarakat dan lingkungan sekitar sekolah.</p>
+
+        <div class="activity-grid">
+            <div class="activity-card reveal">
+                <div class="activity-img-placeholder">🎓</div>
+                <div class="activity-body">
+                    <span class="activity-tag">November</span>
+                    <h3 class="activity-title">Bakti Sosial Hari Guru Nasional</h3>
+                    <p class="activity-desc">Peringatan Hari Guru diisi dengan aksi sosial nyata: pemeriksaan kesehatan gratis, pembagian sembako, santunan anak yatim, dan perbaikan fasilitas warga bersama seluruh komponen sekolah.</p>
+                    <div class="activity-meta">
+                        <span class="activity-meta-item">📅 25 November</span>
+                        <span class="activity-meta-item">👥 Semua Siswa</span>
+                        <span class="activity-meta-item">📍 Desa Cikaret</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-card reveal">
+                <div class="activity-img-placeholder">🌙</div>
+                <div class="activity-body">
+                    <span class="activity-tag">Ramadhan</span>
+                    <h3 class="activity-title">Pesantren Kilat &amp; Buka Bersama Yatim</h3>
+                    <p class="activity-desc">Kegiatan keislaman intensif selama bulan Ramadhan yang melibatkan 200+ anak yatim piatu dari panti asuhan mitra sebagai tamu kehormatan dalam buka bersama dan kegiatan keagamaan.</p>
+                    <div class="activity-meta">
+                        <span class="activity-meta-item">📅 Bulan Ramadhan</span>
+                        <span class="activity-meta-item">👥 Kelas X–XII</span>
+                        <span class="activity-meta-item">📍 Aula Sekolah</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-card reveal">
+                <div class="activity-img-placeholder">♻️</div>
+                <div class="activity-body">
+                    <span class="activity-tag">April</span>
+                    <h3 class="activity-title">Hari Bumi — Aksi Zero Waste</h3>
+                    <p class="activity-desc">Kampanye lingkungan sekolah yang mengajak siswa, guru, dan komunitas untuk bebas sampah plastik sehari penuh, bank sampah mini, serta edukasi daur ulang bagi warga sekitar.</p>
+                    <div class="activity-meta">
+                        <span class="activity-meta-item">📅 22 April</span>
+                        <span class="activity-meta-item">👥 Semua Siswa</span>
+                        <span class="activity-meta-item">📍 Area Sekolah &amp; Desa</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-card reveal">
+                <div class="activity-img-placeholder">🏘️</div>
+                <div class="activity-body">
+                    <span class="activity-tag">Juli</span>
+                    <h3 class="activity-title">Kuliah Kerja Nyata Mini (KKN-Mini)</h3>
+                    <p class="activity-desc">Siswa kelas XI terjun langsung ke desa selama 3 hari untuk membantu pemetaan potensi desa, pelatihan keterampilan digital untuk UMKM, dan pembersihan lingkungan.</p>
+                    <div class="activity-meta">
+                        <span class="activity-meta-item">📅 Libur Semester</span>
+                        <span class="activity-meta-item">👥 Kelas XI</span>
+                        <span class="activity-meta-item">📍 Desa Mitra</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-card reveal">
+                <div class="activity-img-placeholder">🎨</div>
+                <div class="activity-body">
+                    <span class="activity-tag">Agustus</span>
+                    <h3 class="activity-title">Festival 17 Agustus Bersama Warga</h3>
+                    <p class="activity-desc">Perayaan kemerdekaan dengan nuansa kebersamaan. Siswa tampil dalam pentas seni, lomba rakyat, dan gelar produk UMKM lokal bersama ribuan warga di lapangan desa.</p>
+                    <div class="activity-meta">
+                        <span class="activity-meta-item">📅 17 Agustus</span>
+                        <span class="activity-meta-item">👥 Semua Sivitas</span>
+                        <span class="activity-meta-item">📍 Lapangan Desa</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-card reveal">
+                <div class="activity-img-placeholder">💧</div>
+                <div class="activity-body">
+                    <span class="activity-tag">Oktober</span>
+                    <h3 class="activity-title">Panen Raya &amp; Bersih Sungai Citarum</h3>
+                    <p class="activity-desc">Aksi kolaboratif membersihkan anak sungai Citarum di sekitar sekolah, sekaligus merayakan panen kebun sekolah organik bersama warga dan orang tua murid.</p>
+                    <div class="activity-meta">
+                        <span class="activity-meta-item">📅 Oktober</span>
+                        <span class="activity-meta-item">👥 Kelas X–XII</span>
+                        <span class="activity-meta-item">📍 Sungai Cigede</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── TIMELINE BAKSOS ──────────── -->
+<section class="lingk-section" id="timeline" style="background:var(--off-white,#F2F0EB);">
+    <div class="lingk-container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+            <div>
+                <div class="lingk-section-badge">Sejarah</div>
+                <h2 class="lingk-section-title">Perjalanan Program Bakti Sosial</h2>
+                <p class="lingk-section-desc">Dimulai dari inisiatif kecil, kini program sosial SMA Nusantara Unggul menjadi rujukan sekolah-sekolah lain di Jawa Barat.</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2018 — Awal Mula</div>
+                        <div class="timeline-title">Baksos Pertama di Halaman Sekolah</div>
+                        <div class="timeline-desc">40 siswa dan 8 guru mengadakan bazar murah dan donor darah pertama. Dihadiri 120 warga setempat.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020 — Pandemi</div>
+                        <div class="timeline-title">Gerakan Bantuan COVID-19</div>
+                        <div class="timeline-desc">Seluruh guru dan orang tua murid berkolaborasi membagikan 1.500 paket bantuan pangan kepada warga terdampak pandemi di 5 kelurahan.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022 — Ekspansi</div>
+                        <div class="timeline-title">Rumah Baca Pertama Didirikan</div>
+                        <div class="timeline-desc">OSIS mendirikan Rumah Baca perdana di Desa Cikaret dengan 800 koleksi buku dan program tutor sebaya mingguan.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 — Penghargaan</div>
+                        <div class="timeline-title">Penghargaan Sekolah Peduli Lingkungan</div>
+                        <div class="timeline-desc">SMA Nusantara Unggul meraih penghargaan Adiwiyata Mandiri dari Kementerian Lingkungan Hidup atas komitmen lingkungan berkelanjutan.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024 — Kini</div>
+                        <div class="timeline-title">Program Terpadu 360°</div>
+                        <div class="timeline-desc">48 kegiatan sosial dan lingkungan per tahun, 15 mitra instansi, dan lebih dari 2.500 warga yang merasakan manfaat langsung setiap tahunnya.</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="lingk-section-badge">Mitra Kami</div>
+                <h2 class="lingk-section-title">Institusi yang Bersama Kami</h2>
+                <p class="lingk-section-desc">Kolaborasi lintas sektor memastikan dampak yang lebih luas dan berkelanjutan bagi komunitas.</p>
+                <div class="partner-grid">
+                    <div class="partner-card">
+                        <div class="partner-icon">🏥</div>
+                        <div class="partner-name">Puskesmas Margahayu</div>
+                        <div class="partner-type">Layanan Kesehatan</div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-icon">🌿</div>
+                        <div class="partner-name">Dinas LH Kab. Bandung</div>
+                        <div class="partner-type">Lingkungan Hidup</div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-icon">🕌</div>
+                        <div class="partner-name">Masjid Al-Falah</div>
+                        <div class="partner-type">Keagamaan</div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-icon">📦</div>
+                        <div class="partner-name">Baznas Jawa Barat</div>
+                        <div class="partner-type">Amil Zakat</div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-icon">🏛️</div>
+                        <div class="partner-name">Kelurahan Cikaret</div>
+                        <div class="partner-type">Pemerintah Desa</div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-icon">🎗️</div>
+                        <div class="partner-name">Yayasan Rumah Yatim</div>
+                        <div class="partner-type">Sosial Kemasyarakatan</div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-icon">📱</div>
+                        <div class="partner-name">Komunitas Coding Jabar</div>
+                        <div class="partner-type">Teknologi &amp; Digital</div>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-icon">🌾</div>
+                        <div class="partner-name">Gapoktan Harapan Tani</div>
+                        <div class="partner-type">Pertanian Lokal</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── GALERI KEGIATAN ──────────── -->
+<section class="lingk-section" id="galeri">
+    <div class="lingk-container">
+        <div class="lingk-section-badge">Galeri</div>
+        <h2 class="lingk-section-title">Momen Kebersamaan</h2>
+        <p class="lingk-section-desc">Setiap gambar adalah bukti nyata bahwa sekolah dan masyarakat dapat tumbuh bersama.</p>
+        <div class="gallery-mosaic">
+            <div class="gallery-item wide" style="background:linear-gradient(135deg,#1E3A5F 0%,#C8892A 100%);">
+                🎓
+                <div class="gallery-caption">Upacara Bakti Sosial Hari Guru — 25 November 2024</div>
+            </div>
+            <div class="gallery-item tall" style="background:linear-gradient(135deg,#14532D 0%,#4ADE80 100%);">
+                🌳
+                <div class="gallery-caption">Penanaman 1.200 Pohon Bersama Warga</div>
+            </div>
+            <div class="gallery-item" style="background:linear-gradient(135deg,#7F1D1D 0%,#EF4444 100%);">
+                ❤️
+                <div class="gallery-caption">Donor Darah Tahunan Civitas Akademika</div>
+            </div>
+            <div class="gallery-item" style="background:linear-gradient(135deg,#581C87 0%,#C084FC 100%);">
+                📚
+                <div class="gallery-caption">Rumah Baca — Tutor Sukarela Kelas XI</div>
+            </div>
+            <div class="gallery-item" style="background:linear-gradient(135deg,#78350F 0%,#FCD34D 100%);">
+                🎨
+                <div class="gallery-caption">Festival 17 Agustus Bersama 3.000 Warga</div>
+            </div>
+            <div class="gallery-item wide" style="background:linear-gradient(135deg,#0C4A6E 0%,#38BDF8 100%);">
+                💧
+                <div class="gallery-caption">Aksi Bersih Sungai Citarum — Oktober 2024</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── CTA ──────────── -->
+<section style="padding:5rem 0;background:var(--amber-pale,#FEF9F0);text-align:center;">
+    <div style="max-width:620px;margin:0 auto;padding:0 2rem;">
+        <div class="lingk-section-badge" style="margin:0 auto 1rem;">Bergabung Bersama Kami</div>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--ink);margin-bottom:1rem;line-height:1.2;">
+            Jadilah Bagian dari<br>Perubahan Nyata
+        </h2>
+        <p style="font-size:.95rem;color:var(--body-text);line-height:1.75;margin-bottom:2rem;">
+            Bergabunglah bersama ribuan keluarga SMA Nusantara Unggul yang percaya bahwa sekolah terbaik adalah yang memberikan dampak terbaik bagi komunitas di sekitarnya.
+        </p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="ppdb.html" class="btn-primary">Daftar PPDB 2025/2026 →</a>
+            <a href="index.html#kontak" class="btn-secondary">Hubungi Kami</a>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────── FOOTER ──────────── -->
+<footer style="background:var(--navy,#1E3A5F);color:rgba(255,255,255,.75);padding:3rem 0 1.5rem;text-align:center;font-size:.85rem;">
+    <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+        <p style="margin-bottom:.5rem;font-family:'Space Grotesk',sans-serif;font-weight:600;color:#fff;font-size:1rem;">SMA Nusantara Unggul</p>
+        <p style="margin-bottom:.25rem;">Jl. Raya Nusantara No. 1, Margahayu, Bandung, Jawa Barat 40228</p>
+        <p style="margin-bottom:1.5rem;">Telp: (022) 123-4567 &nbsp;|&nbsp; Email: info@sma-nusantara.sch.id</p>
+        <p style="border-top:1px solid rgba(255,255,255,.12);padding-top:1.25rem;">&copy; 2025 SMA Nusantara Unggul. Semua hak cipta dilindungi.</p>
+    </div>
+</footer>
+
+    <!-- COLOR THEME SWITCHER -->
+    <div class="color-switcher" id="themeSwitcher">
+        <span class="color-switcher-label">Tema</span>
+        <button class="theme-btn active" data-theme="default" title="Navy Klasik"></button>
+        <button class="theme-btn" data-theme="zamrud" title="Hijau Zamrud"></button>
+        <button class="theme-btn" data-theme="ungu" title="Ungu Royal"></button>
+        <button class="theme-btn" data-theme="garuda" title="Merah Garuda"></button>
+        <button class="theme-btn" data-theme="emas" title="Emas Matahari"></button>
+        <button class="theme-btn" data-theme="langit" title="Langit Biru"></button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
