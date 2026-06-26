@@ -119,6 +119,11 @@ let _fotoBase64     = '';
    form modal bisa di-isi tanpa harus parsing teks dari tabel */
 let _editRowCache = null;
 
+/* cache data guru dari Supabase — dipakai oleh openModal agar tidak perlu
+   menyematkan JSON besar ke dalam atribut onclick (yang bisa rusak jika
+   foto_url berupa base64 panjang) */
+let _guruDataCache = {};
+
 function openModal(modalId, editId, rowData) {
     currentEditId   = editId;
     currentEditType = modalId;
@@ -135,17 +140,38 @@ function openModal(modalId, editId, rowData) {
         if (preview)   { preview.src = ''; preview.style.display = 'none'; }
         if (fotoInput) fotoInput.value = '';
 
-        if (editId !== null && rowData) {
-            document.getElementById('mg-nama').value  = rowData.nama  || '';
-            document.getElementById('mg-mapel').value = rowData.mapel || '';
-            setSelectValue('mg-pendidikan', rowData.pendidikan || 'S1');
-            document.getElementById('mg-exp').value   = rowData.pengalaman || '';
-            setSelectValue('mg-status', rowData.status || 'Aktif');
+        /* Prioritaskan rowData yang dikirim → cache Supabase → parsing DOM */
+        const guruData = rowData || _guruDataCache[editId] || null;
 
-            if (rowData.foto_url && preview) {
-                _fotoBase64 = rowData.foto_url;
-                preview.src = rowData.foto_url;
+        if (editId !== null && guruData) {
+            document.getElementById('mg-nama').value  = guruData.nama  || '';
+            document.getElementById('mg-mapel').value = guruData.mapel || '';
+            setSelectValue('mg-pendidikan', guruData.pendidikan || 'S1');
+            document.getElementById('mg-exp').value   = guruData.pengalaman || '';
+            setSelectValue('mg-status', guruData.status || 'Aktif');
+
+            if (guruData.foto_url && preview) {
+                _fotoBase64 = guruData.foto_url;
+                preview.src = guruData.foto_url;
                 preview.style.display = 'block';
+            }
+        } else if (editId !== null) {
+            /* Fallback: baca data langsung dari baris tabel (baris hardcoded HTML) */
+            const row = document.querySelector('#teacherTableBody tr[data-id="' + editId + '"]');
+            if (row) {
+                const cells = row.querySelectorAll('td');
+                document.getElementById('mg-nama').value  = cells[0] ? cells[0].textContent.trim() : '';
+                document.getElementById('mg-mapel').value = cells[1] ? cells[1].textContent.trim() : '';
+                setSelectValue('mg-pendidikan', cells[2] ? cells[2].textContent.trim() : 'S1');
+                document.getElementById('mg-exp').value   = cells[3] ? cells[3].textContent.trim().replace(/^\s*—\s*$/, '') : '';
+                const statusSpan = cells[4] ? cells[4].querySelector('span') : null;
+                setSelectValue('mg-status', statusSpan ? statusSpan.textContent.trim() : 'Aktif');
+            } else {
+                document.getElementById('mg-nama').value  = '';
+                document.getElementById('mg-mapel').value = '';
+                setSelectValue('mg-pendidikan', 'S1');
+                document.getElementById('mg-exp').value   = '';
+                setSelectValue('mg-status', 'Aktif');
             }
         } else {
             document.getElementById('mg-nama').value  = '';
@@ -257,35 +283,53 @@ async function deleteRow(tbodyId, id) {
 
 /* ─── CRUD: SAVE GURU (Supabase) ─── */
 async function saveGuruRow() {
-    const nama   = document.getElementById('mg-nama').value.trim();
-    const mapel  = document.getElementById('mg-mapel').value.trim();
-    const pend   = document.getElementById('mg-pendidikan').value;
-    const exp    = document.getElementById('mg-exp').value.trim();
-    const status = document.getElementById('mg-status').value;
+    const btn = document.querySelector('#modal-guru .btn-modal-save');
+    if (btn) { btn.disabled = true; btn.textContent = 'Menyimpan…'; }
 
-    if (!nama || !mapel) { showToast('Nama dan mata pelajaran wajib diisi.', '⚠️'); return; }
+    try {
+        const nama   = document.getElementById('mg-nama').value.trim();
+        const mapel  = document.getElementById('mg-mapel').value.trim();
+        const pend   = document.getElementById('mg-pendidikan').value;
+        const exp    = document.getElementById('mg-exp').value.trim();
+        const status = document.getElementById('mg-status').value;
 
-    const payload = {
-        nama       : nama,
-        mapel      : mapel,
-        pendidikan : pend,
-        pengalaman : exp || null,
-        status     : status
-    };
-    if (_fotoBase64) payload.foto_url = _fotoBase64;
+        if (!nama || !mapel) {
+            showToast('Nama dan mata pelajaran wajib diisi.', '⚠️');
+            return;
+        }
 
-    let error;
-    if (currentEditId !== null) {
-        ({ error } = await supabaseClient.from('guru').update(payload).eq('id', currentEditId));
-    } else {
-        ({ error } = await supabaseClient.from('guru').insert(payload));
+        const payload = {
+            nama       : nama,
+            mapel      : mapel,
+            pendidikan : pend,
+            pengalaman : exp || null,
+            status     : status
+        };
+        if (_fotoBase64) payload.foto_url = _fotoBase64;
+
+        let error;
+        if (currentEditId !== null) {
+            ({ error } = await supabaseClient.from('guru').update(payload).eq('id', currentEditId));
+        } else {
+            ({ error } = await supabaseClient.from('guru').insert(payload));
+        }
+
+        if (error) {
+            showToast('Gagal menyimpan: ' + error.message, '⚠️');
+            console.error('saveGuruRow error:', error);
+            return;
+        }
+
+        showToast(currentEditId !== null ? 'Data guru berhasil diperbarui.' : 'Guru baru berhasil ditambahkan.');
+        closeModal('modal-guru');
+        await loadGuruFromStorage();
+
+    } catch (e) {
+        showToast('Terjadi kesalahan: ' + (e.message || 'Coba lagi.'), '⚠️');
+        console.error('saveGuruRow exception:', e);
+    } finally {
+        if (btn) { btn.disabled = false; btn.textContent = 'Simpan'; }
     }
-
-    if (error) { showToast('Gagal menyimpan: ' + error.message, '⚠️'); console.error(error); return; }
-
-    showToast(currentEditId !== null ? 'Data guru berhasil diperbarui.' : 'Guru baru berhasil ditambahkan.');
-    closeModal('modal-guru');
-    await loadGuruFromStorage();
 }
 
 /* ─── CRUD: SAVE FASILITAS (Supabase) ─── */
@@ -366,8 +410,14 @@ async function loadGuruFromStorage() {
     /* ── data-akademik.html: render tabel admin ── */
     const tbody = document.getElementById('teacherTableBody');
     if (tbody) {
+        if (!data || data.length === 0) {
+            /* Jika Supabase kosong (belum di-seed), jangan hapus baris hardcoded HTML */
+            return;
+        }
         tbody.innerHTML = '';
+        _guruDataCache = {};  /* reset cache */
         (data || []).forEach(guru => {
+            _guruDataCache[guru.id] = guru;  /* simpan ke cache, bukan ke onclick */
             const statusClass = guru.status === 'Aktif' ? 'status-active' : 'status-inactive';
             const row = document.createElement('tr');
             row.setAttribute('data-id', guru.id);
@@ -378,7 +428,8 @@ async function loadGuruFromStorage() {
                 '<td>' + (guru.pengalaman || '—') + '</td>' +
                 '<td><span class="status-badge ' + statusClass + '">' + guru.status + '</span></td>' +
                 '<td>' +
-                    '<button class="action-btn" onclick="openModal(\'modal-guru\',' + guru.id + ',' + JSON.stringify(guru).replace(/"/g, '&quot;') + ')" title="Edit">✏️</button>' +
+                    /* Gunakan ID saja — data diambil dari _guruDataCache di openModal */
+                    '<button class="action-btn" onclick="openModal(\'modal-guru\',' + guru.id + ')" title="Edit">✏️</button>' +
                     '<button class="action-btn del" onclick="deleteRow(\'teacherTableBody\',' + guru.id + ')" title="Hapus">🗑️</button>' +
                 '</td>';
             tbody.appendChild(row);
