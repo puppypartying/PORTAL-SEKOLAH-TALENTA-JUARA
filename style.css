@@ -1,5 +1,4 @@
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
         --white:       #FAFAF8;
@@ -33,8 +32,8 @@
         --grad-mesh:   radial-gradient(at 15% 20%, rgba(200,137,42,0.10) 0, transparent 50%), radial-gradient(at 85% 10%, rgba(30,58,95,0.08) 0, transparent 45%), radial-gradient(at 50% 90%, rgba(200,137,42,0.06) 0, transparent 50%);
     }
 
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--white); color: var(--ink); overflow-x: hidden; }
+    html { scroll-behavior: smooth; max-width: 100%; overflow-x: hidden; }
+    body { font-family: var(--sans); background: var(--white); color: var(--ink); overflow-x: hidden; max-width: 100%; }
 
     /* ─── NAV ─── */
     nav {
@@ -1062,7 +1061,10 @@
 .lingk-section-desc { font-size:.95rem; line-height:1.75; color:var(--body-text,#4A5568); max-width:60ch; margin-bottom:2.5rem; }
 
 /* Activity grid */
-.activity-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; }
+.activity-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
+@media (max-width: 600px) {
+    .activity-grid { grid-template-columns: 1fr; }
+}
 .activity-card {
     background:#fff; border-radius:16px; overflow:hidden;
     box-shadow:0 2px 12px rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.06);
