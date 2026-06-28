@@ -119,9 +119,25 @@ let _fotoBase64     = '';
    form modal bisa di-isi tanpa harus parsing teks dari tabel */
 let _editRowCache = null;
 
+/* cache hasil fetch terakhir per tabel — dipakai openModal() buat ambil
+   data baris yang di-edit, TANPA embed JSON di atribut onclick HTML
+   (yang rawan rusak kalau ada foto base64 panjang) */
+let _guruDataCache      = [];
+let _fasilitasDataCache = [];
+let _ekskulDataCache    = [];
+
 function openModal(modalId, editId, rowData) {
     currentEditId   = editId;
     currentEditType = modalId;
+
+    /* kalau rowData nggak dikirim langsung (sengaja, biar nggak embed
+       JSON gede di HTML), ambil dari cache hasil load terakhir */
+    if (editId !== null && editId !== undefined && !rowData) {
+        if (modalId === 'modal-guru')      rowData = _guruDataCache.find(g => g.id === editId);
+        if (modalId === 'modal-fasilitas') rowData = _fasilitasDataCache.find(f => f.id === editId);
+        if (modalId === 'modal-ekskul')    rowData = _ekskulDataCache.find(e => e.id === editId);
+    }
+
     _editRowCache   = rowData || null;
 
     /* ── GURU ── */
@@ -137,6 +153,7 @@ function openModal(modalId, editId, rowData) {
 
         if (editId !== null && rowData) {
             document.getElementById('mg-nama').value  = rowData.nama  || '';
+            document.getElementById('mg-jabatan').value = rowData.jabatan || '';
             document.getElementById('mg-mapel').value = rowData.mapel || '';
             setSelectValue('mg-pendidikan', rowData.pendidikan || 'S1');
             document.getElementById('mg-exp').value   = rowData.pengalaman || '';
@@ -149,6 +166,7 @@ function openModal(modalId, editId, rowData) {
             }
         } else {
             document.getElementById('mg-nama').value  = '';
+            document.getElementById('mg-jabatan').value = '';
             document.getElementById('mg-mapel').value = '';
             setSelectValue('mg-pendidikan', 'S1');
             document.getElementById('mg-exp').value   = '';
@@ -258,6 +276,7 @@ async function deleteRow(tbodyId, id) {
 /* ─── CRUD: SAVE GURU (Supabase) ─── */
 async function saveGuruRow() {
     const nama   = document.getElementById('mg-nama').value.trim();
+    const jabatan= document.getElementById('mg-jabatan').value.trim();
     const mapel  = document.getElementById('mg-mapel').value.trim();
     const pend   = document.getElementById('mg-pendidikan').value;
     const exp    = document.getElementById('mg-exp').value.trim();
@@ -267,6 +286,7 @@ async function saveGuruRow() {
 
     const payload = {
         nama       : nama,
+        jabatan    : jabatan || null,
         mapel      : mapel,
         pendidikan : pend,
         pengalaman : exp || null,
@@ -370,6 +390,8 @@ async function loadGuruFromStorage() {
     const { data, error } = await supabaseClient.from('guru').select('*').order('id', { ascending: true });
     if (error) { console.error('Gagal memuat data guru:', error); return; }
 
+    _guruDataCache = data || [];
+
     /* ── data-akademik.html: render tabel admin ── */
     if (tbody) {
         tbody.innerHTML = '';
@@ -379,12 +401,13 @@ async function loadGuruFromStorage() {
             row.setAttribute('data-id', guru.id);
             row.innerHTML =
                 '<td>' + guru.nama + '</td>' +
+                '<td>' + (guru.jabatan || '—') + '</td>' +
                 '<td>' + guru.mapel + '</td>' +
                 '<td>' + (guru.pendidikan || '') + '</td>' +
                 '<td>' + (guru.pengalaman || '—') + '</td>' +
                 '<td><span class="status-badge ' + statusClass + '">' + guru.status + '</span></td>' +
                 '<td>' +
-                    '<button class="action-btn" onclick="openModal(\'modal-guru\',' + guru.id + ',' + JSON.stringify(guru).replace(/"/g, '&quot;') + ')" title="Edit">✏️</button>' +
+                    '<button class="action-btn" onclick="openModal(\'modal-guru\',' + guru.id + ')" title="Edit">✏️</button>' +
                     '<button class="action-btn del" onclick="deleteRow(\'teacherTableBody\',' + guru.id + ')" title="Hapus">🗑️</button>' +
                 '</td>';
             tbody.appendChild(row);
@@ -444,6 +467,8 @@ async function loadFasilitasFromStorage() {
     const { data, error } = await supabaseClient.from('fasilitas').select('*').order('id', { ascending: true });
     if (error) { console.error('Gagal memuat data fasilitas:', error); return; }
 
+    _fasilitasDataCache = data || [];
+
     tbody.innerHTML = '';
     (data || []).forEach(f => {
         const statusClass = f.status === 'Tersedia' ? 'status-active' : 'status-inactive';
@@ -453,7 +478,7 @@ async function loadFasilitasFromStorage() {
             '<td>' + f.nama + '</td><td>' + (f.kapasitas || '—') + '</td><td>' + f.kondisi + '</td><td>' + (f.lokasi || '—') + '</td>' +
             '<td><span class="status-badge ' + statusClass + '">' + f.status + '</span></td>' +
             '<td>' +
-                '<button class="action-btn" onclick="openModal(\'modal-fasilitas\',' + f.id + ',' + JSON.stringify(f).replace(/"/g, '&quot;') + ')">✏️</button>' +
+                '<button class="action-btn" onclick="openModal(\'modal-fasilitas\',' + f.id + ')">✏️</button>' +
                 '<button class="action-btn del" onclick="deleteRow(\'fasilitasTableBody\',' + f.id + ')">🗑️</button>' +
             '</td>';
         tbody.appendChild(row);
@@ -468,6 +493,8 @@ async function loadEkskulFromStorage() {
     const { data, error } = await supabaseClient.from('ekskul').select('*').order('id', { ascending: true });
     if (error) { console.error('Gagal memuat data ekskul:', error); return; }
 
+    _ekskulDataCache = data || [];
+
     tbody.innerHTML = '';
     (data || []).forEach(e => {
         const row = document.createElement('tr');
@@ -476,7 +503,7 @@ async function loadEkskulFromStorage() {
             '<td>' + e.nama + '</td><td>' + (e.pembina || '—') + '</td><td>' + (e.jadwal || '—') + '</td>' +
             '<td>' + (e.anggota || '—') + '</td><td>' + (e.prestasi || '—') + '</td>' +
             '<td>' +
-                '<button class="action-btn" onclick="openModal(\'modal-ekskul\',' + e.id + ',' + JSON.stringify(e).replace(/"/g, '&quot;') + ')">✏️</button>' +
+                '<button class="action-btn" onclick="openModal(\'modal-ekskul\',' + e.id + ')">✏️</button>' +
                 '<button class="action-btn del" onclick="deleteRow(\'ekskriTableBody\',' + e.id + ')">🗑️</button>' +
             '</td>';
         tbody.appendChild(row);
@@ -487,6 +514,47 @@ async function loadEkskulFromStorage() {
 loadGuruFromStorage();
 loadFasilitasFromStorage();
 loadEkskulFromStorage();
+
+/* ════════════════════════════════════════════════════════════
+   OFFLINE FALLBACK — VERSI 1
+   Kalau submit PPDB gagal terhubung ke Supabase, data disimpan
+   sementara di localStorage browser pengisi form, supaya tidak
+   hilang. Admin bisa sinkronkan manual lewat tombol "Sync" di
+   panel data-akademik (kalau dibuka di device yang sama).
+   ════════════════════════════════════════════════════════════ */
+const OFFLINE_SISWA_KEY = 'stj_offline_siswa';
+
+function getOfflineSiswa() {
+    try { return JSON.parse(localStorage.getItem(OFFLINE_SISWA_KEY)) || []; }
+    catch (e) { return []; }
+}
+function saveOfflineSiswaList(list) {
+    localStorage.setItem(OFFLINE_SISWA_KEY, JSON.stringify(list));
+}
+function addOfflineSiswa(record) {
+    const list = getOfflineSiswa();
+    record._offlineId = 'OFF-' + Date.now();
+    list.push(record);
+    saveOfflineSiswaList(list);
+    return record;
+}
+async function syncOfflineSiswa(offlineId) {
+    const list = getOfflineSiswa();
+    const idx  = list.findIndex(s => s._offlineId === offlineId);
+    if (idx === -1) return;
+
+    const record = Object.assign({}, list[idx]);
+    delete record._offlineId;
+    if (record.status === 'Menunggu (Offline)') record.status = 'Menunggu';
+
+    const { error } = await supabaseClient.from('siswa').insert(record);
+    if (error) { showToast('Gagal sinkron: ' + error.message, '⚠️'); return; }
+
+    list.splice(idx, 1);
+    saveOfflineSiswaList(list);
+    showToast('Data berhasil disinkronkan ke database.', '✅');
+    await loadSiswaFromStorage();
+}
 
 /* ─── PPDB FORM VALIDATION ─── */
 function validateField(id, errId, condition) {
@@ -553,8 +621,25 @@ async function submitPPDB(e) {
     if (submitBtn) submitBtn.disabled = false;
 
     if (error) {
-        showToast('Gagal mengirim pendaftaran: ' + error.message, '⚠️');
-        console.error(error);
+        /* ── FALLBACK OFFLINE: simpan ke localStorage browser ini ── */
+        addOfflineSiswa({
+            nama         : nama,
+            nik          : nik  || null,
+            nisn         : nisn || null,
+            jenis_kelamin: jk,
+            tempat_lahir : ttl,
+            tanggal_lahir: dob,
+            alamat       : alamat || null,
+            no_hp        : hp,
+            asal_sekolah : asal,
+            jalur        : jalurLabels[jalur] || jalur,
+            status       : 'Menunggu (Offline)'
+        });
+        console.warn('Gagal terhubung ke Supabase, PPDB disimpan offline:', error);
+
+        document.getElementById('ppdbForm').style.display = 'none';
+        document.getElementById('ppdbSuccess').classList.add('visible');
+        showToast('Koneksi gagal — pendaftaran disimpan sementara di perangkat ini, akan disinkronkan saat online.', '📴');
         return;
     }
 
@@ -569,9 +654,14 @@ async function loadSiswaFromStorage() {
     if (!tbody) return;
 
     const { data, error } = await supabaseClient.from('siswa').select('*').order('id', { ascending: true });
-    if (error) { console.error('Gagal memuat data siswa:', error); return; }
+    const offlineList = getOfflineSiswa();
+
+    if (error) {
+        console.error('Gagal memuat data siswa dari Supabase:', error);
+    }
 
     tbody.innerHTML = '';
+
     (data || []).forEach(s => {
         const statusClass = s.status === 'Diverifikasi' ? 'status-active' : 'status-inactive';
         const row = document.createElement('tr');
@@ -581,6 +671,17 @@ async function loadSiswaFromStorage() {
             '<td>' + (s.nisn || '-') + '</td><td>—</td>' +
             '<td><span class="status-badge ' + statusClass + '">' + s.status + '</span></td>' +
             '<td><button class="action-btn del" onclick="deleteRow(\'siswaTableBody\',' + s.id + ')">🗑️</button></td>';
+        tbody.appendChild(row);
+    });
+
+    /* ── render data offline yang masih nunggu sinkron (kalau ada di device ini) ── */
+    offlineList.forEach(s => {
+        const row = document.createElement('tr');
+        row.innerHTML =
+            '<td>' + s.nama + '</td><td>' + s.asal_sekolah + '</td><td>' + s.jalur + '</td>' +
+            '<td>' + (s.nisn || '-') + '</td><td>—</td>' +
+            '<td><span class="status-badge status-inactive">⏳ Offline (belum sync)</span></td>' +
+            '<td><button class="action-btn" onclick="syncOfflineSiswa(\'' + s._offlineId + '\')" title="Sinkronkan">🔄 Sync</button></td>';
         tbody.appendChild(row);
     });
 }
