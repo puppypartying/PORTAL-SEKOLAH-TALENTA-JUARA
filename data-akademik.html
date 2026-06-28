@@ -9,6 +9,19 @@
 </head>
 <body>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script>
+    /* Cek session SEBELUM halaman ke-render.
+       Kalau belum login, lempar ke login.html. */
+    (async function authGuard() {
+        const { data } = await supabaseClient.auth.getSession();
+        if (!data || !data.session) {
+            window.location.href = 'login.html';
+        }
+    })();
+</script>
+
 <nav>
     <div class="nav-inner">
         <a href="#" class="nav-logo">
@@ -64,6 +77,7 @@
             <li><a href="kurikulum.html">Kurikulum</a></li>
             <li><a href="study-exchange.html">Exchange</a></li>
             <li><a href="ppdb.html">PPDB</a></li>
+            <li><a href="#" onclick="logoutAdmin(); return false;">Logout</a></li>
             </ul>
         <button class="hamburger" id="hambBtn" aria-label="Buka menu" onclick="toggleMobileNav()">
         <span></span><span></span><span></span>
@@ -529,8 +543,7 @@
         <button class="theme-btn" data-theme="emas" title="Emas Matahari"></button>
         <button class="theme-btn" data-theme="langit" title="Langit Biru"></button>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase-config.js"></script>
+
 <script src="js/script.js"></script>
 </body>
 </html>
